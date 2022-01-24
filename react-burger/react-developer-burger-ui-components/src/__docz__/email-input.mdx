@@ -1,0 +1,28 @@
+---
+name: EmailInput
+route: /email-input
+---
+import { Playground, Props } from 'docz'
+import { EmailInput }  from '../';
+
+
+# EmailInput
+
+## Properties
+
+<Props of={EmailInput} />
+
+## Basic usage
+
+<Playground>
+    {() => {
+        const [value, setValue] = React.useState('bob@example.com');
+        const onChange = (e) => {
+            setValue(e.target.value);
+        };
+        return <EmailInput onChange={onChange} value={value} name={'email'} />;
+   }}
+</Playground>
+
+
+
