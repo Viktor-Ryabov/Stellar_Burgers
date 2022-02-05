@@ -1,8 +1,27 @@
 .main{
   margin: 0 40px 0 0;
   padding: 0;
-  max-width: 600px;
-  
+  width: 600px;
+}
+
+.owerflowBlock{
+  margin: 0;
+  padding: 0;
+  height: 912px;
+  overflow-x: hidden;
+}
+
+.owerflowBlock::-webkit-scrollbar{
+  margin: 0;
+  padding: 0;
+  width: 8px;
+  /* height: 664px; */
+  background-color: #2F2F37;
+}
+.owerflowBlock::-webkit-scrollbar-thumb{
+  background-color: #8585AD;
+  height: 492px;
+  margin: 0 0 0 8px;
 }
 
 .title{
@@ -36,11 +55,6 @@
   justify-content: center;
 }
 
-.typeBun{
-  margin: 0;
-  padding: 0;
-}
-
 .subtitle{
   margin: 0 0 24px 0;
   padding: 0;
@@ -48,7 +62,7 @@
 }
 
 .ingridient_section{
-  margin: 0 0 40px 0;
+  margin: 0 9px 40px 0;
   padding: 0;
   display: flex;
   flex-direction: row;

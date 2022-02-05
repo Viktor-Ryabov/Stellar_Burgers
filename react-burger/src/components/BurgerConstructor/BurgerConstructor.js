@@ -34,7 +34,7 @@ export default class BurgerConstructor extends React.Component {
 
   render() {
     this.isIngridient(this.state.initialData);
-    console.log(this.Buns, this.Sauces, this.Fillings)
+    // console.log(this.Buns, this.Sauces, this.Fillings)
 
     return (
     <div className={ Styles.main }>
@@ -46,29 +46,33 @@ export default class BurgerConstructor extends React.Component {
         <li className={ Styles.list_item }>Соусы</li>
         <li className={ Styles.list_item }>Начинки</li>
       </ul>
-              
-      <h3 className={ Styles.subtitle }>Булки</h3>
 
-      <section className={ Styles.ingridient_section }>
-        {this.Buns.map((ingridient, index) => (
+      <section className={Styles.owerflowBlock}>
+
+        <h3 className={ Styles.subtitle }>Булки</h3>
+
+        <section className={ Styles.ingridient_section }>
+          {this.Buns.map((ingridient, index) => (
+                <Ingridient {...ingridient} key={ingridient._id} />
+              ))}
+        </section>
+          
+        <h3 className={ Styles.subtitle }>Соусы</h3>
+          
+        <section className={ Styles.ingridient_section }>
+          {this.Sauces.map((ingridient, index) => (
               <Ingridient {...ingridient} key={ingridient._id} />
             ))}
-      </section>
-
-      <h3 className={ Styles.subtitle }>Соусы</h3>
-
-      <section className={ Styles.ingridient_section }>
-        {this.Sauces.map((ingridient, index) => (
+        </section>
+          
+        <h3 className={ Styles.subtitle }>Начинки</h3>
+          
+        <section className={ Styles.ingridient_section }>
+          {this.Fillings.map((ingridient, index) => (
             <Ingridient {...ingridient} key={ingridient._id} />
           ))}
-      </section>
+        </section>
 
-      <h3 className={ Styles.subtitle }>Начинки</h3>
-
-      <section className={ Styles.ingridient_section }>
-        {this.Fillings.map((ingridient, index) => (
-          <Ingridient {...ingridient} key={ingridient._id} />
-        ))}
       </section>
 
     </div>
