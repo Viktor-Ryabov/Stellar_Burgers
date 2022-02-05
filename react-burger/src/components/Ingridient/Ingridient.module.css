@@ -32,6 +32,7 @@
   font-size: 28px;
   line-height: 24px;
   font-weight: 400;
+  font-family: Iceland;
 }
 
 .ingridient_price_icon{
@@ -52,6 +53,7 @@
   align-content: center;
   justify-content: center;
   width: 100%;
+  font-family: Jet Brains Mono;
 
 }
 

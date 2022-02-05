@@ -1,13 +1,14 @@
 import React from 'react';
 import { getIconColor, TIconProps } from './utils';
 
+
 export const MoneyIconBig = ({ type }: TIconProps) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             // width="24"
             // height="24"
-            viewBox="-5 -5 33 33"
+            viewBox="-4 -4 33 33"
             fill={getIconColor(type)}
         >
             <path d="M11.3849 3.65561C11.5818 3.18895 11.0397 2.75899 10.6301 3.05689L2.41184 9.03382C2.15309 9.222 2.00001 9.52262 2.00001 9.84256V14.4828C2.00001 14.6932 2.13171 14.8811 2.32948 14.9529L5.15637 15.9785C5.65685 16.1601 6.21185 15.9177 6.41879 15.4271L11.3849 3.65561Z" fill="#F2F2F3"/>
@@ -18,3 +19,4 @@ export const MoneyIconBig = ({ type }: TIconProps) => {
         </svg>
     );
 };
+
