@@ -1,5 +1,5 @@
 import React from 'react';
-import headerStyles from '../AppHeader/AppHeader.module.css'
+import Styles from '../AppHeader/AppHeader.module.css'
 import { Logo } from "../Logo/logo"
 import { BurgerIcon } from "../Icons/burger-icon"
 import { ListIcon } from "../Icons/list-icon"
@@ -10,25 +10,25 @@ import { ProfileIcon } from "../Icons/profile-icon"
 export default class AppHeader extends React.Component {
   render() {
     return (
-      <div className={headerStyles.header}>
+      <div className={ Styles.header }>
 
-        <ul className={headerStyles.buttonList}>
-          <li className={headerStyles.navigationButton} >
+        <ul className={ Styles.buttonList }>
+          <li className={ Styles.navigationButton } >
             <BurgerIcon />
-            <p className={headerStyles.navigationText}>Конструктор</p>
+            <p className={ Styles.navigationText }>Конструктор</p>
           </li>
 
-          <li className={ headerStyles.navigationButton } >
+          <li className={ Styles.navigationButton } >
             <ListIcon />
-            <p className={ headerStyles.navigationText }>Лента заказов</p>
+            <p className={ Styles.navigationText }>Лента заказов</p>
           </li>
         </ul>
         
-        <Logo className={ headerStyles.logo }/>
+        <Logo className={ Styles.logo }/>
 
-        <button className={ headerStyles.navigationButton } >
+        <button className={ Styles.navigationButton } >
             <ProfileIcon />
-            <p className={ headerStyles.navigationText }>Личный кабинет</p>
+            <p className={ Styles.navigationText }>Личный кабинет</p>
           </button>
 
       </div>
