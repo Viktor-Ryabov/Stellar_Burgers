@@ -35,7 +35,7 @@ class FirstBun extends React.Component {
       <div className={ Styles.main }>
         <div className={ Styles.cardBun }>
           <img className={ Styles.ingredientImage } src={this.props.image} />
-          <h4 className={ Styles.ingredientName }>{this.props.name}</h4>
+          <h4 className={ Styles.ingredientName }>{this.props.name} {this.props.position}</h4>
           <section className={Styles.ingridient_price}>
             <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
             <MoneyIcon />
@@ -55,7 +55,7 @@ class SecondBun extends FirstBun{
       <div className={ Styles.main }>
         <div className={ Styles.cardBun_last }>
           <img className={ Styles.ingredientImage } src={this.props.image} />
-          <h4 className={ Styles.ingredientName }>{this.props.name}</h4>
+          <h4 className={ Styles.ingredientName }>{this.props.name} {this.props.position}</h4>
           <section className={Styles.ingridient_price}>
             <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
             <MoneyIcon />
@@ -94,7 +94,7 @@ export default class BurgerIngredients extends React.Component {
 
       <section className={ Styles.burgerIngredients }>
 
-        <FirstBun {...this.Buns[0]} />
+        <FirstBun {...this.Buns[0]} position={"(верх)"}/>
 
         <section className={ Styles.owerflowBlock}>
           {this.Ingridietns.map((ingridient, index) => (
@@ -102,7 +102,7 @@ export default class BurgerIngredients extends React.Component {
           ))}
         </section>
 
-        <SecondBun {...this.Buns[1]} />
+        <SecondBun {...this.Buns[0]} position={"(низ)"} />
 
         <section className={Styles.totalCost}>
             <p className={Styles.totalCost_sum}>610</p>

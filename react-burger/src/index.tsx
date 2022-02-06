@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import './index.css';
-import AppHeader from "./components/AppHeader/AppHeader";
-import MainSection from "./components/MainSection/MainSection"
+import "../src/index.css";
+
+import App from "./components/App/App"
+
 
 
 
@@ -11,10 +12,8 @@ import MainSection from "./components/MainSection/MainSection"
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <AppHeader />
-
-    <MainSection />
+    
+    <App />
     
   </React.StrictMode>,
   document.getElementById('root')

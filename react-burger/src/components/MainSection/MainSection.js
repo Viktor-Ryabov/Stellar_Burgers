@@ -8,10 +8,10 @@ import Styles from '../MainSection/MainSection.module.css'
 export default class MainSection extends React.Component {
   render(){
     return(
-      <div className={ Styles.main }>
+      <main className={ Styles.main }>
         <BurgerConstructor />
         <BurgerIngredients />
-      </div>
+      </main>
     )
   }
 }

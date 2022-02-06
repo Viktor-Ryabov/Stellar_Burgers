@@ -5,7 +5,7 @@ import { MoneyIcon } from "../Icons/money-icon"
 export default class Ingridient extends React.Component {
   render() {
     return(
-      <div className={Styles.ingridient}>
+      <article className={Styles.ingridient}>
         <img className={Styles.ingridient_image} src={this.props.image}/>
 
         <section className={Styles.ingridient_price}>
@@ -19,7 +19,7 @@ export default class Ingridient extends React.Component {
           <p className={Styles.ingridient_quantity_number}></p>
         </div>
 
-      </div>
+      </article>
     )
   }
 }
