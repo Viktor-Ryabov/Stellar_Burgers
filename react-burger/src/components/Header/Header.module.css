@@ -1,63 +1,47 @@
+@import url(../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/box.css);
+
 .header{
-  margin: 0;
-  padding: 0;
   background-color: #1C1C21;
   max-width: 100%;
+  border: red solid 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-/* @media (max-width: 970px) {
-  .header{
-    flex-direction: column;
-    justify-content: space-around;
-  }
-} */
-
 .contentWidth{
-  margin: 0 auto;
-  padding: 0;
+  border: red solid 1px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   min-height: 88px;
   font-family: Jet Brains Mono;
-  max-width: calc(600px + 40px + 600px);
+  min-width: calc(600px + 40px + 600px + 40px);
 
-}
-
-.logo{
-  margin: 0 auto 0 132px;
-  padding: 0;
-  width: 289.15px;
-  height: 40px;
-}
-.logo:hover{
-  cursor: pointer;
-  opacity: 0.8;
 }
 
 .buttonList{
-  margin: 0;
   padding: 0;
   display: flex;
   flex-direction: row;
   list-style: none;
+  list-style-type: none;
 }
 
 .navigationButton{
-  margin: 0 49px 0 0;
-  padding: 0;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: fit-content;
+  width: 178px;
   height: 56px;
   background-color:#1C1C21;
   border: none;
   font-family: Jet Brains Mono;
+  border: red solid 1px;
 }
 .navigationButton:last-of-type{
-  margin: 0;
 }
 
 .navigationButton:hover{
@@ -66,13 +50,9 @@
 }
 
 .navigationIcon{
-  margin: 0;
-  padding: 0;
 }
 
 .navigationText{
-  margin: 0 0 0 9px;
-  padding: 0;
   font-size: 16px;
   line-height: 24px;
   color: white;

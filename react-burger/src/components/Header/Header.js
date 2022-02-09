@@ -1,10 +1,11 @@
 import React from 'react';
 import Styles from '../Header/Header.module.css'
-import { Logo } from "../Logo/logo"
-import { BurgerIcon } from "../Icons/burger-icon"
-import { ListIcon } from "../Icons/list-icon"
-import { ProfileIcon } from "../Icons/profile-icon"
+import { Logo } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/logo";
+import { ProfileIcon } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/profile-icon";
+import { ListIcon } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/list-icon";
+import { BurgerIcon } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/burger-icon";
 
+import '../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/box.css';
 
 
 export default class Header extends React.Component {
@@ -14,25 +15,23 @@ export default class Header extends React.Component {
 
         <nav>
           <section className={Styles.contentWidth}>
-            <ul className={ Styles.buttonList }>
+            <ul className="m-20">
               
-              <li className={ Styles.navigationButton } >
-                <BurgerIcon />
-                <p className={ Styles.navigationText }>Конструктор</p>
+              <li className={ Styles.navigationButton} >
+                <BurgerIcon type="primary"/>
+                <p className={ Styles.navigationText}>Конструктор</p>
               </li>
 
-              <li className={ Styles.navigationButton } >
-                <ListIcon />
+              <li className="p-15" >
+                <ListIcon type="primary"/>
                 <p className={ Styles.navigationText }>Лента заказов</p>
               </li>
 
-              <div className={ Styles.logo }>
-                <Logo />
-              </div> 
+              <Logo type="primary"/>
             </ul>
 
             <button className={ Styles.navigationButton } >
-                <ProfileIcon />
+                <ProfileIcon type="primary"/>
                 <p className={ Styles.navigationText }>Личный кабинет</p>
               </button>
           </section>  
