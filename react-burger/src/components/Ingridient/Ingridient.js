@@ -1,6 +1,6 @@
 import React from 'react';
 import Styles from '../Ingridient/Ingridient.module.css'
-import { MoneyIcon } from "../Icons/money-icon"
+import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components"
 
 export default class Ingridient extends React.Component {
   render() {
@@ -10,7 +10,7 @@ export default class Ingridient extends React.Component {
 
         <section className={Styles.ingridient_price}>
           <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
-          <MoneyIcon />
+          <CurrencyIcon />
         </section>
 
         <h5 className={Styles.ingridient_description}>{this.props.name}</h5>

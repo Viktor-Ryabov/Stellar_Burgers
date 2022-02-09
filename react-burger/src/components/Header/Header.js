@@ -1,38 +1,34 @@
 import React from 'react';
 import Styles from '../Header/Header.module.css'
-import { Logo } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/logo";
-import { ProfileIcon } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/profile-icon";
-import { ListIcon } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/list-icon";
-import { BurgerIcon } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/icons/burger-icon";
-
-import '../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/box.css';
-
+import { Logo, ProfileIcon, ListIcon, BurgerIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export default class Header extends React.Component {
   render() {
     return (
-      <header className={ Styles.header }>
+      <header className={ Styles.header } >
 
         <nav>
-          <section className={Styles.contentWidth}>
-            <ul className="m-20">
+          <section className={ `${Styles.contentWidth} pb-4 pt-4` }>
+            <ul className={ `${Styles.buttonList}` }>
               
-              <li className={ Styles.navigationButton} >
-                <BurgerIcon type="primary"/>
-                <p className={ Styles.navigationText}>Конструктор</p>
+              <li className={ `${Styles.navigationButton} pl-5 mr-2 pr-5` } >
+                <BurgerIcon />
+                <p className={`${Styles.navigationText} ml-2`}>Конструктор</p>
               </li>
 
-              <li className="p-15" >
-                <ListIcon type="primary"/>
-                <p className={ Styles.navigationText }>Лента заказов</p>
+              <li className={ `${Styles.navigationButton} pl-5 pr-5` } >
+                <ListIcon className={ `${Styles.navigationIcon}` }/>
+                <p className={ `${Styles.navigationText} ml-2` }>Лента заказов</p>
               </li>
-
-              <Logo type="primary"/>
+              <div className={ Styles.logo} >
+                <Logo />
+              </div>
+              
             </ul>
 
-            <button className={ Styles.navigationButton } >
-                <ProfileIcon type="primary"/>
-                <p className={ Styles.navigationText }>Личный кабинет</p>
+            <button className={ `${Styles.navigationButton} pl-5 pr-5` }>
+                <ProfileIcon className={ `${Styles.navigationIcon}` }/>
+                <p className={ `${Styles.navigationText}` }>Личный кабинет</p>
               </button>
           </section>  
         </nav>

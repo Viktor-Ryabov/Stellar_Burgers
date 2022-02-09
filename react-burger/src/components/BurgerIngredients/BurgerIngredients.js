@@ -1,44 +1,47 @@
 import React from 'react';
-import Styles from '../BurgerIngredients/BurgerIngredients.module.css'
-import { DragIcon } from "../Icons/drag-icon"
-import BurgerConstructorStyles from '../BurgerConstructor/BurgerConstructor.module.css'
-import { MoneyIcon } from "../Icons/money-icon"
-import { MoneyIconBig } from "../Icons/money-icon-big"
-import { DeleteIcon } from "../Icons/delete-icon"
-import { LockIcon } from "../Icons/lock-icon"
-import { initialData } from "../../utils/data"
+import Styles from '../BurgerIngredients/BurgerIngredients.module.css';
+// import { CurrencyIcon, DeleteIcon, LockIcon, DragIcon, Button, ConstructorElement, Tab } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Button, Logo, ConstructorElement, Tab, Input, Counter, EmailInput, PasswordInput, BurgerIcon, CloseIcon, CheckMarkIcon, CurrencyIcon, DragIcon, EditIcon, HideIcon, InfoIcon, ListIcon, LockIcon, LogoutIcon, ProfileIcon, ShowIcon, DeleteIcon, ArrowUpIcon, ArrowDownIcon, MenuIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { initialData } from "../../utils/data";
+import "@ya.praktikum/react-developer-burger-ui-components";
 
-class Ingridient extends React.Component {
-  render(){
+
+
+const IngridientsSection = (props) => {  
+    console.log(props);
     return(
-      <div className={ Styles.main }>
-        <DragIcon className={ Styles.moveElementButton } />
-        <div className={ Styles.card }>
-          <img className={ Styles.ingredientImage } src={this.props.image} />
-          <h4 className={ Styles.ingredientName }>{this.props.name}</h4>
-          <section className={Styles.ingridient_price}>
-            <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
-            <MoneyIcon />
-            <div className={ Styles.deleteIcon }>
-              <DeleteIcon />
+      <section className={ Styles.owerflowBlock }>
+        <div>
+          {props.elements.map(ingridient => (
+            <div className={`${Styles.burgerConstructorItem} mb-4`} >
+              <DragIcon />
+              <ConstructorElement
+                key={ ingridient._id } 
+                text={ ingridient.name } 
+                price={ ingridient.price }
+                thumbnail={ ingridient.image }
+              />
             </div>
-          </section>
+          ))}
         </div>
-      </div>
-    )
-  }
+      </section>
+    ); 
 }
+
+// 
 
 class FirstBun extends React.Component {
   render(){
     return(
-      <div className={ Styles.main }>
+      
+      <div className={ `${Styles.main} m-20` }>
+        <div className="m20"></div>
         <div className={ Styles.cardBun }>
           <img className={ Styles.ingredientImage } src={this.props.image} />
           <h4 className={ Styles.ingredientName }>{this.props.name} {this.props.position}</h4>
           <section className={Styles.ingridient_price}>
             <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
-            <MoneyIcon />
+            <CurrencyIcon />
             <div className={ Styles.deleteIcon }>
               <LockIcon />
             </div>
@@ -58,7 +61,7 @@ class SecondBun extends FirstBun{
           <h4 className={ Styles.ingredientName }>{this.props.name} {this.props.position}</h4>
           <section className={Styles.ingridient_price}>
             <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
-            <MoneyIcon />
+            <CurrencyIcon />
             <div className={ Styles.deleteIcon }>
               <LockIcon />
             </div>
@@ -91,29 +94,32 @@ export default class BurgerIngredients extends React.Component {
   render(){
     this.isBuns(this.state.initialData);
     return (
+      <section className={ `${Styles.burgerIngredients} mr-5 pt-25 pl-4`}>
 
-      <section className={ Styles.burgerIngredients }>
+        <IngridientsSection elements={ this.state.initialData }/>
 
-        <FirstBun {...this.Buns[0]} position={"(верх)"}/>
-
-        <section className={ Styles.owerflowBlock}>
-          {this.Ingridietns.map((ingridient, index) => (
-            <Ingridient {...ingridient} key={ingridient._id} />
-          ))}
-        </section>
-
-        <SecondBun {...this.Buns[0]} position={"(низ)"} />
-
-        <section className={Styles.totalCost}>
-            <p className={Styles.totalCost_sum}>610</p>
+        <section className={` ${Styles.totalCost} mt-10`}>
+            <p className={`${Styles.totalCost_sum} mb-5`}>610</p>
             <div className={Styles.totalCostMoneyIcon}>
-              <MoneyIconBig />
+              <CurrencyIcon />
             </div>              
-            <button className={Styles.buttonMakeOrder}>Оформить заказ</button>
+            <Button className="m-10">Оформить заказ</Button>
+
         </section>
-        
       </section>
 
     )
   }
 }
+
+
+
+{/* <FirstBun {...this.Buns[0]} position={"(верх)"}/>
+
+<section className={Styles.owerflowBlock}>
+  {this.Ingridietns.map((ingridient, index) => (
+    <Ingridient {...ingridient} key={ingridient._id} />
+  ))}
+</section>
+
+<SecondBun {...this.Buns[0]} position={"(низ)"} /> */}

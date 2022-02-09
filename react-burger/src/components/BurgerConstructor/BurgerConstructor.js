@@ -1,8 +1,11 @@
 import React from 'react';
+import { initialData } from "../../utils/data"
 import Styles from '../BurgerConstructor/BurgerConstructor.module.css'
 import Ingridient from "../Ingridient/Ingridient"
 
-import { initialData } from "../../utils/data"
+import "@ya.praktikum/react-developer-burger-ui-components";
+
+
 
 
 
@@ -37,9 +40,9 @@ export default class BurgerConstructor extends React.Component {
     // console.log(this.Buns, this.Sauces, this.Fillings)
 
     return (
-    <div className={ Styles.main }>
+    <div className={ `${Styles.main} mr-5` }>
 
-      <h2 className={ Styles.title }>Соберите бургер</h2>
+      <h2 className={ `${Styles.title} mt-20` }>Соберите бургер</h2>
 
       <ul className={ Styles.list }>
         <li className={ Styles.list_item }>Булки</li>
