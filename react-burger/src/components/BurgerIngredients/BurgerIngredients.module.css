@@ -1,59 +1,54 @@
-.burgerIngredients{
+.mainLeft{
+  padding: 0;
   width: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
-  align-content: center;
-  font-family: "JetBrains Mono";
 }
 
 .owerflowBlock{
   margin: 0;
-  padding: 0;
-  height: 480px;
+  height: 735px;
   overflow-x: hidden;
-  scroll-snap-type: x proximity;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
+
 .owerflowBlock::-webkit-scrollbar{
-  align-self: center;
   width: 8px;
+  /* height: 664px; */
   background-color: #2F2F37;
 }
 .owerflowBlock::-webkit-scrollbar-thumb{
   background-color: #8585AD;
+  height: 492px;
 }
 
-.totalCost{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  border: red solid 1px;
-}
-
-.totalCost_sum{
-  font-size: 48px;
-  line-height: 36px;
-  font-weight: 400;
+.title{
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
   color: white;
-  font-family: Iceland;
-  border: red solid 1px;
+  font-family: Jet Brains Mono;
 }
 
-.burgerConstructorItem{
+.list{
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
 }
 
-.elementTopBottom{
+.subtitle{
+  padding: 0;
+  color: white;
+  font-family: Jet Brains Mono;
+}
+
+.ingridient_section{
+  padding: 0;
   display: flex;
-  align-content: stretch;
-  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
 }
