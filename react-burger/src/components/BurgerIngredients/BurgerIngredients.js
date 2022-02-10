@@ -40,7 +40,7 @@ export default class BurgerConstructor extends React.Component {
       <ul className={ Styles.list }>
         <Tab>Булки</Tab>
         <Tab active="false" >Соусы</Tab>
-        <Tab active="false" >Начинки</Tab>
+        <Tab>Начинки</Tab>
       </ul>
 
       <section className={`${Styles.owerflowBlock} pr-2`}>

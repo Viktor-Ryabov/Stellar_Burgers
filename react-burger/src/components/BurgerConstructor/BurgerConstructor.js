@@ -5,16 +5,13 @@ import { initialData } from "../../utils/data";
 import "@ya.praktikum/react-developer-burger-ui-components";
 
 const IngridientsSection = (props) => {  
-    console.log(props);
     return(
       <section className={ Styles.owerflowBlock }>
         <div>
           {props.elements.map(ingridient => (
-            console.log(ingridient),
-            <div className={`${Styles.burgerConstructorItem} mb-4`} >
+            <div className={`${Styles.burgerConstructorItem} mb-4` } key={ingridient._id}>
               <DragIcon />
               <ConstructorElement
-                key="ingridient._id" 
                 text={ ingridient.name } 
                 price={ ingridient.price }
                 thumbnail={ ingridient.image }
@@ -23,7 +20,7 @@ const IngridientsSection = (props) => {
           ))}
         </div>
       </section>
-    ); 
+    );
 }
 
 export default class BurgerIngredients extends React.Component {
@@ -54,9 +51,10 @@ export default class BurgerIngredients extends React.Component {
         <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
           <ConstructorElement type="top" 
             key="this.Buns[0]._id" 
-            text={ this.Buns[0].name } 
+            text={ `${this.Buns[0].name} (верх)`} 
             price={ this.Buns[0].price }
             thumbnail={ this.Buns[0].image }
+            isLocked= {true}
           />
         </div>
 
@@ -65,9 +63,10 @@ export default class BurgerIngredients extends React.Component {
         <div className={`${Styles.elementTopBottom} ml-3`}>
           <ConstructorElement type="bottom"
             key="this.Buns[0]._id" 
-            text={ this.Buns[0].name } 
+            text={ `${this.Buns[0].name} (низ)`} 
             price={ this.Buns[0].price }
             thumbnail={ this.Buns[0].image }
+            isLocked= {true}
           />
         </div>
         
