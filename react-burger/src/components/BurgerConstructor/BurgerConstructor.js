@@ -1,84 +1,85 @@
 import React from 'react';
-import { initialData } from "../../utils/data"
-import Styles from '../BurgerConstructor/BurgerConstructor.module.css'
-import Ingridient from "../Ingridient/Ingridient"
-
+import Styles from './BurgerConstructor.module.css';
+import { Button, ConstructorElement, CurrencyIcon, DragIcon, } from "@ya.praktikum/react-developer-burger-ui-components";
+import { initialData } from "../../utils/data";
 import "@ya.praktikum/react-developer-burger-ui-components";
 
+const IngridientsSection = (props) => {  
+    return(
+      <section className={ Styles.owerflowBlock }>
+        <div>
+          {props.elements.map(ingridient => (
+            <div className={`${Styles.burgerConstructorItem} mb-4` } key={ingridient._id}>
+              <DragIcon />
+              <ConstructorElement
+                text={ ingridient.name } 
+                price={ ingridient.price }
+                thumbnail={ ingridient.image }
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+}
 
-
-
-
-
-export default class BurgerConstructor extends React.Component {
+export default class BurgerIngredients extends React.Component {
   constructor(props){
     super(props);
     this.state = {initialData};
     this.Buns = [];
-    this.Sauces = [];
-    this.Fillings = [];
+    this.Ingridietns = [];
   }
 
-  isIngridient(){
-    this.Buns = [];
-    this.Sauces = [];
-    this.Fillings = [];
-
+  isBuns(){
+    this.Buns = [];  
+    this.Ingridietns = [];
     this.state.initialData.forEach(item => {
       if(item.type === "bun") {
         this.Buns.push(item);
-      } else if(item.type === "main"){
-        this.Fillings.push(item);
-      } else if (item.type === "sauce") {
-        this.Sauces.push(item);
+      } else {
+        this.Ingridietns.push(item);
       }
     })
   }
 
-  render() {
-    this.isIngridient(this.state.initialData);
-    // console.log(this.Buns, this.Sauces, this.Fillings)
-
+  render(){
+    this.isBuns(this.state.initialData);
     return (
-    <div className={ `${Styles.main} mr-5` }>
+      <section className={ `${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
 
-      <h2 className={ `${Styles.title} mt-20` }>Соберите бургер</h2>
+        <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
+          <ConstructorElement type="top" 
+            key="this.Buns[0]._id" 
+            text={ `${this.Buns[0].name} (верх)`} 
+            price={ this.Buns[0].price }
+            thumbnail={ this.Buns[0].image }
+            isLocked= {true}
+          />
+        </div>
 
-      <ul className={ Styles.list }>
-        <li className={ Styles.list_item }>Булки</li>
-        <li className={ Styles.list_item }>Соусы</li>
-        <li className={ Styles.list_item }>Начинки</li>
-      </ul>
+        <IngridientsSection elements={ this.Ingridietns }/>
 
-      <section className={Styles.owerflowBlock}>
+        <div className={`${Styles.elementTopBottom} ml-3`}>
+          <ConstructorElement type="bottom"
+            key="this.Buns[0]._id" 
+            text={ `${this.Buns[0].name} (низ)`} 
+            price={ this.Buns[0].price }
+            thumbnail={ this.Buns[0].image }
+            isLocked= {true}
+          />
+        </div>
+        
 
-        <h3 className={ Styles.subtitle }>Булки</h3>
-
-        <section className={ Styles.ingridient_section }>
-          {this.Buns.map((ingridient, index) => (
-                <Ingridient {...ingridient} key={ingridient._id} />
-              ))}
+        <section className={` ${Styles.totalCost} pr-9`}>
+            <p className={`${Styles.totalCost_sum}`} >610</p>
+            <div className={`${Styles.totalCostMoneyIcon} mt-2 mr-10`}>
+              <CurrencyIcon />
+            </div>              
+            <Button type="primary" size="large">Оформить заказ</Button>
         </section>
-          
-        <h3 className={ Styles.subtitle }>Соусы</h3>
-          
-        <section className={ Styles.ingridient_section }>
-          {this.Sauces.map((ingridient, index) => (
-              <Ingridient {...ingridient} key={ingridient._id} />
-            ))}
-        </section>
-          
-        <h3 className={ Styles.subtitle }>Начинки</h3>
-          
-        <section className={ Styles.ingridient_section }>
-          {this.Fillings.map((ingridient, index) => (
-            <Ingridient {...ingridient} key={ingridient._id} />
-          ))}
-        </section>
-
       </section>
 
-    </div>
     )
   }
 }

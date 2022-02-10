@@ -9,8 +9,9 @@ export default class MainSection extends React.Component {
   render(){
     return(
       <main className={ Styles.main }>
-        <BurgerConstructor />
         <BurgerIngredients />
+        <BurgerConstructor />
+
       </main>
     )
   }
