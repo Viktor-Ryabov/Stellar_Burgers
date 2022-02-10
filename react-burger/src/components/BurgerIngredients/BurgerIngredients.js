@@ -1,11 +1,8 @@
 import React from 'react';
 import Styles from '../BurgerIngredients/BurgerIngredients.module.css';
-// import { CurrencyIcon, DeleteIcon, LockIcon, DragIcon, Button, ConstructorElement, Tab } from "@ya.praktikum/react-developer-burger-ui-components";
-import { Button, Logo, ConstructorElement, Tab, Input, Counter, EmailInput, PasswordInput, BurgerIcon, CloseIcon, CheckMarkIcon, CurrencyIcon, DragIcon, EditIcon, HideIcon, InfoIcon, ListIcon, LockIcon, LogoutIcon, ProfileIcon, ShowIcon, DeleteIcon, ArrowUpIcon, ArrowDownIcon, MenuIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import { Button, ConstructorElement, CurrencyIcon, DragIcon, } from "@ya.praktikum/react-developer-burger-ui-components";
 import { initialData } from "../../utils/data";
 import "@ya.praktikum/react-developer-burger-ui-components";
-
-
 
 const IngridientsSection = (props) => {  
     console.log(props);
@@ -13,10 +10,11 @@ const IngridientsSection = (props) => {
       <section className={ Styles.owerflowBlock }>
         <div>
           {props.elements.map(ingridient => (
+            console.log(ingridient),
             <div className={`${Styles.burgerConstructorItem} mb-4`} >
               <DragIcon />
               <ConstructorElement
-                key={ ingridient._id } 
+                key="ingridient._id" 
                 text={ ingridient.name } 
                 price={ ingridient.price }
                 thumbnail={ ingridient.image }
@@ -26,50 +24,6 @@ const IngridientsSection = (props) => {
         </div>
       </section>
     ); 
-}
-
-// 
-
-class FirstBun extends React.Component {
-  render(){
-    return(
-      
-      <div className={ `${Styles.main} m-20` }>
-        <div className="m20"></div>
-        <div className={ Styles.cardBun }>
-          <img className={ Styles.ingredientImage } src={this.props.image} />
-          <h4 className={ Styles.ingredientName }>{this.props.name} {this.props.position}</h4>
-          <section className={Styles.ingridient_price}>
-            <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
-            <CurrencyIcon />
-            <div className={ Styles.deleteIcon }>
-              <LockIcon />
-            </div>
-          </section>
-        </div>
-      </div>
-    )
-  }
-}
-
-class SecondBun extends FirstBun{
-  render(){
-    return(
-      <div className={ Styles.main }>
-        <div className={ Styles.cardBun_last }>
-          <img className={ Styles.ingredientImage } src={this.props.image} />
-          <h4 className={ Styles.ingredientName }>{this.props.name} {this.props.position}</h4>
-          <section className={Styles.ingridient_price}>
-            <p className={Styles.ingridient_price_sum}>{this.props.price}</p>
-            <CurrencyIcon />
-            <div className={ Styles.deleteIcon }>
-              <LockIcon />
-            </div>
-          </section>
-        </div>
-      </div>
-    )
-  }
 }
 
 export default class BurgerIngredients extends React.Component {
@@ -82,6 +36,7 @@ export default class BurgerIngredients extends React.Component {
 
   isBuns(){
     this.Buns = [];  
+    this.Ingridietns = [];
     this.state.initialData.forEach(item => {
       if(item.type === "bun") {
         this.Buns.push(item);
@@ -96,30 +51,36 @@ export default class BurgerIngredients extends React.Component {
     return (
       <section className={ `${Styles.burgerIngredients} mr-5 pt-25 pl-4`}>
 
-        <IngridientsSection elements={ this.state.initialData }/>
+        <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
+          <ConstructorElement type="top" 
+            key="this.Buns[0]._id" 
+            text={ this.Buns[0].name } 
+            price={ this.Buns[0].price }
+            thumbnail={ this.Buns[0].image }
+          />
+        </div>
 
-        <section className={` ${Styles.totalCost} mt-10`}>
-            <p className={`${Styles.totalCost_sum} mb-5`}>610</p>
-            <div className={Styles.totalCostMoneyIcon}>
+        <IngridientsSection elements={ this.Ingridietns }/>
+
+        <div className={`${Styles.elementTopBottom} ml-3`}>
+          <ConstructorElement type="bottom"
+            key="this.Buns[0]._id" 
+            text={ this.Buns[0].name } 
+            price={ this.Buns[0].price }
+            thumbnail={ this.Buns[0].image }
+          />
+        </div>
+        
+
+        <section className={` ${Styles.totalCost} pr-9`}>
+            <p className={`${Styles.totalCost_sum} mr-2`} >610</p>
+            <div className={`${Styles.totalCostMoneyIcon} mr-10`}>
               <CurrencyIcon />
             </div>              
-            <Button className="m-10">Оформить заказ</Button>
-
+            <Button type="primary" size="large">Оформить заказ</Button>
         </section>
       </section>
 
     )
   }
 }
-
-
-
-{/* <FirstBun {...this.Buns[0]} position={"(верх)"}/>
-
-<section className={Styles.owerflowBlock}>
-  {this.Ingridietns.map((ingridient, index) => (
-    <Ingridient {...ingridient} key={ingridient._id} />
-  ))}
-</section>
-
-<SecondBun {...this.Buns[0]} position={"(низ)"} /> */}
