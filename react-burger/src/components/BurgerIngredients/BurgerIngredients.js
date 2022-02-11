@@ -2,7 +2,7 @@ import React from 'react';
 import { initialData } from "../../utils/data"
 import Styles from './BurgerIngredients.module.css'
 import Ingridient from "../Ingridient/Ingridient"
-import {Tab} from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/"
+import {Tab} from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab"
 
 export default class BurgerConstructor extends React.Component {
   constructor(props){
@@ -38,9 +38,15 @@ export default class BurgerConstructor extends React.Component {
       <h2 className={ `${Styles.title} mt-10 mb-5` }>Соберите бургер</h2>
 
       <ul className={ Styles.list }>
-        <Tab>Булки</Tab>
-        <Tab active="false" >Соусы</Tab>
-        <Tab>Начинки</Tab>
+        <li>
+          <Tab active={false}>Булки</Tab>
+        </li>
+        <li>
+          <Tab active={true} >Соусы</Tab>
+        </li>
+        <li>
+        <Tab active={false} >Начинки</Tab>
+        </li>
       </ul>
 
       <section className={`${Styles.owerflowBlock} pr-2`}>
