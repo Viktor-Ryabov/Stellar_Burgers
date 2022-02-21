@@ -10,6 +10,12 @@
   color: white;
 }
 
+.ingridient:hover{
+  transform: scale(105%);
+  transition: 0.5s;
+  cursor: pointer;
+}
+
 .ingridient_image{
   width: 240px;
   height: 120px;

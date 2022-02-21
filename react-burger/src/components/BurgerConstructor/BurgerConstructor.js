@@ -22,7 +22,7 @@ const IngridientsSection = (props) => {
     );
 }
 
-export default class BurgerIngredients extends React.Component {
+export default class BurgerConstructor extends React.Component {
   constructor(props){
     super(props);
     this.initialData = props.initialData;

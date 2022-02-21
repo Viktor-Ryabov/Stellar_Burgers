@@ -5,7 +5,7 @@ import { CurrencyIcon, Counter } from "@ya.praktikum/react-developer-burger-ui-c
 export default class Ingridient extends React.Component {
   render() {
     return(
-      <article className={`${Styles.ingridient} mb-8`}>
+      <article className={`${Styles.ingridient} mb-8`} onClick={() => console.log(`ingridient id: ${this.props._id}`)}>
         <img className={`${Styles.ingridient_image} ml-4 mr-4 mb-1`} src={this.props.image}/>
 
         <section className={`${Styles.ingridient_price} mb-1 `}>

@@ -3,7 +3,7 @@ import Styles from "./BurgerIngredients.module.css";
 import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
 
-export default class BurgerConstructor extends React.Component {
+export default class BurgerIngredients extends React.Component {
     constructor(props) {
         super(props);
         this.initialData = props.initialData;
@@ -54,7 +54,7 @@ export default class BurgerConstructor extends React.Component {
 
                     <section className={`${Styles.ingridient_section}`}>
                         {this.Buns.map((ingridient, index) => (
-                            <Ingridient {...ingridient} key={ingridient._id} />
+                            <Ingridient {...ingridient} key={ingridient._id} {...this.props}/>
                         ))}
                     </section>
 
@@ -62,7 +62,7 @@ export default class BurgerConstructor extends React.Component {
 
                     <section className={`${Styles.ingridient_section} `}>
                         {this.Sauces.map((ingridient, index) => (
-                            <Ingridient {...ingridient} key={ingridient._id} />
+                            <Ingridient {...ingridient} key={ingridient._id} {...this.props}/>
                         ))}
                     </section>
 
@@ -70,7 +70,7 @@ export default class BurgerConstructor extends React.Component {
 
                     <section className={Styles.ingridient_section}>
                         {this.Fillings.map((ingridient, index) => (
-                            <Ingridient {...ingridient} key={ingridient._id} />
+                            <Ingridient {...ingridient} key={ingridient._id} {...this.props}/>
                         ))}
                     </section>
                 </section>
