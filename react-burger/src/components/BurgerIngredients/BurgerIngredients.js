@@ -2,6 +2,7 @@ import React from "react";
 import Styles from "./BurgerIngredients.module.css";
 import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
+import { Modal } from "../Modal/Modal";
 
 export default class BurgerIngredients extends React.Component {
     constructor(props) {
@@ -10,6 +11,12 @@ export default class BurgerIngredients extends React.Component {
         this.Buns = [];
         this.Sauces = [];
         this.Fillings = [];
+        this.state = {}
+        this.setIngridientData = this.setIngridientData.bind(this);
+    }
+
+    setIngridientData(data){
+        return data;
     }
 
     isIngridient() {
@@ -33,6 +40,7 @@ export default class BurgerIngredients extends React.Component {
 
         return (
             <section className={`${Styles.mainLeft} mr-5`}>
+                {/* <Modal /> */}
                 <h2 className={`${Styles.title} mt-10 mb-5`}>
                     Соберите бургер
                 </h2>
@@ -62,7 +70,7 @@ export default class BurgerIngredients extends React.Component {
 
                     <section className={`${Styles.ingridient_section} `}>
                         {this.Sauces.map((ingridient, index) => (
-                            <Ingridient {...ingridient} key={ingridient._id} {...this.props}/>
+                            <Ingridient {...ingridient} key={ingridient._id} {...this.props} />
                         ))}
                     </section>
 

@@ -36,7 +36,7 @@
 .markIcon{
   width: 102px;
   height: 107px;
-  background-image: url(../../images/done.svg);
+  /* background-image: url(../../images/done.svg); */
   alt: "выполнено";
   background-position: center;
 }

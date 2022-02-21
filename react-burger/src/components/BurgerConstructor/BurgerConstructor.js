@@ -2,6 +2,7 @@ import React from 'react';
 import Styles from './BurgerConstructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon, } from "@ya.praktikum/react-developer-burger-ui-components";
 import "@ya.praktikum/react-developer-burger-ui-components";
+import { Modal } from '../Modal/Modal';
 
 const IngridientsSection = (props) => {  
     return(
@@ -46,6 +47,8 @@ export default class BurgerConstructor extends React.Component {
     this.isBuns(this.initialData);
     return (
       <section className={ `${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
+
+        {/* <Modal /> */}
 
         <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
           <ConstructorElement type="top" 
