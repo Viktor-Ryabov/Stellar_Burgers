@@ -1,7 +1,6 @@
 import React from 'react';
 import Styles from './BurgerConstructor.module.css';
 import { Button, ConstructorElement, CurrencyIcon, DragIcon, } from "@ya.praktikum/react-developer-burger-ui-components";
-import { initialData } from "../../utils/data";
 import "@ya.praktikum/react-developer-burger-ui-components";
 
 const IngridientsSection = (props) => {  
@@ -26,7 +25,7 @@ const IngridientsSection = (props) => {
 export default class BurgerIngredients extends React.Component {
   constructor(props){
     super(props);
-    this.state = {initialData};
+    this.initialData = props.initialData;
     this.Buns = [];
     this.Ingridietns = [];
   }
@@ -34,7 +33,7 @@ export default class BurgerIngredients extends React.Component {
   isBuns(){
     this.Buns = [];  
     this.Ingridietns = [];
-    this.state.initialData.forEach(item => {
+    this.initialData.forEach(item => {
       if(item.type === "bun") {
         this.Buns.push(item);
       } else {
@@ -44,7 +43,7 @@ export default class BurgerIngredients extends React.Component {
   }
 
   render(){
-    this.isBuns(this.state.initialData);
+    this.isBuns(this.initialData);
     return (
       <section className={ `${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
 

@@ -6,11 +6,14 @@ import Styles from '../MainSection/MainSection.module.css'
 
 
 export default class MainSection extends React.Component {
-  render(){
+  constructor(props){
+    super(props)
+  }
+  render(props){
     return(
       <main className={ Styles.main }>
-        <BurgerIngredients />
-        <BurgerConstructor />
+        <BurgerIngredients {...props} initialData={initialData}/>
+        <BurgerConstructor {...props} initialData={initialData}/>
 
       </main>
     )
