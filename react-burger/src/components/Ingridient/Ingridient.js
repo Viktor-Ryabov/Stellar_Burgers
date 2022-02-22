@@ -12,7 +12,8 @@ export default class Ingridient extends React.Component {
                 className={`${Styles.ingridient} mb-8`}
                 onClick={() => {
                   console.log(`ingridient id: ${this.props._id}`);
-                  console.log(`ingridient id: ${this.props}`);
+                  console.log(`ingridient data: ${this.props}`);
+                  console.log(`ingridient key: ${this.key}`);
                 }}
             >
                 <img

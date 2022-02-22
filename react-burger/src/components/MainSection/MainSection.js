@@ -1,21 +1,16 @@
-import React from 'react';
-import {initialData} from "../../utils/data";
+import React from "react";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
-import Styles from '../MainSection/MainSection.module.css'
+import Styles from "../MainSection/MainSection.module.css";
 
+const MainSection = (list) => {
+    // console.log(list)
+    return (
+        <main className={Styles.main}>
+            <BurgerIngredients initialData={list} />
+            <BurgerConstructor initialData={list} />
+        </main>
+    );
+};
 
-export default class MainSection extends React.Component {
-  constructor(props){
-    super(props)
-  }
-  render(props){
-    return(
-      <main className={ Styles.main }>
-        <BurgerIngredients {...props} initialData={initialData}/>
-        <BurgerConstructor {...props} initialData={initialData}/>
-
-      </main>
-    )
-  }
-}
+export default MainSection;
