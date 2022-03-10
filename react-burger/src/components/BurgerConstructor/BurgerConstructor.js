@@ -8,9 +8,12 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import "@ya.praktikum/react-developer-burger-ui-components";
 import { Modal } from "../Modal/Modal";
+import { OrderDetails } from "../OrderDetails/OrderDetails";
+import { withModal } from "../../hocs/withModal";
 
-const IngridientsSection = ({ingridietns}) => {
-    console.log(ingridietns)
+const WithModalOrder = withModal(OrderDetails);
+
+const IngridientsSection = ({ ingridietns }) => {
     return (
         <section className={Styles.owerflowBlock}>
             <div>
@@ -32,8 +35,9 @@ const IngridientsSection = ({ingridietns}) => {
     );
 };
 
-const BurgerConstructor = ({ initialData, ...props }) => {
-    console.log(initialData.list);
+const BurgerConstructor = ({ initialData }) => {
+    const [popupActive, setActive] = React.useState(false);
+
     const initialList = initialData.list;
     let Buns = [];
     let Ingridietns = [];
@@ -47,11 +51,12 @@ const BurgerConstructor = ({ initialData, ...props }) => {
         });
     }
     isBuns(initialList);
-    console.log(Buns);
-    console.log(Ingridietns);
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
+            
+            <WithModalOrder active={popupActive} setActive={setActive}/>
+
             <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                 <ConstructorElement
                     type="top"
@@ -80,7 +85,15 @@ const BurgerConstructor = ({ initialData, ...props }) => {
                 <div className={`${Styles.totalCostMoneyIcon} mt-2 mr-10`}>
                     <CurrencyIcon />
                 </div>
-                <Button type="primary" size="large">
+                <Button
+                    type="primary"
+                    size="large"
+                    onClick={() => {
+                        setActive(true);
+                        console.log(setActive)
+                    }
+                }
+                >
                     Оформить заказ
                 </Button>
             </section>

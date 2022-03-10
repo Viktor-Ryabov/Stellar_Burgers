@@ -2,9 +2,15 @@ import React from "react";
 import Styles from "./BurgerIngredients.module.css";
 import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
-import { Modal } from "../Modal/Modal";
+import { withModal } from "../../hocs/withModal";
+import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 
-const BurgerIngredients = ({initialData, ...props}) => {
+const WithModalIngridient = withModal(IngredientDetails);
+
+const BurgerIngredients = ({ initialData, ...props }) => {
+    const [popupActive, setActive] = React.useState(false);
+    const [ingridientData, setIngridientData] = React.useState({});
+
     // console.log(initialData)
     let Buns = [];
     let Sauces = [];
@@ -22,10 +28,14 @@ const BurgerIngredients = ({initialData, ...props}) => {
 
     return (
         <section className={`${Styles.mainLeft} mr-5`}>
-            {/* <Modal /> */}
-            <h2 className={`${Styles.title} mt-10 mb-5`}>
-                Соберите бургер
-            </h2>
+
+            <WithModalIngridient
+                active={popupActive}
+                setActive={setActive}
+                {...ingridientData}
+            />
+
+            <h2 className={`${Styles.title} mt-10 mb-5`}>Соберите бургер</h2>
             <ul className={Styles.list}>
                 <li>
                     <Tab active={false}>Булки</Tab>
@@ -41,28 +51,45 @@ const BurgerIngredients = ({initialData, ...props}) => {
                 <h3 className={`${Styles.subtitle} mt-10 mb-6`}>Булки</h3>
                 <section className={`${Styles.ingridient_section}`}>
                     {Buns.map((ingridient, index) => (
-                        <Ingridient {...ingridient} key={ingridient._id} {...props}/>
+                        <Ingridient
+                            {...ingridient}
+                            key={ingridient._id}
+                            setIngridientData={setIngridientData}
+                            setActive={setActive}
+                            {...props}
+                        />
                     ))}
                 </section>
                 <h3 className={`${Styles.subtitle} mt-10 mb-6`}>Соусы</h3>
                 <section className={`${Styles.ingridient_section} `}>
                     {Sauces.map((ingridient, index) => (
-                        <Ingridient {...ingridient} key={ingridient._id} {...props} />
+                        <Ingridient
+                            {...ingridient}
+                            key={ingridient._id}
+                            setIngridientData={setIngridientData}
+                            setActive={setActive}
+                            {...props}
+                        />
                     ))}
                 </section>
                 <h3 className={`${Styles.subtitle} mt-10 mb-6`}>Начинки</h3>
                 <section className={Styles.ingridient_section}>
                     {Fillings.map((ingridient, index) => (
-                        <Ingridient {...ingridient} key={ingridient._id} {...props}/>
+                        <Ingridient
+                            {...ingridient}
+                            key={ingridient._id}
+                            setIngridientData={setIngridientData}
+                            setActive={setActive}
+                            {...props}
+                        />
                     ))}
                 </section>
             </section>
         </section>
     );
-    
-}
+};
 
-export default  BurgerIngredients;
+export default BurgerIngredients;
 
 // export default class BurgerIngredients extends React.Component {
 //     constructor(props) {

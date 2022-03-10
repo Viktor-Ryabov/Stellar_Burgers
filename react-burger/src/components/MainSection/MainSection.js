@@ -1,10 +1,13 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import Styles from "../MainSection/MainSection.module.css";
 
-const MainSection = (list) => {
-    // console.log(list)
+
+
+const MainSection = ({...list}) => {
+    console.log(list)
     return (
         <main className={Styles.main}>
             <BurgerIngredients initialData={list} />
@@ -12,5 +15,9 @@ const MainSection = (list) => {
         </main>
     );
 };
+
+MainSection.propTypes = {
+    optionalObject: PropTypes.object,
+}
 
 export default MainSection;

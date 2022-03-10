@@ -12,8 +12,7 @@ const App = () => {
     const [list, setList] = useState([]);
 
     useEffect(() => {
-        getApiResponse()
-        .then(
+        getApiResponse().then(
             (response) => {
                 setList(response.data);
                 setIsLoaded(true);
@@ -22,7 +21,7 @@ const App = () => {
                 setIsLoaded(true);
                 setError(error);
             }
-        )
+        );
     }, []);
 
     if (error) {
