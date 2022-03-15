@@ -1,12 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Styles from "../Ingridient/Ingridient.module.css";
 import {
     CurrencyIcon,
     Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-
-const Ingridient = ({setIngridientData, setActive, ...props}) => {
+const Ingridient = ({ setIngridientData, setActive, ...props }) => {
     // console.log(props)
     return (
         <article
@@ -20,12 +20,11 @@ const Ingridient = ({setIngridientData, setActive, ...props}) => {
             <img
                 className={`${Styles.ingridient_image} ml-4 mr-4 mb-1`}
                 src={props.image}
+                alt={props.name}
             />
 
             <section className={`${Styles.ingridient_price} mb-1 `}>
-                <p className={Styles.ingridient_price_sum}>
-                    {props.price}
-                </p>
+                <p className={Styles.ingridient_price_sum}>{props.price}</p>
                 <CurrencyIcon />
             </section>
 
@@ -41,6 +40,27 @@ const Ingridient = ({setIngridientData, setActive, ...props}) => {
             </div>
         </article>
     );
+};
+
+Ingridient.propTypes = {
+    setIngridientData: PropTypes.func,
+    setActive: PropTypes.func,
+    props: PropTypes.arrayOf(
+        PropTypes.shape({
+            calories: PropTypes.number,
+            carbohydrates: PropTypes.number,
+            fat: PropTypes.number,
+            image: PropTypes.link,
+            image_large: PropTypes.link,
+            image_mobile: PropTypes.link,
+            name: PropTypes.string,
+            price: PropTypes.number,
+            proteins: PropTypes.number,
+            type: PropTypes.string,
+            __v: PropTypes.number,
+            _id: PropTypes.string,
+        })
+    ),
 };
 
 export default Ingridient;

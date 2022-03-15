@@ -1,25 +1,45 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import Styles from "./Modal.module.css";
 import { ModalOwerlay } from "../ModalOwerlay/ModalOwerlay";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
-import { OrderDetails } from "../OrderDetails/OrderDetails";
 
-export const Modal = ({ ingridient, active, setActive, orderActive }) => {
+export const Modal = ({ ...props }) => {
+    // console.log(props);
     return (
         <section
-            className={`${active ? Styles.modal_active : ""} ${
+            className={`${props.active ? Styles.modal_active : ""} ${
                 Styles.modal
             } p-10`}
-            onClick={() => setActive(false)}
+            // onClick={() => props.setActive(false)}
         >
-            <ModalOwerlay />
+            <ModalOwerlay onClick={() => props.setActive(false)}/>
             <IngredientDetails
-                setActive={setActive}
-                active={active}
-                {...ingridient}
+                setActive={props.setActive}
+                active={props.active}
+                {...props.ingridient}
             />
-           
-            {/* esle {<OrderDetails />} */}
+
         </section>
     );
+};
+
+Modal.propTypes = {
+    arrayWithShape: PropTypes.arrayOf(
+        PropTypes.shape({
+            calories: PropTypes.number,
+            carbohydrates: PropTypes.number,
+            fat: PropTypes.number,
+            image: PropTypes.link,
+            image_large: PropTypes.link,
+            image_mobile: PropTypes.link,
+            name: PropTypes.string,
+            price: PropTypes.number,
+            proteins: PropTypes.number,
+            type: PropTypes.string,
+            __v: PropTypes.number,
+            _id: PropTypes.string,
+            
+        })
+    ),
 };

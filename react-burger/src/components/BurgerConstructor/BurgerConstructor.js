@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
 import {
     Button,
@@ -6,14 +7,13 @@ import {
     CurrencyIcon,
     DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import "@ya.praktikum/react-developer-burger-ui-components";
-import { Modal } from "../Modal/Modal";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
 
 const WithModalOrder = withModal(OrderDetails);
 
 const IngridientsSection = ({ ingridietns }) => {
+    // console.log(ingridietns);
     return (
         <section className={Styles.owerflowBlock}>
             <div>
@@ -36,8 +36,8 @@ const IngridientsSection = ({ ingridietns }) => {
 };
 
 const BurgerConstructor = ({ initialData }) => {
+    // console.log(initialData);
     const [popupActive, setActive] = React.useState(false);
-
     const initialList = initialData.list;
     let Buns = [];
     let Ingridietns = [];
@@ -99,6 +99,46 @@ const BurgerConstructor = ({ initialData }) => {
             </section>
         </section>
     );
+};
+
+IngridientsSection.propTypes = {
+    objectWithSape: PropTypes.arrayOf(
+        PropTypes.shape({
+            calories: PropTypes.number,
+            carbohydrates: PropTypes.number,
+            fat: PropTypes.number,
+            image: PropTypes.link,
+            image_large: PropTypes.link,
+            image_mobile: PropTypes.link,
+            name: PropTypes.string,
+            price: PropTypes.number,
+            proteins: PropTypes.number,
+            type: PropTypes.string,
+            __v: PropTypes.number,
+            _id: PropTypes.string,
+            
+        })
+    ),
+};
+
+BurgerConstructor.propTypes = {
+    objectWithSape: PropTypes.arrayOf(
+        PropTypes.shape({
+            calories: PropTypes.number,
+            carbohydrates: PropTypes.number,
+            fat: PropTypes.number,
+            image: PropTypes.link,
+            image_large: PropTypes.link,
+            image_mobile: PropTypes.link,
+            name: PropTypes.string,
+            price: PropTypes.number,
+            proteins: PropTypes.number,
+            type: PropTypes.string,
+            __v: PropTypes.number,
+            _id: PropTypes.string,
+            
+        })
+    ),
 };
 
 export default BurgerConstructor;

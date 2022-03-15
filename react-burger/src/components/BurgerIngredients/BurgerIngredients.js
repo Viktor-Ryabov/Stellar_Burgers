@@ -1,5 +1,6 @@
 import React from "react";
 import Styles from "./BurgerIngredients.module.css";
+import PropTypes from "prop-types"
 import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
 import { withModal } from "../../hocs/withModal";
@@ -8,6 +9,8 @@ import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 const WithModalIngridient = withModal(IngredientDetails);
 
 const BurgerIngredients = ({ initialData, ...props }) => {
+    // console.log(props);
+    // console.log(initialData);
     const [popupActive, setActive] = React.useState(false);
     const [ingridientData, setIngridientData] = React.useState({});
 
@@ -89,87 +92,25 @@ const BurgerIngredients = ({ initialData, ...props }) => {
     );
 };
 
+BurgerIngredients.propTypes = {
+    optionalObject: PropTypes.object,
+    objectWithSape: PropTypes.arrayOf(
+        PropTypes.shape({
+            calories: PropTypes.number,
+            carbohydrates: PropTypes.number,
+            fat: PropTypes.number,
+            image: PropTypes.link,
+            image_large: PropTypes.link,
+            image_mobile: PropTypes.link,
+            name: PropTypes.string,
+            price: PropTypes.number,
+            proteins: PropTypes.number,
+            type: PropTypes.string,
+            __v: PropTypes.number,
+            _id: PropTypes.string,
+            
+        })
+    ),
+};
+
 export default BurgerIngredients;
-
-// export default class BurgerIngredients extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.initialData = this.props.initialData;
-//         this.Buns = [];
-//         this.Sauces = [];
-//         this.Fillings = [];
-//         this.state = {}
-//         this.setIngridientData = this.setIngridientData.bind(this);
-//     }
-
-//     setIngridientData(data){
-//         return data;
-//     }
-
-//     isIngridient() {
-//         this.Buns = [];
-//         this.Sauces = [];
-//         this.Fillings = [];
-
-//         this.initialData.forEach((item) => {
-//             if (item.type === "bun") {
-//                 this.Buns.push(item);
-//             } else if (item.type === "main") {
-//                 this.Fillings.push(item);
-//             } else if (item.type === "sauce") {
-//                 this.Sauces.push(item);
-//             }
-//         });
-//     }
-
-//     render() {
-//         this.isIngridient(this.initialData);
-
-//         return (
-//             <section className={`${Styles.mainLeft} mr-5`}>
-//                 {/* <Modal /> */}
-//                 <h2 className={`${Styles.title} mt-10 mb-5`}>
-//                     Соберите бургер
-//                 </h2>
-
-//                 <ul className={Styles.list}>
-//                     <li>
-//                         <Tab active={false}>Булки</Tab>
-//                     </li>
-//                     <li>
-//                         <Tab active={true}>Соусы</Tab>
-//                     </li>
-//                     <li>
-//                         <Tab active={false}>Начинки</Tab>
-//                     </li>
-//                 </ul>
-
-//                 <section className={`${Styles.owerflowBlock} pr-2`}>
-//                     <h3 className={`${Styles.subtitle} mt-10 mb-6`}>Булки</h3>
-
-//                     <section className={`${Styles.ingridient_section}`}>
-//                         {this.Buns.map((ingridient, index) => (
-//                             <Ingridient {...ingridient} key={ingridient._id} {...this.props}/>
-//                         ))}
-//                     </section>
-
-//                     <h3 className={`${Styles.subtitle} mt-10 mb-6`}>Соусы</h3>
-
-//                     <section className={`${Styles.ingridient_section} `}>
-//                         {this.Sauces.map((ingridient, index) => (
-//                             <Ingridient {...ingridient} key={ingridient._id} {...this.props} />
-//                         ))}
-//                     </section>
-
-//                     <h3 className={`${Styles.subtitle} mt-10 mb-6`}>Начинки</h3>
-
-//                     <section className={Styles.ingridient_section}>
-//                         {this.Fillings.map((ingridient, index) => (
-//                             <Ingridient {...ingridient} key={ingridient._id} {...this.props}/>
-//                         ))}
-//                     </section>
-//                 </section>
-//             </section>
-//         );
-//     }
-// }

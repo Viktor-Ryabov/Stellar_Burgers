@@ -17,3 +17,7 @@
   z-index: 10;
   display: block;
 }
+
+.modalOwerlay:hover{
+  cursor: pointer
+}

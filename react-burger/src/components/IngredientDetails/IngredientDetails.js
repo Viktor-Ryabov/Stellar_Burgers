@@ -1,12 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Styles from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export const IngredientDetails = (props) => {
+    // console.log(props);
     return (
         <div
             className={`${Styles.popup} p-10`}
-            // onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
         >
             <div className={Styles.modalHeader}>
                 <p className={"text text_type_main-large"}>
@@ -21,6 +23,7 @@ export const IngredientDetails = (props) => {
                 <img
                     className={`${Styles.modalImage} mb-4`}
                     src={props.image}
+                    alt={props.name}
                 />
                 <p className="text text_type_main-medium mb-8">{props.name}</p>
 
@@ -62,3 +65,8 @@ export const IngredientDetails = (props) => {
         </div>
     );
 };
+
+PropTypes.exact({
+    active: PropTypes.bool.quantity,
+    setActive: PropTypes.func.quantity,
+});
