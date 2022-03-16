@@ -90,7 +90,6 @@ const BurgerConstructor = ({ initialData }) => {
                     size="large"
                     onClick={() => {
                         setActive(true);
-                        console.log(setActive)
                     }
                 }
                 >

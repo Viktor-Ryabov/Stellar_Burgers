@@ -12,7 +12,7 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
         <article
             className={`${Styles.ingridient} mb-8`}
             onClick={() => {
-                console.log(`ingridient id: ${props._id}`);
+                // console.log(`ingridient id: ${props._id}`);
                 setIngridientData(props);
                 setActive(true);
             }}
