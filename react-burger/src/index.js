@@ -7,6 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 ReactDOM.render(
     <React.StrictMode>
         <App />
+        {/* Корневой элемент для модальных окон */}
+        <div id="react-modals"></div>
     </React.StrictMode>,
     document.getElementById("root")
 );

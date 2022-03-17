@@ -1,4 +1,5 @@
 import React from "react";
+import ReactDOM from "react-dom";
 import { useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import Styles from "./withModal.module.css";
@@ -20,16 +21,18 @@ export const withModal = (WrappedComponent) => (props) => {
         };
     }, []);
 
-    return (
-        <section
-            className={`${props.active ? Styles.modal_active : ""} ${
-                Styles.modal
-            } p-10`}
-            onClick={escFunction}
-        >
-            <ModalOwerlay {...props} />
-            <WrappedComponent {...props} />
-        </section>
+    return ReactDOM.createPortal(
+        (
+            <section
+                className={`${props.active ? Styles.modal_active : ""} ${
+                    Styles.modal
+                } p-10`}
+                onClick={escFunction}
+            >
+                <ModalOwerlay {...props} />
+                <WrappedComponent {...props} />
+            </section>
+        ), document.querySelector('#react-modals')
     );
 };
 
