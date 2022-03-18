@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Styles from "../ModalOwerlay/ModalOwerlay.module.css";
 
 export const ModalOwerlay = (props) => {
@@ -12,3 +13,8 @@ export const ModalOwerlay = (props) => {
         ></div>
     );
 };
+
+PropTypes.exact({
+    active: PropTypes.bool.isRequired,
+    setActive: PropTypes.func.isRequired,
+});

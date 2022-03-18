@@ -37,6 +37,6 @@ export const withModal = (WrappedComponent) => (props) => {
 };
 
 PropTypes.exact({
-    active: PropTypes.bool.quantity,
-    setActive: PropTypes.func.quantity,
+    active: PropTypes.bool.isRequired,
+    setActive: PropTypes.func.isRequired,
 });

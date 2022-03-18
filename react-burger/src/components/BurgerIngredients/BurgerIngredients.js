@@ -109,7 +109,7 @@ BurgerIngredients.propTypes = {
             __v: PropTypes.number,
             _id: PropTypes.string,
             
-        })
+        }).isRequired
     ),
 };
 
