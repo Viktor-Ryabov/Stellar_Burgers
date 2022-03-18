@@ -18,20 +18,19 @@ const MainSection = ({...list}) => {
 MainSection.propTypes = {
     objectWithSape: PropTypes.arrayOf(
         PropTypes.shape({
-            calories: PropTypes.number,
-            carbohydrates: PropTypes.number,
-            fat: PropTypes.number,
+            calories: PropTypes.number.isRequired,
+            carbohydrates: PropTypes.number.isRequired,
+            fat: PropTypes.number.isRequired,
             image: PropTypes.link,
             image_large: PropTypes.link,
             image_mobile: PropTypes.link,
-            name: PropTypes.string,
-            price: PropTypes.number,
-            proteins: PropTypes.number,
-            type: PropTypes.string,
-            __v: PropTypes.number,
-            _id: PropTypes.string,
-            
-        })
+            name: PropTypes.string.isRequired,
+            price: PropTypes.number.isRequired,
+            proteins: PropTypes.number.isRequired,
+            type: PropTypes.string.isRequired,
+            __v: PropTypes.number.isRequired,
+            _id: PropTypes.string.isRequired,
+        }).isRequired
     ),
 };
 
