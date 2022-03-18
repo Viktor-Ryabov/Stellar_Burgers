@@ -1,0 +1,66 @@
+
+.burgerIngredients{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  align-content: center;
+  font-family: "JetBrains Mono";
+}
+
+.owerflowBlock{
+  margin: 0;
+  padding: 0;
+  height: 480px;
+  overflow-x: hidden;
+  scroll-snap-type: x proximity;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.owerflowBlock::-webkit-scrollbar{
+  align-self: center;
+  width: 8px;
+  background-color: #2F2F37;
+}
+.owerflowBlock::-webkit-scrollbar-thumb{
+  background-color: #8585AD;
+}
+
+.totalCost{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.totalCost_sum{
+  margin-right: 9.5px;
+  font-size: 48px;
+  line-height: 36px;
+  font-weight: 400;
+  color: white;
+  font-family: Iceland;
+}
+
+.totalCostMoneyIcon{
+  transform: scale(1.5);
+}
+
+.burgerConstructorItem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.elementTopBottom{
+  display: flex;
+  align-content: stretch;
+  justify-content: center;
+}
+
+
+
