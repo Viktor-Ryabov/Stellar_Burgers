@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import IngridientsContext from "../../ingridientsContext/ingridientsContext";
 import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
 import {
@@ -12,8 +13,9 @@ import { withModal } from "../../hocs/withModal";
 
 const WithModalOrder = withModal(OrderDetails);
 
-const IngridientsSection = ({ ingridietns }) => {
+const IngridientsSection = () => {
     // console.log(ingridietns);
+    const ingridietns = useContext(IngridientsContext);
     return (
         <section className={Styles.owerflowBlock}>
             <div>
@@ -35,10 +37,10 @@ const IngridientsSection = ({ ingridietns }) => {
     );
 };
 
-const BurgerConstructor = ({ initialData }) => {
+const BurgerConstructor = () => {
     // console.log(initialData);
+    const initialData = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
-    const initialList = initialData.list;
     let Buns = [];
     let Ingridietns = [];
     function isBuns(list) {
@@ -50,7 +52,7 @@ const BurgerConstructor = ({ initialData }) => {
             }
         });
     }
-    isBuns(initialList);
+    isBuns(initialData);
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>

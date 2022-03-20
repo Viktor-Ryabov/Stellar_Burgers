@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useContext} from "react";
+import IngridientsContext from "../../ingridientsContext/ingridientsContext";
 import Styles from "./BurgerIngredients.module.css";
 import PropTypes from "prop-types"
 import Ingridient from "../Ingridient/Ingridient";
@@ -8,9 +9,10 @@ import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 
 const WithModalIngridient = withModal(IngredientDetails);
 
-const BurgerIngredients = ({ initialData, ...props }) => {
+const BurgerIngredients = ({ ...props }) => {
     // console.log(props);
     // console.log(initialData);
+    const list = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
     const [ingridientData, setIngridientData] = React.useState({});
 
@@ -19,7 +21,7 @@ const BurgerIngredients = ({ initialData, ...props }) => {
     let Sauces = [];
     let Fillings = [];
 
-    initialData.list.forEach((item) => {
+    list.forEach((item) => {
         if (item.type === "bun") {
             Buns.push(item);
         } else if (item.type === "main") {
