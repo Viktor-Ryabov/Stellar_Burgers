@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import IngridientsContext from "../../ingridientsContext/ingridientsContext";
 import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
@@ -43,21 +43,28 @@ const BurgerConstructor = () => {
     const [popupActive, setActive] = React.useState(false);
     let Buns = [];
     let Ingridietns = [];
+    let sum = 0;
     function isBuns(list) {
         list.forEach((item) => {
+            
             if (item.type === "bun") {
                 Buns.push(item);
+                sum += Buns[0].price * 2;
+                
             } else {
                 Ingridietns.push(item);
+                sum += Number(item.price);
             }
+
+            
         });
+        console.log(sum)
     }
     isBuns(initialData);
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
-            
-            <WithModalOrder active={popupActive} setActive={setActive}/>
+            <WithModalOrder active={popupActive} setActive={setActive} sum={sum}/>
 
             <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                 <ConstructorElement
@@ -92,8 +99,7 @@ const BurgerConstructor = () => {
                     size="large"
                     onClick={() => {
                         setActive(true);
-                    }
-                }
+                    }}
                 >
                     Оформить заказ
                 </Button>
