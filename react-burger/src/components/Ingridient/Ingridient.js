@@ -6,6 +6,7 @@ import {
     Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
+
 const Ingridient = ({ setIngridientData, setActive, ...props }) => {
     // console.log(props)
     return (
@@ -24,7 +25,7 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
             />
 
             <section className={`${Styles.ingridient_price} mb-1 `}>
-                <p className={Styles.ingridient_price_sum}>{props.price}</p>
+                <p className={Styles.ingridient_price_sum}>{props.price.toLocaleString()}</p>
                 <CurrencyIcon />
             </section>
 

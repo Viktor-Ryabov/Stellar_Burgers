@@ -1,6 +1,6 @@
 const API_URL = "https://norma.nomoreparties.space/api/ingredients";
 
-const requestResult = (res) => {
+const initialResult = (res) => {
     // console.log(res);
     if (res.ok) {
         return res.json();
@@ -13,5 +13,5 @@ const requestResult = (res) => {
 
 export const getApiResponse = () => {
     return fetch(API_URL)
-        .then((res) => requestResult(res));
+        .then((res) => initialResult(res));
 };

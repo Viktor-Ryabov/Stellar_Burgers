@@ -13,13 +13,12 @@ import { withModal } from "../../hocs/withModal";
 
 const WithModalOrder = withModal(OrderDetails);
 
-const IngridientsSection = () => {
-    // console.log(ingridietns);
-    const ingridietns = useContext(IngridientsContext);
+const IngridientsSection = (ingridients) => {
+    const list = ingridients.ingridients;
     return (
         <section className={Styles.owerflowBlock}>
             <div>
-                {ingridietns.map((ingridient, index) => (
+                {list.map((ingridient, index) => (
                     <div
                         className={`${Styles.burgerConstructorItem} mb-4`}
                         key={index}
@@ -27,7 +26,7 @@ const IngridientsSection = () => {
                         <DragIcon />
                         <ConstructorElement
                             text={ingridient.name}
-                            price={ingridient.price}
+                            price={ingridient.price.toLocaleString()}
                             thumbnail={ingridient.image}
                         />
                     </div>
@@ -38,59 +37,75 @@ const IngridientsSection = () => {
 };
 
 const BurgerConstructor = () => {
-    // console.log(initialData);
     const initialData = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
     let Buns = [];
     let Ingridietns = [];
     let sum = 0;
+
     function isBuns(list) {
         list.forEach((item) => {
-            
             if (item.type === "bun") {
                 Buns.push(item);
-                sum += Buns[0].price * 2;
-                
-            } else {
-                Ingridietns.push(item);
-                sum += Number(item.price);
             }
-
-            
         });
-        console.log(sum)
+        return Buns;
     }
+    
+    function isNotBuns(list) {
+        list.forEach((item) => {
+            if (item.type === "main") {
+                Ingridietns.push(item);
+            }
+        });
+        return Ingridietns;
+    }
+
     isBuns(initialData);
+    isNotBuns(initialData);
+
+    const getTotalSum = (bun, ingridientArr) => {
+        sum = Number(bun[0].price) * 2;
+        ingridientArr.forEach((item) => {
+            sum += Number(item.price);
+        });
+        return sum;
+    }
+    getTotalSum(Buns, Ingridietns);
+
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
-            <WithModalOrder active={popupActive} setActive={setActive} sum={sum}/>
-
+            <WithModalOrder
+                active={popupActive}
+                setActive={setActive}
+                sum={sum}
+            />
             <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                 <ConstructorElement
                     type="top"
                     key="Buns[0]._id"
                     text={`${Buns[0].name} (верх)`}
-                    price={Buns[0].price}
+                    price={Buns[0].price.toLocaleString()}
                     thumbnail={Buns[0].image}
                     isLocked={true}
                 />
             </div>
 
-            <IngridientsSection ingridietns={Ingridietns} />
+            <IngridientsSection ingridients={Ingridietns} />
 
             <div className={`${Styles.elementTopBottom} ml-3`}>
                 <ConstructorElement
                     type="bottom"
                     key="this.Buns[0]._id"
                     text={`${Buns[0].name} (низ)`}
-                    price={Buns[0].price}
+                    price={Buns[0].price.toLocaleString()}
                     thumbnail={Buns[0].image}
                     isLocked={true}
                 />
             </div>
             <section className={` ${Styles.totalCost} pr-9`}>
-                <p className={`${Styles.totalCost_sum}`}>610</p>
+                <p className={`${Styles.totalCost_sum}`}>{sum.toLocaleString()}</p>
                 <div className={`${Styles.totalCostMoneyIcon} mt-2 mr-10`}>
                     <CurrencyIcon />
                 </div>

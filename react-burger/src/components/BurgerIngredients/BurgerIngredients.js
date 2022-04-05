@@ -70,7 +70,7 @@ const BurgerIngredients = ({ ...props }) => {
                     {Sauces.map((ingridient, index) => (
                         <Ingridient
                             {...ingridient}
-                            key={ingridient._id}
+                            key={index}
                             setIngridientData={setIngridientData}
                             setActive={setActive}
                             {...props}
