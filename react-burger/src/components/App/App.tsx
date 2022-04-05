@@ -10,7 +10,7 @@ const App = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [list, setList] = useState([]);
-
+    
     useEffect(() => {
         getApiResponse().then(
             (response) => {

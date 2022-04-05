@@ -10,6 +10,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
+import { getOrderResponse } from "../API/Api";
 
 const WithModalOrder = withModal(OrderDetails);
 
@@ -39,9 +40,11 @@ const IngridientsSection = (ingridients) => {
 const BurgerConstructor = () => {
     const initialData = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
+    const [orderNumber, setOrderNumber] = React.useState(0);
     let Buns = [];
     let Ingridietns = [];
     let sum = 0;
+    const orderData = [];
 
     function isBuns(list) {
         list.forEach((item) => {
@@ -73,13 +76,34 @@ const BurgerConstructor = () => {
     }
     getTotalSum(Buns, Ingridietns);
 
+    const compileOrderData = (orderDataArray) => {
+        orderDataArray.forEach((item) => {
+            orderData.push(item._id);
+        });
+    }
+    compileOrderData(Ingridietns);
+    const requestData = 
+    {
+        "ingredients": orderData
+    }
+
+    const postOrder = () => {
+        getOrderResponse(requestData)
+            .then(data => data.json())
+            .then((data) => {
+                setOrderNumber(data.order.number);                
+            })
+            .catch((error) => {
+                console.log(`Откуда ни возьмись ошибка POST-запроса: ${error.message}`)
+            })
+    }
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
             <WithModalOrder
                 active={popupActive}
                 setActive={setActive}
-                sum={sum}
+                orderNumber={orderNumber}
             />
             <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                 <ConstructorElement
@@ -114,6 +138,7 @@ const BurgerConstructor = () => {
                     size="large"
                     onClick={() => {
                         setActive(true);
+                        postOrder();
                     }}
                 >
                     Оформить заказ

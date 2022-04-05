@@ -1,6 +1,6 @@
 const API_URL = "https://norma.nomoreparties.space/api/ingredients";
 
-const initialResult = (res) => {
+const isResult = (res) => {
     // console.log(res);
     if (res.ok) {
         return res.json();
@@ -12,6 +12,15 @@ const initialResult = (res) => {
 };
 
 export const getApiResponse = () => {
-    return fetch(API_URL)
-        .then((res) => initialResult(res));
+    return fetch(API_URL).then((res) => isResult(res));
+};
+
+export const getOrderResponse = (data) => {
+    return fetch("https://norma.nomoreparties.space/api/orders", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(data),
+    });
 };

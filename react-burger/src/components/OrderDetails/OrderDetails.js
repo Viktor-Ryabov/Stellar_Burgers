@@ -5,14 +5,14 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Done from "../../img/done.svg"
 
 export const OrderDetails = (props) => {
-    // console.log(props)
+    console.log(props)
     // console.log(props.setActive)
     return (
         <div className={`${Styles.popup}`}>
             <div className={`${Styles.closeIcon} mt-15 mr-10`}>
                 <CloseIcon onClick={() => props.setActive(false)} />
             </div>
-            <p className="text text_type_digits-large mt-30">034536</p>
+            <p className="text text_type_digits-large mt-30">{props.orderNumber}</p>
             <p className="text text_type_main-medium mt-8 mb-15">
                 идентификатор заказа
             </p>
@@ -32,5 +32,6 @@ export const OrderDetails = (props) => {
 
 PropTypes.exact({
     active: PropTypes.bool.isRequired,
+    orderNumber: PropTypes.number.isRequired,
     setActive: PropTypes.func.isRequired,
 });
