@@ -7,15 +7,17 @@ import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-
 import { withModal } from "../../hocs/withModal";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import { ingridientTypicalType } from "../../utils/types";
+import { useDispatch, useSelector, RootStateOrAny } from "react-redux";
 
 const WithModalIngridient = withModal(IngredientDetails);
 
 const BurgerIngredients = ({ ...props }) => {
     // console.log(props);
     // console.log(initialData);
-    const list = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
     const [ingridientData, setIngridientData] = React.useState({});
+
+    const list = useSelector((state) => state.initialIngridients); //realised with Redux
 
     // console.log(initialData)
     const Buns = [];

@@ -5,7 +5,7 @@ import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Done from "../../img/done.svg"
 
 export const OrderDetails = (props) => {
-    console.log(props)
+    // console.log(props)
     // console.log(props.setActive)
     return (
         <div className={`${Styles.popup}`}>
