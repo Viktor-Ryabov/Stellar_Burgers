@@ -5,6 +5,8 @@ import {
     CurrencyIcon,
     Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
+import { ingridientTypicalType } from "../../utils/types";
+
 
 const Ingridient = ({ setIngridientData, setActive, ...props }) => {
     // console.log(props)
@@ -24,7 +26,7 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
             />
 
             <section className={`${Styles.ingridient_price} mb-1 `}>
-                <p className={Styles.ingridient_price_sum}>{props.price}</p>
+                <p className={Styles.ingridient_price_sum}>{props.price.toLocaleString()}</p>
                 <CurrencyIcon />
             </section>
 
@@ -46,20 +48,7 @@ Ingridient.propTypes = {
     setIngridientData: PropTypes.func,
     setActive: PropTypes.func,
     props: PropTypes.arrayOf(
-        PropTypes.shape({
-            calories: PropTypes.number.isRequired,
-            carbohydrates: PropTypes.number.isRequired,
-            fat: PropTypes.number.isRequired,
-            image: PropTypes.link,
-            image_large: PropTypes.link,
-            image_mobile: PropTypes.link,
-            name: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            proteins: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            __v: PropTypes.number.isRequired,
-            _id: PropTypes.string.isRequired,
-        }).isRequired
+        ingridientTypicalType,
     ),
 };
 

@@ -13,11 +13,12 @@
   margin: 0;
   padding: 0;
   height: 480px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  overflow-y: scroll;
   scroll-snap-type: x proximity;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 .owerflowBlock::-webkit-scrollbar{

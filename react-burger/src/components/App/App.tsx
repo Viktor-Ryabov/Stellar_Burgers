@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import MainSection from "../MainSection/MainSection";
 import "@ya.praktikum/react-developer-burger-ui-components";
 import { getApiResponse } from "../API/Api.js";
-import { createModuleResolutionCache } from "typescript";
+import IngridientsContext from "../../ingridientsContext/ingridientsContext";
 
 const App = () => {
     const [error, setError] = useState(null);
@@ -31,10 +31,13 @@ const App = () => {
     } else {
         // console.log(list)
         return (
-            <section className={Styles.app}>
-                <Header />
-                <MainSection list={list} />
-            </section>
+            <IngridientsContext.Provider value={list}>
+                <section className={Styles.app}>
+                    <Header />
+                    {/* <MainSection list={list} />  */}
+                    <MainSection />
+                </section>
+            </IngridientsContext.Provider>
         );
     }
 };

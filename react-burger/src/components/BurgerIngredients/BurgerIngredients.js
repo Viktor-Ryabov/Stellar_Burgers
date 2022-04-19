@@ -1,25 +1,28 @@
-import React from "react";
+import React, {useContext} from "react";
+import IngridientsContext from "../../ingridientsContext/ingridientsContext";
 import Styles from "./BurgerIngredients.module.css";
 import PropTypes from "prop-types"
 import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
 import { withModal } from "../../hocs/withModal";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
+import { ingridientTypicalType } from "../../utils/types";
 
 const WithModalIngridient = withModal(IngredientDetails);
 
-const BurgerIngredients = ({ initialData, ...props }) => {
+const BurgerIngredients = ({ ...props }) => {
     // console.log(props);
     // console.log(initialData);
+    const list = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
     const [ingridientData, setIngridientData] = React.useState({});
 
     // console.log(initialData)
-    let Buns = [];
-    let Sauces = [];
-    let Fillings = [];
+    const Buns = [];
+    const Sauces = [];
+    const Fillings = [];
 
-    initialData.list.forEach((item) => {
+    list.forEach((item) => {
         if (item.type === "bun") {
             Buns.push(item);
         } else if (item.type === "main") {
@@ -68,7 +71,7 @@ const BurgerIngredients = ({ initialData, ...props }) => {
                     {Sauces.map((ingridient, index) => (
                         <Ingridient
                             {...ingridient}
-                            key={ingridient._id}
+                            key={index}
                             setIngridientData={setIngridientData}
                             setActive={setActive}
                             {...props}
@@ -95,20 +98,7 @@ const BurgerIngredients = ({ initialData, ...props }) => {
 BurgerIngredients.propTypes = {
     optionalObject: PropTypes.object,
     objectWithSape: PropTypes.arrayOf(
-        PropTypes.shape({
-            calories: PropTypes.number.isRequired,
-            carbohydrates: PropTypes.number.isRequired,
-            fat: PropTypes.number.isRequired,
-            image: PropTypes.link,
-            image_large: PropTypes.link,
-            image_mobile: PropTypes.link,
-            name: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            proteins: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            __v: PropTypes.number.isRequired,
-            _id: PropTypes.string.isRequired,
-        }).isRequired
+        ingridientTypicalType,
     ),
 };
 
