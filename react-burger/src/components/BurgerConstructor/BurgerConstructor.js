@@ -10,7 +10,8 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
-import { getOrderResponse } from "../API/Api";
+import { getOrderResponse, checkResponse } from "../API/Api";
+import { ingridientTypicalType } from "../../utils/types";
 
 const WithModalOrder = withModal(OrderDetails);
 
@@ -41,8 +42,8 @@ const BurgerConstructor = () => {
     const initialData = useContext(IngridientsContext);
     const [popupActive, setActive] = React.useState(false);
     const [orderNumber, setOrderNumber] = React.useState(0);
-    let Buns = [];
-    let Ingridietns = [];
+    const Buns = [];
+    const Ingridietns = [];
     let sum = 0;
     const orderData = [];
 
@@ -54,7 +55,7 @@ const BurgerConstructor = () => {
         });
         return Buns;
     }
-    
+
     function isNotBuns(list) {
         list.forEach((item) => {
             if (item.type === "main") {
@@ -73,30 +74,32 @@ const BurgerConstructor = () => {
             sum += Number(item.price);
         });
         return sum;
-    }
+    };
     getTotalSum(Buns, Ingridietns);
 
     const compileOrderData = (orderDataArray) => {
         orderDataArray.forEach((item) => {
             orderData.push(item._id);
         });
-    }
+    };
     compileOrderData(Ingridietns);
-    const requestData = 
-    {
-        "ingredients": orderData
-    }
+    const requestData = {
+        ingredients: orderData,
+    };
 
     const postOrder = () => {
         getOrderResponse(requestData)
-            .then(data => data.json())
+            .then((data) => data.json())
+            .catch(checkResponse)
             .then((data) => {
-                setOrderNumber(data.order.number);                
+                setOrderNumber(data.order.number);
             })
             .catch((error) => {
-                console.log(`Откуда ни возьмись ошибка POST-запроса: ${error.message}`)
-            })
-    }
+                console.log(
+                    `Откуда ни возьмись ошибка POST-запроса: ${error.message}`
+                );
+            });
+    };
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
@@ -129,7 +132,9 @@ const BurgerConstructor = () => {
                 />
             </div>
             <section className={` ${Styles.totalCost} pr-9`}>
-                <p className={`${Styles.totalCost_sum}`}>{sum.toLocaleString()}</p>
+                <p className={`${Styles.totalCost_sum}`}>
+                    {sum.toLocaleString()}
+                </p>
                 <div className={`${Styles.totalCostMoneyIcon} mt-2 mr-10`}>
                     <CurrencyIcon />
                 </div>
@@ -149,41 +154,11 @@ const BurgerConstructor = () => {
 };
 
 IngridientsSection.propTypes = {
-    objectWithSape: PropTypes.arrayOf(
-        PropTypes.shape({
-            calories: PropTypes.number.isRequired,
-            carbohydrates: PropTypes.number.isRequired,
-            fat: PropTypes.number.isRequired,
-            image: PropTypes.link,
-            image_large: PropTypes.link,
-            image_mobile: PropTypes.link,
-            name: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            proteins: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            __v: PropTypes.number.isRequired,
-            _id: PropTypes.string.isRequired,
-        }).isRequired
-    ),
+    objectWithSape: PropTypes.arrayOf(ingridientTypicalType),
 };
 
 BurgerConstructor.propTypes = {
-    objectWithSape: PropTypes.arrayOf(
-        PropTypes.shape({
-            calories: PropTypes.number.isRequired,
-            carbohydrates: PropTypes.number.isRequired,
-            fat: PropTypes.number.isRequired,
-            image: PropTypes.link,
-            image_large: PropTypes.link,
-            image_mobile: PropTypes.link,
-            name: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            proteins: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            __v: PropTypes.number.isRequired,
-            _id: PropTypes.string.isRequired,
-        }).isRequired
-    ),
+    objectWithSape: PropTypes.arrayOf(ingridientTypicalType),
 };
 
 export default BurgerConstructor;

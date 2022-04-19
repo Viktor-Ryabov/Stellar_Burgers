@@ -16,3 +16,13 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+// import { compose, createStore, applyMiddleware } from 'redux';
+// import thunk from 'redux-thunk';
+// const composeEnhancers =
+//   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({})
+//     : compose;
+
+// const enhancer = composeEnhancers(applyMiddleware(thunk));
+// const store = createStore(rootReducer, enhancer);

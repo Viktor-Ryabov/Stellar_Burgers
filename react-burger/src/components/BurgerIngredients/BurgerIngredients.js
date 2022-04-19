@@ -6,6 +6,7 @@ import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
 import { withModal } from "../../hocs/withModal";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
+import { ingridientTypicalType } from "../../utils/types";
 
 const WithModalIngridient = withModal(IngredientDetails);
 
@@ -17,9 +18,9 @@ const BurgerIngredients = ({ ...props }) => {
     const [ingridientData, setIngridientData] = React.useState({});
 
     // console.log(initialData)
-    let Buns = [];
-    let Sauces = [];
-    let Fillings = [];
+    const Buns = [];
+    const Sauces = [];
+    const Fillings = [];
 
     list.forEach((item) => {
         if (item.type === "bun") {
@@ -97,20 +98,7 @@ const BurgerIngredients = ({ ...props }) => {
 BurgerIngredients.propTypes = {
     optionalObject: PropTypes.object,
     objectWithSape: PropTypes.arrayOf(
-        PropTypes.shape({
-            calories: PropTypes.number.isRequired,
-            carbohydrates: PropTypes.number.isRequired,
-            fat: PropTypes.number.isRequired,
-            image: PropTypes.link,
-            image_large: PropTypes.link,
-            image_mobile: PropTypes.link,
-            name: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
-            proteins: PropTypes.number.isRequired,
-            type: PropTypes.string.isRequired,
-            __v: PropTypes.number.isRequired,
-            _id: PropTypes.string.isRequired,
-        }).isRequired
+        ingridientTypicalType,
     ),
 };
 
