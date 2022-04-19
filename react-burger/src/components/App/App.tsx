@@ -10,7 +10,7 @@ const App = () => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [list, setList] = useState([]);
-    
+
     useEffect(() => {
         getApiResponse().then(
             (response) => {
@@ -32,15 +32,12 @@ const App = () => {
         // console.log(list)
         return (
             <IngridientsContext.Provider value={list}>
-
                 <section className={Styles.app}>
                     <Header />
                     {/* <MainSection list={list} />  */}
-                    <MainSection /> 
+                    <MainSection />
                 </section>
-
             </IngridientsContext.Provider>
-            
         );
     }
 };
