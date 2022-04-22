@@ -13,8 +13,8 @@ export default function postOrderReducer(
         case POST_ORDER_REQUEST:
             return {
                 ...state,
-                ingridients: action.data,
-                requestStatusOk: true,
+                ingridientsID: action.ingridientsID,
+                requestStatusOk: false,
                 requestError: false,
                 orderNumber: 0,
             };
@@ -23,7 +23,7 @@ export default function postOrderReducer(
                 ...state,
                 requestStatusOk: true,
                 requestError: false,
-                orderNumber: action.data,
+                orderNumber: action.orderNumber,
             };
         case POST_ORDER_REQUEST_FAILED:
             return {
@@ -31,7 +31,6 @@ export default function postOrderReducer(
                 ingridients: [],
                 requestStatusOk: false,
                 requestError: true,
-                orderNumber: 0,
             };
         default:
             return state;

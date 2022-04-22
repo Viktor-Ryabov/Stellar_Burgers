@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import {
     baseUrl,
     POST_ORDER_REQUEST,
@@ -10,7 +9,6 @@ import { checkResponse } from "./api__checkResponse.js";
 
 
 export const getOrderResponse = (data) => {
-    console.log(data);
     return fetch(`${baseUrl}/orders`, {
         method: "POST",
         headers: {
@@ -22,20 +20,29 @@ export const getOrderResponse = (data) => {
 };
 
 export const getOrderRequest = (dispatch, data) => {
-    console.log(data);
+    dispatch({
+        type: POST_ORDER_REQUEST,
+        ingridientsID: data,
+    })
     getOrderResponse(data)
+        .then(res => res.json())
         .then((response) => {
-            if (response) {
+            console.log(response);
+            console.log(response.order.number);
+            if (response.success === true) {
                 dispatch({
                     type: POST_ORDER_REQUEST_SUCCESS,
+                    orderNumber: response.order.number,
                 });
-            } else {
+            } else if (!response.success) {
+                console.log(`ошибка в 'экшене': ${response}`)
                 dispatch({
                     type: POST_ORDER_REQUEST_FAILED,
                 });
             }
         })
         .catch((err) => {
+            console.log(`ошибка в кэтче: ${err}`)
             dispatch({
                 type: POST_ORDER_REQUEST_FAILED,
             });

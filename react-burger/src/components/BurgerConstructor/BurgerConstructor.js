@@ -45,13 +45,14 @@ const BurgerConstructor = () => {
     // console.log(initialData);
     const dispatch = useDispatch();
 
+    const orderNumber = useSelector((state) => state.orderIngridients.orderNumber);
+
     const [popupActive, setActive] = React.useState(false);
-    const [orderNumber, setOrderNumber] = React.useState(0);
 
     const Buns = [];
     const Ingridietns = [];
     let sum = 0;
-    const orderData = [];
+    let ingredients = [];
 
     function isBuns(list) {
         list.forEach((item) => {
@@ -85,13 +86,13 @@ const BurgerConstructor = () => {
 
     const compileOrderData = (orderDataArray) => {
         orderDataArray.forEach((item) => {
-            orderData.push(item._id);
+            ingredients.push(item._id);
         });
     };
     compileOrderData(Ingridietns);
+    const orderData = {ingredients};
 
     const postOrder = () => {
-        console.log(orderData); 
         dispatch(getOrderRequest(dispatch, orderData));
     };
 
