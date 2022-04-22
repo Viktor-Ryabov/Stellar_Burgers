@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import IngridientsContext from "../../ingridientsContext/ingridientsContext";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
 import {
@@ -10,13 +10,15 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
-import { getOrderResponse, checkResponse } from "../API/Api";
+import { getOrderResponse } from "../../services/api/api__order.js";
+import { checkResponse } from "../../services/api/api__checkResponse.js";
 import { ingridientTypicalType } from "../../utils/types";
+import { getOrderRequest } from "../../services/api/api__order.js";
 
 const WithModalOrder = withModal(OrderDetails);
 
-const IngridientsSection = (ingridients) => {
-    const list = ingridients.ingridients;
+const IngridientsSection = () => {
+    const list = useSelector((state) => state.initialData.ingridients);
     return (
         <section className={Styles.owerflowBlock}>
             <div>
@@ -39,9 +41,13 @@ const IngridientsSection = (ingridients) => {
 };
 
 const BurgerConstructor = () => {
-    const initialData = useContext(IngridientsContext);
+    const initialData = useSelector((state) => state.initialData.ingridients);
+    // console.log(initialData);
+    const dispatch = useDispatch();
+
     const [popupActive, setActive] = React.useState(false);
     const [orderNumber, setOrderNumber] = React.useState(0);
+
     const Buns = [];
     const Ingridietns = [];
     let sum = 0;
@@ -83,22 +89,10 @@ const BurgerConstructor = () => {
         });
     };
     compileOrderData(Ingridietns);
-    const requestData = {
-        ingredients: orderData,
-    };
 
     const postOrder = () => {
-        getOrderResponse(requestData)
-            .then((data) => data.json())
-            .catch(checkResponse)
-            .then((data) => {
-                setOrderNumber(data.order.number);
-            })
-            .catch((error) => {
-                console.log(
-                    `Откуда ни возьмись ошибка POST-запроса: ${error.message}`
-                );
-            });
+        console.log(orderData); 
+        dispatch(getOrderRequest(dispatch, orderData));
     };
 
     return (
