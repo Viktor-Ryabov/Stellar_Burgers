@@ -10,6 +10,14 @@ export const initialState = {
         requestError: false,
         orderNumber: 0,
     },
+    burgerMenu: {
+        bunsMenu: false,
+        saucesMenu: false,
+        fillingsMenu: false,
+        ingridientsMenu: [],
+        sectionName: "",
+    },
     currentIngridient: {},
     currentOrder: [],
+
 }

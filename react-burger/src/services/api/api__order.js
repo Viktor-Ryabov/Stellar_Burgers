@@ -6,8 +6,6 @@ import {
 } from "../../utils/constants.js";
 import { checkResponse } from "./api__checkResponse.js";
 
-
-
 export const getOrderResponse = (data) => {
     return fetch(`${baseUrl}/orders`, {
         method: "POST",
@@ -27,8 +25,6 @@ export const getOrderRequest = (dispatch, data) => {
     getOrderResponse(data)
         .then(res => res.json())
         .then((response) => {
-            console.log(response);
-            console.log(response.order.number);
             if (response.success === true) {
                 dispatch({
                     type: POST_ORDER_REQUEST_SUCCESS,
