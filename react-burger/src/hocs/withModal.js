@@ -4,13 +4,25 @@ import { useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import Styles from "./withModal.module.css";
 import { ModalOwerlay } from "../components/ModalOwerlay/ModalOwerlay";
+import { useDispatch, useSelector } from "react-redux";
+import { INGRIDIENTS_MODAL_DISABLED, ORDER_MODAL_DISABLED } from "../utils/constants/constants__modal";
 
 export const withModal = (WrappedComponent) => (props) => {
-    // console.log(props);
+    const dispatch = useDispatch();
+    const { ingridientsCondition, orderCondition } = useSelector((state) => state.modalState);
+    console.log(`ingridientsCondition: ${ingridientsCondition}, orderCondition: ${orderCondition}`);
 
     const escFunction = useCallback((event) => {
         if (event.key === "Escape") {
-            props.setActive(false);
+            if(ingridientsCondition) {
+                dispatch({
+                    type: INGRIDIENTS_MODAL_DISABLED
+                })
+            } else if (orderCondition) {
+                dispatch({
+                    type: ORDER_MODAL_DISABLED
+                })
+            }
         }
     }, []);
 

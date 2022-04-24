@@ -3,7 +3,7 @@ import {
     POST_ORDER_REQUEST,
     POST_ORDER_REQUEST_SUCCESS,
     POST_ORDER_REQUEST_FAILED,
-} from "../../utils/constants.js";
+} from "../../utils/constants/constants.js";
 import { checkResponse } from "./api__checkResponse.js";
 
 export const getOrderResponse = (data) => {

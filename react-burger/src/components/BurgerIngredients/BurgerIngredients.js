@@ -7,20 +7,18 @@ import { withModal } from "../../hocs/withModal";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
 import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_BUNS, SET_SAUCES, SET_FILLINGS } from "../../utils/constants.js";
+import { SET_BUNS, SET_SAUCES, SET_FILLINGS } from "../../utils/constants/constants.js";
 
 const WithModalIngridient = withModal(IngredientDetails);
 
 const BurgerIngredients = ({ ...props }) => {
     const dispatch = useDispatch();
-    const [popupActive, setActive] = React.useState(false);
-    const [ingridientData, setIngridientData] = React.useState({});
+    const { ingridientsCondition, modalData } = useSelector((state) => state.modalState)
 
     const list = useSelector((state) => state.initialData.ingridients);
     const { bunsMenu, saucesMenu, fillingsMenu, ingridientsMenu, sectionName } = useSelector(
         (state) => state.burgerMenu
     );
-    console.log(sectionName)
 
     const Buns = [];
     const Sauces = [];
@@ -39,9 +37,8 @@ const BurgerIngredients = ({ ...props }) => {
     return (
         <section className={`${Styles.mainLeft} mr-5`}>
             <WithModalIngridient
-                active={popupActive}
-                setActive={setActive}
-                {...ingridientData}
+                active = {ingridientsCondition}
+                {...modalData}
             />
             <h2 className={`${Styles.title} mt-10 mb-5`}>Соберите бургер</h2>
             <section className={`${Styles.owerflowBlock} pr-2`}>
@@ -94,8 +91,6 @@ const BurgerIngredients = ({ ...props }) => {
                         <Ingridient
                             {...ingridient}
                             key={ingridient._id}
-                            setIngridientData={setIngridientData}
-                            setActive={setActive}
                             {...props}
                         />
                     ))}

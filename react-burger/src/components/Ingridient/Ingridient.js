@@ -6,17 +6,19 @@ import {
     Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ingridientTypicalType } from "../../utils/types";
-
+import { useDispatch } from "react-redux";
+import { INGRIDIENTS_MODAL_ACTIVE } from "../../utils/constants/constants__modal.js";
 
 const Ingridient = ({ setIngridientData, setActive, ...props }) => {
-    // console.log(props)
+    const dispatch = useDispatch();
     return (
         <article
             className={`${Styles.ingridient} mb-8`}
             onClick={() => {
-                // console.log(`ingridient id: ${props._id}`);
-                setIngridientData(props);
-                setActive(true);
+                dispatch({
+                    type: INGRIDIENTS_MODAL_ACTIVE,
+                    data: { ...props },
+                });
             }}
         >
             <img
@@ -26,7 +28,9 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
             />
 
             <section className={`${Styles.ingridient_price} mb-1 `}>
-                <p className={Styles.ingridient_price_sum}>{props.price.toLocaleString()}</p>
+                <p className={Styles.ingridient_price_sum}>
+                    {props.price.toLocaleString()}
+                </p>
                 <CurrencyIcon />
             </section>
 
@@ -47,9 +51,7 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
 Ingridient.propTypes = {
     setIngridientData: PropTypes.func,
     setActive: PropTypes.func,
-    props: PropTypes.arrayOf(
-        ingridientTypicalType,
-    ),
+    props: PropTypes.arrayOf(ingridientTypicalType),
 };
 
 export default Ingridient;

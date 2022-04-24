@@ -3,8 +3,8 @@ import {
     INITIAL_DATA_REQUEST,
     INITIAL_DATA_REQUEST_SUCCESS,
     INITIAL_DATA_REQUEST_FAILED,
-    SET_INITIAL_DATA,
-} from "../../utils/constants.js";
+    SET_INITIAL_DATA_TO_INGRIDIENTS,
+} from "../../utils/constants/constants.js";
 import { checkResponse } from "./api__checkResponse.js";
 
 
@@ -26,7 +26,7 @@ export const getIngridientsRequest = () => {
                     });
                     
                     dispatch({
-                        type: SET_INITIAL_DATA,
+                        type: SET_INITIAL_DATA_TO_INGRIDIENTS,
                         data: response.data,
                     });
 

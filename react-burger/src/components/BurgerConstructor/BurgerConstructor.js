@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
 import {
@@ -10,10 +10,9 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
-import { getOrderResponse } from "../../services/api/api__order.js";
-import { checkResponse } from "../../services/api/api__checkResponse.js";
 import { ingridientTypicalType } from "../../utils/types";
 import { getOrderRequest } from "../../services/api/api__order.js";
+import { ORDER_MODAL_ACTIVE } from "../../utils/constants/constants__modal";
 
 const WithModalOrder = withModal(OrderDetails);
 
@@ -41,13 +40,14 @@ const IngridientsSection = () => {
 };
 
 const BurgerConstructor = () => {
-    const initialData = useSelector((state) => state.initialData.ingridients);
-    // console.log(initialData);
     const dispatch = useDispatch();
-
-    const orderNumber = useSelector((state) => state.orderIngridients.orderNumber);
-
-    const [popupActive, setActive] = React.useState(false);
+    const initialData = useSelector((state) => state.initialData.ingridients);
+    const orderNumber = useSelector(
+        (state) => state.orderIngridients.orderNumber
+    );
+    const orderCondition = useSelector(
+        (state) => state.modalState.orderCondition
+    );
 
     const Buns = [];
     const Ingridietns = [];
@@ -90,18 +90,17 @@ const BurgerConstructor = () => {
         });
     };
     compileOrderData(Ingridietns);
-    const orderData = {ingredients};
+    const orderData = { ingredients };
 
     const postOrder = () => {
         dispatch(getOrderRequest(dispatch, orderData));
+
     };
 
     return (
         <section className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
             <WithModalOrder
-                active={popupActive}
-                setActive={setActive}
-                orderNumber={orderNumber}
+            active={orderCondition}
             />
             <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                 <ConstructorElement
@@ -137,8 +136,11 @@ const BurgerConstructor = () => {
                     type="primary"
                     size="large"
                     onClick={() => {
-                        setActive(true);
-                        postOrder();
+                        dispatch({
+                            type: ORDER_MODAL_ACTIVE,
+                            data: orderNumber,
+                        });
+                        postOrder()
                     }}
                 >
                     Оформить заказ

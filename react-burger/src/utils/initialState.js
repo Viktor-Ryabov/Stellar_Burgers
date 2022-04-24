@@ -17,6 +17,11 @@ export const initialState = {
         ingridientsMenu: [],
         sectionName: "",
     },
+    modalState: {
+        ingridientsCondition: false,
+        orderCondition: false,
+        modalData: [],
+    },
     currentIngridient: {},
     currentOrder: [],
 
