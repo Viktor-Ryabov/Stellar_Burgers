@@ -19,6 +19,7 @@ const BurgerIngredients = ({ ...props }) => {
     const { bunsMenu, saucesMenu, fillingsMenu, ingridientsMenu, sectionName } = useSelector(
         (state) => state.burgerMenu
     );
+    console.log(ingridientsMenu)
 
     const Buns = [];
     const Sauces = [];
@@ -91,7 +92,6 @@ const BurgerIngredients = ({ ...props }) => {
                         <Ingridient
                             {...ingridient}
                             key={ingridient._id}
-                            {...props}
                         />
                     ))}
                 </section>

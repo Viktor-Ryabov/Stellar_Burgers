@@ -9,7 +9,8 @@ import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch } from "react-redux";
 import { INGRIDIENTS_MODAL_ACTIVE } from "../../utils/constants/constants__modal.js";
 
-const Ingridient = ({ setIngridientData, setActive, ...props }) => {
+const Ingridient = ({ ...ingridient }) => {
+    console.log(ingridient)
     const dispatch = useDispatch();
     return (
         <article
@@ -17,19 +18,19 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
             onClick={() => {
                 dispatch({
                     type: INGRIDIENTS_MODAL_ACTIVE,
-                    data: { ...props },
+                    data: { ...ingridient },
                 });
             }}
         >
             <img
                 className={`${Styles.ingridient_image} ml-4 mr-4 mb-1`}
-                src={props.image}
-                alt={props.name}
+                src={ingridient.image}
+                alt={ingridient.name}
             />
 
             <section className={`${Styles.ingridient_price} mb-1 `}>
                 <p className={Styles.ingridient_price_sum}>
-                    {props.price.toLocaleString()}
+                    {ingridient.price.toLocaleString()}
                 </p>
                 <CurrencyIcon />
             </section>
@@ -37,7 +38,7 @@ const Ingridient = ({ setIngridientData, setActive, ...props }) => {
             <h5
                 className={`${Styles.ingridient_description} text text_type_main-default`}
             >
-                {props.name}
+                {ingridient.name}
             </h5>
             <Counter />
             <div className={Styles.ingridient_quantity}>
