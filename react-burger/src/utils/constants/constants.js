@@ -13,6 +13,12 @@ const SET_SAUCES = "SET_SAUCES";
 const SET_FILLINGS = "SET_FILLINGS";
 const SET_INITIAL_DATA_TO_INGRIDIENTS = "SET_INITIAL_DATA_TO_INGRIDIENTS";
 
+const ItemTypes={
+    INGRIDIENT: "ingridient",
+}
+
+const ADD_TO_CONSTRUCTOR = "ADD_TO_CONSTRUCTOR";
+
 export {
     baseUrl, 
     
@@ -28,4 +34,9 @@ export {
     SET_BUNS,
     SET_SAUCES,
     SET_FILLINGS,
+
+    ItemTypes,
+
+    ADD_TO_CONSTRUCTOR,
+
 };

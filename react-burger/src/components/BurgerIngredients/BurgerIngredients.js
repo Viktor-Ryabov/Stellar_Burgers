@@ -11,7 +11,7 @@ import { SET_BUNS, SET_SAUCES, SET_FILLINGS } from "../../utils/constants/consta
 
 const WithModalIngridient = withModal(IngredientDetails);
 
-const BurgerIngredients = ({ ...props }) => {
+const BurgerIngredients = () => {
     const dispatch = useDispatch();
     const { ingridientsCondition, modalData } = useSelector((state) => state.modalState)
 
@@ -19,7 +19,6 @@ const BurgerIngredients = ({ ...props }) => {
     const { bunsMenu, saucesMenu, fillingsMenu, ingridientsMenu, sectionName } = useSelector(
         (state) => state.burgerMenu
     );
-    console.log(ingridientsMenu)
 
     const Buns = [];
     const Sauces = [];

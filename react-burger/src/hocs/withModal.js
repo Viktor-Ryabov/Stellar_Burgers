@@ -10,7 +10,7 @@ import { INGRIDIENTS_MODAL_DISABLED, ORDER_MODAL_DISABLED } from "../utils/const
 export const withModal = (WrappedComponent) => (props) => {
     const dispatch = useDispatch();
     const { ingridientsCondition, orderCondition } = useSelector((state) => state.modalState);
-    console.log(`ingridientsCondition: ${ingridientsCondition}, orderCondition: ${orderCondition}`);
+    // console.log(`ingridientsCondition: ${ingridientsCondition}, orderCondition: ${orderCondition}`);
 
     const escFunction = useCallback((event) => {
         if (event.key === "Escape") {

@@ -8,13 +8,25 @@ import {
 import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch } from "react-redux";
 import { INGRIDIENTS_MODAL_ACTIVE } from "../../utils/constants/constants__modal.js";
+import { ItemTypes } from "../../utils/constants/constants";
+import { useDrag } from "react-dnd";
 
 const Ingridient = ({ ...ingridient }) => {
-    console.log(ingridient)
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: ItemTypes.INGRIDIENT,
+        item: ingridient,
+        collect: monitor => ({
+            isDragging: monitor.isDragging(),
+        }),
+    }));
+
     const dispatch = useDispatch();
     return (
         <article
-            className={`${Styles.ingridient} mb-8`}
+            ref={drag}
+            draggable={true}
+            className={ isDragging ? `${Styles.ingridient_dragging} mb-8` : `${Styles.ingridient} mb-8`}
             onClick={() => {
                 dispatch({
                     type: INGRIDIENTS_MODAL_ACTIVE,
@@ -23,6 +35,7 @@ const Ingridient = ({ ...ingridient }) => {
             }}
         >
             <img
+                draggable={false}
                 className={`${Styles.ingridient_image} ml-4 mr-4 mb-1`}
                 src={ingridient.image}
                 alt={ingridient.name}
@@ -40,8 +53,8 @@ const Ingridient = ({ ...ingridient }) => {
             >
                 {ingridient.name}
             </h5>
-            <Counter />
-            <div className={Styles.ingridient_quantity}>
+            
+            <div className={Styles.ingridient_quantity} >
                 <Counter />
                 {/* <p className={Styles.ingridient_quantity_number}></p> */}
             </div>

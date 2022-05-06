@@ -5,6 +5,8 @@ import MainSection from "../MainSection/MainSection";
 import "@ya.praktikum/react-developer-burger-ui-components";
 import { getIngridientsRequest } from "../../services/api/api__ingridients.js";
 import { useDispatch, useSelector } from "react-redux";
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const App = () => {
     const { requestStatusOk, requestError } = useSelector(
@@ -27,8 +29,10 @@ const App = () => {
     } else {
         return (
             <section className={Styles.app}>
-                <Header />
-                <MainSection />
+                <DndProvider backend={HTML5Backend}>
+                    <Header />
+                    <MainSection />
+                </DndProvider>
             </section>
         );
     }

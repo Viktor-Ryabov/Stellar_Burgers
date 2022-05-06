@@ -14,6 +14,7 @@ const composeEnhancers =
 
 const actionLoger = store => next => action => {
     console.log(`Action: ${action.type}`);
+    console.log(store);
     return next(action);
 };
 

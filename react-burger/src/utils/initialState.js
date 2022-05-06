@@ -5,6 +5,7 @@ export const initialState = {
         requestError: false,
     },
     orderIngridients: {
+        ingridients: [],
         ingridientsID: [],
         requestStatusOk: false,
         requestError: false,
