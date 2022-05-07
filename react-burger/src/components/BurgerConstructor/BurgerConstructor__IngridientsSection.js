@@ -9,7 +9,7 @@ import { ingridientTypicalType } from "../../utils/types";
 
 
 const IngridientsSection = () => {
-    const list = useSelector(state => state.orderIngridients.ingridients);
+    const list = useSelector(state => state.orderIngridients.notBuns);
     if (list.length !== 0) {
         return (
             <section className={Styles.owerflowBlock }>

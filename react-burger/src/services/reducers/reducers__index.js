@@ -10,5 +10,5 @@ export const rootReducer = combineReducers({
     orderIngridients: postOrderReducer,
     burgerMenu: burgerMenuReducer,
     modalState: modalReducer,
-    addIngridientReducer: addIngridientReducer,
+    orderIngridients: addIngridientReducer,
 });

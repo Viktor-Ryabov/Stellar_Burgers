@@ -5,10 +5,12 @@ export const initialState = {
         requestError: false,
     },
     orderIngridients: {
-        ingridients: [],
+        buns: [],
+        notBuns: [],
         ingridientsID: [],
         requestStatusOk: false,
         requestError: false,
+        orderSumm: 0,
         orderNumber: 0,
     },
     burgerMenu: {

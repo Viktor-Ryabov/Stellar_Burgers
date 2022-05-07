@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 const addToConstructor = (ingridient) => ({
     type: ADD_TO_CONSTRUCTOR,
-    ingridientDataAdded: {
+    payload: {
         ...ingridient,
         id: uuid(),
     }

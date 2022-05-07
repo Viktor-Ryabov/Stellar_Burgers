@@ -26,7 +26,7 @@ const BurgerConstructor = () => {
     const [{ isOver, canDrop, dragItem }, drop] = useDrop (() => ({
         accept: ItemTypes.INGRIDIENT,
         drop: (item) => dispatch(addToConstructor(item)),
-        collect: monitor => ({
+        collect: (monitor) => ({
             canDrop: monitor.canDrop(),
             dragItem: monitor.getItem(),
             isOver: monitor.isOver(),
@@ -34,7 +34,11 @@ const BurgerConstructor = () => {
     }));
 
     const dispatch = useDispatch();
-    const initialData = useSelector((state) => state.orderIngridients.ingridients);
+    const Ingridietns = useSelector((state) => state.orderIngridients.notBuns);
+    const Buns = useSelector((state) => state.orderIngridients.buns);
+    let sum = 0;
+    console.log(sum);
+
 
     const orderNumber = useSelector(
         (state) => state.orderIngridients.orderNumber
@@ -43,59 +47,26 @@ const BurgerConstructor = () => {
         (state) => state.modalState.orderCondition
     );
 
-    const Buns = [];
-    const Ingridietns = [];
-    let sum = 0;
-    let ingredients = [];
-
-    function isBuns(list) {
-        if (list.length !== 0) {
-            list.forEach((item) => {
-                if (item.type === "bun") {
-                    Buns.push(item);
-                }
-            });
-            return Buns;
-        }
-    }
-
-    function isNotBuns(list) {
-        if (list.length !== 0) {
-            list.forEach((item) => {
-                if (item.type === "main") {
-                    Ingridietns.push(item);
-                }
-            });
-            return Ingridietns;
-        } 
-    }
-
-    isBuns(initialData);
-    isNotBuns(initialData);
-
     const getTotalSum = (bun, ingridientArr) => {
+        let bunsCost = 0;
+        let ingridientsCost = 0;
+
         if (bun[0]) {
-            sum = Number(bun[0].price) * 2;
-            if (ingridientArr.length !== 0) {
-                ingridientArr.forEach((item) => {
-                    sum += Number(item.price);
-                });
-            }
-            return sum;
+            bunsCost = Number(bun[0].price) * 2;
+        } else {
+            bunsCost = 0;
         }
-    };
+    
+        if (ingridientArr.length !== 0) {
+            ingridientArr.forEach((item) => {
+                ingridientsCost += Number(item.price);
+            });
+        }
+        return sum = bunsCost + ingridientsCost;
+    }
     getTotalSum(Buns, Ingridietns);
 
-    const compileOrderData = (orderDataArray) => {
-        if (orderDataArray.length !== 0) {
-            orderDataArray.forEach((item) => {
-                ingredients.push(item._id);
-            });
-        }
-    };
-    compileOrderData(Ingridietns);
-
-    const orderData = { ingredients };
+    const orderData = { ...Ingridietns };
 
     const postOrder = () => {
         dispatch(getOrderRequest(dispatch, orderData));
@@ -110,10 +81,10 @@ const BurgerConstructor = () => {
                 <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                     <ConstructorElement
                         type="top"
-                        // key="Buns[0]._id"
-                        // text={`${Buns[0].name} (верх)`}
-                        // price={Buns[0].price.toLocaleString()}
-                        // thumbnail={Buns[0].image}
+                        key="Buns[0]._id"
+                        text={`${Buns[0].name} (верх)`}
+                        price={Buns[0].price.toLocaleString()}
+                        thumbnail={Buns[0].image}
                         isLocked={true}
                     />
                 </div>
@@ -123,16 +94,16 @@ const BurgerConstructor = () => {
                 <div className={`${Styles.elementTopBottom} ml-3`}>
                     <ConstructorElement
                         type="bottom"
-                        // key="this.Buns[0]._id"
-                        // text={`${Buns[0].name} (низ)`}
-                        // price={Buns[0].price.toLocaleString()}
-                        // thumbnail={Buns[0].image}
+                        key="this.Buns[0]._id"
+                        text={`${Buns[0].name} (низ)`}
+                        price={Buns[0].price.toLocaleString()}
+                        thumbnail={Buns[0].image}
                         isLocked={true}
                     />
                 </div>
                 <section className={` ${Styles.totalCost} pr-9`}>
                     <p className={`${Styles.totalCost_sum}`}>
-                        {sum.toLocaleString()}
+                        {sum}
                     </p>
                     <div className={`${Styles.totalCostMoneyIcon} mt-2 mr-10`}>
                         <CurrencyIcon />
