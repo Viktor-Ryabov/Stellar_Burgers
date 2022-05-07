@@ -3,12 +3,12 @@ import initialDataReducer from "./reducers__initialData.js";
 import postOrderReducer from "./reducers__orderData.js";
 import { burgerMenuReducer } from "./reducers__burgerMenu.js";
 import modalReducer from "./reducers__modal.js";
-import { addIngridientReducer } from "./reducers__addIngridientToConstructor.js";
+import { constructorReducer } from "./reducers__constructor.js";
 
 export const rootReducer = combineReducers({
     initialData: initialDataReducer,
     orderIngridients: postOrderReducer,
     burgerMenu: burgerMenuReducer,
     modalState: modalReducer,
-    orderIngridients: addIngridientReducer,
+    orderIngridients: constructorReducer,
 });

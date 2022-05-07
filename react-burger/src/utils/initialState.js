@@ -10,7 +10,7 @@ export const initialState = {
         ingridientsID: [],
         requestStatusOk: false,
         requestError: false,
-        orderSumm: 0,
+        orderSum: 0,
         orderNumber: 0,
     },
     burgerMenu: {

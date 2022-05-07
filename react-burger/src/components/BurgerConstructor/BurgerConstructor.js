@@ -36,8 +36,7 @@ const BurgerConstructor = () => {
     const dispatch = useDispatch();
     const Ingridietns = useSelector((state) => state.orderIngridients.notBuns);
     const Buns = useSelector((state) => state.orderIngridients.buns);
-    let sum = 0;
-    console.log(sum);
+    const sum = useSelector((state) => state.orderIngridients.orderSum);
 
 
     const orderNumber = useSelector(
@@ -46,25 +45,6 @@ const BurgerConstructor = () => {
     const orderCondition = useSelector(
         (state) => state.modalState.orderCondition
     );
-
-    const getTotalSum = (bun, ingridientArr) => {
-        let bunsCost = 0;
-        let ingridientsCost = 0;
-
-        if (bun[0]) {
-            bunsCost = Number(bun[0].price) * 2;
-        } else {
-            bunsCost = 0;
-        }
-    
-        if (ingridientArr.length !== 0) {
-            ingridientArr.forEach((item) => {
-                ingridientsCost += Number(item.price);
-            });
-        }
-        return sum = bunsCost + ingridientsCost;
-    }
-    getTotalSum(Buns, Ingridietns);
 
     const orderData = { ...Ingridietns };
 

@@ -18,6 +18,9 @@ const ItemTypes={
 }
 
 const ADD_TO_CONSTRUCTOR = "ADD_TO_CONSTRUCTOR";
+const DELETE_FROM_CONSTRUCTOR = "DELETE_FROM_CONSTRUCTOR";
+const RENDER_INGRIDIENTS = "RENDER_INGRIDIENTS";
+
 
 export {
     baseUrl, 
@@ -38,5 +41,7 @@ export {
     ItemTypes,
 
     ADD_TO_CONSTRUCTOR,
+    DELETE_FROM_CONSTRUCTOR,
+    RENDER_INGRIDIENTS,
 
 };
