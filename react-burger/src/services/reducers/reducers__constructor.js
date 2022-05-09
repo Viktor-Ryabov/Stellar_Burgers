@@ -14,7 +14,7 @@ export const constructorReducer = (state = initialState.orderIngridients, action
                 return {
                     ...state,
                     buns: [ action.payload ],
-                    orderSum: state.orderSum + action.payload.price * 2,
+                    orderSum: action.payload.price * 2,
                 };
             }
         case DELETE_FROM_CONSTRUCTOR:

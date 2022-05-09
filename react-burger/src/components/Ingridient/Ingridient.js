@@ -6,12 +6,33 @@ import {
     Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ingridientTypicalType } from "../../utils/types";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { INGRIDIENTS_MODAL_ACTIVE } from "../../utils/constants/constants__modal.js";
 import { ItemTypes } from "../../utils/constants/constants";
 import { useDrag } from "react-dnd";
+import { initialState } from "../../utils/initialState";
 
-const Ingridient = ({ ...ingridient }) => {
+const Ingridient = ({ ...ingridient }, count ) => {
+    // console.log(ingridient)
+
+    let counterBuns;
+    let counterNotBuns;
+
+    const countsBuns = useSelector((state) => state.orderIngridients.buns);
+    const countsNotBuns = useSelector((state) => state.orderIngridients.notBuns);
+
+    const calculateCounterNotBuns = () => {
+        if(countsNotBuns.length !==0){
+            (counterNotBuns = countsNotBuns.filter(item => item._id === ingridient._id).length);
+        }
+    }
+    const calculateCounterBuns = () => {
+        if(countsBuns.length !==0){
+            return counterBuns = countsBuns.filter(item => item._id === ingridient._id).length;
+        }
+    }
+    calculateCounterNotBuns();
+    calculateCounterBuns();
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemTypes.INGRIDIENT,
@@ -22,6 +43,9 @@ const Ingridient = ({ ...ingridient }) => {
     }));
 
     const dispatch = useDispatch();
+
+
+
     return (
         <article
             ref={drag}
@@ -55,8 +79,7 @@ const Ingridient = ({ ...ingridient }) => {
             </h5>
             
             <div className={Styles.ingridient_quantity} >
-                <Counter />
-                {/* <p className={Styles.ingridient_quantity_number}></p> */}
+                <Counter count={ (counterBuns || counterNotBuns) && ingridient.type === "bun" ? counterBuns : counterNotBuns }/>
             </div>
         </article>
     );

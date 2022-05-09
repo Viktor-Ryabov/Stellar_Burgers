@@ -6,6 +6,7 @@ const addToConstructor = (ingridient) => ({
     payload: {
         ...ingridient,
         id: uuid(),
+        count: 1,
     }
 })
 
