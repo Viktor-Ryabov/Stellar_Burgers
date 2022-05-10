@@ -1,9 +1,8 @@
 import {
     INGRIDIENTS_MODAL_ACTIVE,
     INGRIDIENTS_MODAL_DISABLED,
-    ORDER_MODAL_ACTIVE,
-    ORDER_MODAL_DISABLED,
 } from "../../utils/constants/constants__modal.js";
+import { ORDER_MODAL_ACTIVE, ORDER_MODAL_DISABLED } from "../actions/action__orderModal.js";
 import { initialState } from "../../utils/initialState.js";
 
 export default function modalReducer(state = initialState.modalState, action) {
@@ -17,9 +16,9 @@ export default function modalReducer(state = initialState.modalState, action) {
             };
         case INGRIDIENTS_MODAL_DISABLED:
             return {
+                ...state,
                 ingridientsCondition: false,
                 orderCondition: false,
-                modalData: [],
             };
         case ORDER_MODAL_ACTIVE:
             return {
@@ -33,7 +32,6 @@ export default function modalReducer(state = initialState.modalState, action) {
                 ...state,
                 ingridientsCondition: false,
                 orderCondition: false,
-                modalData: [],
             };
         default:
             return state;

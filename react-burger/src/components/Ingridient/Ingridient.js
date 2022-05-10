@@ -7,13 +7,12 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
-import { INGRIDIENTS_MODAL_ACTIVE } from "../../utils/constants/constants__modal.js";
 import { ItemTypes } from "../../utils/constants/constants";
 import { useDrag } from "react-dnd";
-import { initialState } from "../../utils/initialState";
+import {setIngridietnModalAcitveAction} from "../../services/actions/action__ingridietnModal";
 
-const Ingridient = ({ ...ingridient }, count ) => {
-    // console.log(ingridient)
+
+const Ingridient = ( { ...ingridient } ) => {
 
     let counterBuns;
     let counterNotBuns;
@@ -52,10 +51,7 @@ const Ingridient = ({ ...ingridient }, count ) => {
             draggable={true}
             className={ isDragging ? `${Styles.ingridient_dragging} mb-8` : `${Styles.ingridient} mb-8`}
             onClick={() => {
-                dispatch({
-                    type: INGRIDIENTS_MODAL_ACTIVE,
-                    data: { ...ingridient },
-                });
+                dispatch( setIngridietnModalAcitveAction(ingridient) );
             }}
         >
             <img

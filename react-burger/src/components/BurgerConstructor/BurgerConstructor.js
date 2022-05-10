@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
@@ -6,18 +5,17 @@ import {
     Button,
     ConstructorElement,
     CurrencyIcon,
-    DragIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
 import { ingridientTypicalType } from "../../utils/types";
 import { getOrderRequest } from "../../services/api/api__order.js";
-import { ORDER_MODAL_ACTIVE } from "../../utils/constants/constants__modal";
 import IngridientsSection from "./BurgerConstructor__IngridientsSection.js";
 import EmptyElement from "./EmptyElement/EmptyElement.js";
 import { ItemTypes } from "../../utils/constants/constants";
 import addToConstructor from "../../services/actions/action__addToConstructor";
 import { useDrop} from "react-dnd";
+import { setOrderModalAcitve } from "../../services/actions/action__orderModal";
 
 const WithModalOrder = withModal(OrderDetails);
 
@@ -37,27 +35,31 @@ const BurgerConstructor = () => {
     const Ingridietns = useSelector((state) => state.orderIngridients.notBuns);
     const Buns = useSelector((state) => state.orderIngridients.buns);
     const sum = useSelector((state) => state.orderIngridients.orderSum);
-
-
-    const orderNumber = useSelector(
-        (state) => state.orderIngridients.orderNumber
-    );
-    const orderCondition = useSelector(
-        (state) => state.modalState.orderCondition
-    );
-
-    const orderData = { ...Ingridietns };
-
-    const postOrder = () => {
-        dispatch(getOrderRequest(dispatch, orderData));
+    let orderIngridients = {
+        ingredients: []
     };
-    
+
+
+    const { orderCondition, modalData } = useSelector((state) => state.modalState)
+
+    const formatOrderData = () => {
+        if (Buns.length !== 0){
+            Buns.forEach((item) => {
+                orderIngridients.ingredients.push(item._id)
+            })
+        }
+        if (Buns.length !== 0){
+            Ingridietns.forEach((item) => {
+                orderIngridients.ingredients.push(item._id)
+            })
+        }
+    }
 
     if (Buns.length !== 0) {
         return (
             <section ref={drop} className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}>
     
-                <WithModalOrder active={orderCondition} />
+                <WithModalOrder active = {orderCondition} />
                 
                 <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                     <ConstructorElement
@@ -92,12 +94,10 @@ const BurgerConstructor = () => {
                     <Button
                         type="primary"
                         size="large"
-                        onClick={() => {
-                            dispatch({
-                                type: ORDER_MODAL_ACTIVE,
-                                data: orderNumber,
-                            });
-                            postOrder();
+                        onClick={(e) => {
+                            e.stopPropagation()
+                            formatOrderData();
+                            dispatch( getOrderRequest(dispatch, orderIngridients));
                         }}
                     >
                         Оформить заказ
@@ -109,8 +109,6 @@ const BurgerConstructor = () => {
         return (
             <section ref={drop} className={ `${Styles.burgerIngredients} ml-5 pt-25 pl-4` }>
     
-                <WithModalOrder active={orderCondition} />
-                
                 <div className={  `${Styles.elementTopBottom} mb-4 ml-3` }>
                     <EmptyElement 
                         type="top"
@@ -131,15 +129,9 @@ const BurgerConstructor = () => {
                         <CurrencyIcon />
                     </div>
                     <Button
+                        disabled={true}
                         type="primary"
                         size="large"
-                        onClick={() => {
-                            dispatch({
-                                type: ORDER_MODAL_ACTIVE,
-                                data: orderNumber,
-                            });
-                            postOrder();
-                        }}
                     >
                         Оформить заказ
                     </Button>

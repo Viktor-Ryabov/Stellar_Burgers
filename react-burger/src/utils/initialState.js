@@ -11,7 +11,7 @@ export const initialState = {
         requestStatusOk: false,
         requestError: false,
         orderSum: 0,
-        orderNumber: 0,
+        
     },
     burgerMenu: {
         bunsMenu: false,
@@ -24,6 +24,9 @@ export const initialState = {
         ingridientsCondition: false,
         orderCondition: false,
         modalData: [],
+    },
+    orderNumber: {
+        number: 0,
     },
     currentIngridient: {},
     currentOrder: [],

@@ -10,6 +10,7 @@ const MainSection = () => {
                 <BurgerConstructor />
             </main>
     );
+    
 };
 
 export default MainSection;

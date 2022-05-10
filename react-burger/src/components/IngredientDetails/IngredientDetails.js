@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { INGRIDIENTS_MODAL_DISABLED } from "../../utils/constants/constants__modal.js";
 
 export const IngredientDetails = (props) => {
-    // console.log(props);
     const dispatch = useDispatch();
 
     return (

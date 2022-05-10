@@ -1,10 +1,13 @@
 import {
     baseUrl,
-    POST_ORDER_REQUEST,
-    POST_ORDER_REQUEST_SUCCESS,
     POST_ORDER_REQUEST_FAILED,
 } from "../../utils/constants/constants.js";
 import { checkResponse } from "./api__checkResponse.js";
+import postOrderRequestSucsess from "../actions/action__postOrderRequestSucsess.js";
+import postOrderRequestFailed from "../actions/actions__postOrderRequestFailed.js";
+import setOrderNumber from "../actions/actions__setOrderData.js";
+import setOrderData from "../actions/actions__setOrderData.js";
+import { setOrderModalAcitve } from "../actions/action__orderModal.js";
 
 export const getOrderResponse = (data) => {
     return fetch(`${baseUrl}/orders`, {
@@ -17,30 +20,23 @@ export const getOrderResponse = (data) => {
     .catch(checkResponse);
 };
 
-export const getOrderRequest = (dispatch, data) => {
-    dispatch({
-        type: POST_ORDER_REQUEST,
-        ingridientsID: data,
-    })
-    getOrderResponse(data)
+export const getOrderRequest = (dispatch, orderIngridients) => {
+
+    getOrderResponse(orderIngridients)
         .then(res => res.json())
         .then((response) => {
             if (response.success === true) {
-                dispatch({
-                    type: POST_ORDER_REQUEST_SUCCESS,
-                    orderNumber: response.order.number,
-                });
+                console.log(response.order.number)
+                dispatch( postOrderRequestSucsess(response.order.number) )
+                dispatch( setOrderData(response.order.number) )
+                dispatch( setOrderModalAcitve(response.order.number) )
             } else if (!response.success) {
                 console.log(`ошибка в 'экшене': ${response}`)
-                dispatch({
-                    type: POST_ORDER_REQUEST_FAILED,
-                });
-            }
-        })
+                dispatch( postOrderRequestFailed() )
+                }
+            })
         .catch((err) => {
             console.log(`ошибка в кэтче: ${err}`)
-            dispatch({
-                type: POST_ORDER_REQUEST_FAILED,
-            });
+            dispatch( postOrderRequestFailed() )
         });
 };

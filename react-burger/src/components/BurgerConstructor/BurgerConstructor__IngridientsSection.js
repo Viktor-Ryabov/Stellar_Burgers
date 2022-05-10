@@ -18,9 +18,9 @@ const IngridientsSection = () => {
     const list = useSelector(state => state.orderIngridients.notBuns);
     const [ingridient, setIgridient] = useState({});
 
-    useEffect(() => {
-        dispatch(renderConstructorIngridients())
-    }, []);
+    // useEffect(() => {
+    //     dispatch(renderConstructorIngridients())
+    // }, []);
 
 
     if (list.length !== 0) {

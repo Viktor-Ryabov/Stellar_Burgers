@@ -16,7 +16,6 @@ const BurgerIngredients = () => {
     const { ingridientsCondition, modalData } = useSelector((state) => state.modalState)
 
     const list = useSelector((state) => state.initialData.ingridients);
-    // console.log(list)
     
     const { bunsMenu, saucesMenu, fillingsMenu, ingridientsMenu, sectionName } = useSelector(
         (state) => state.burgerMenu

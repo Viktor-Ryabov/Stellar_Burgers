@@ -18,6 +18,7 @@ const actionLoger = store => next => action => {
     return next(action);
 };
 
+// const enhancer = composeEnhancers(applyMiddleware(thunk, actionLoger));
 const enhancer = composeEnhancers(applyMiddleware(thunk, actionLoger));
 const store = createStore(rootReducer, enhancer);
 

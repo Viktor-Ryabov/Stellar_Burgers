@@ -4,23 +4,20 @@ import Styles from "./OrderDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Done from "../../img/done.svg"
 import { useSelector, useDispatch } from "react-redux";
-import { ORDER_MODAL_DISABLED } from "../../utils/constants/constants__modal";
+import { setOrderModalDisabled } from "../../services/actions/action__orderModal";
 
-export const OrderDetails = () => {
-    // console.log(props)
-    // console.log(props.setActive)
+export const OrderDetails = (props) => {
+    console.log(props)
     const dispatch = useDispatch();
     const orderNumber = useSelector(
-        (state) => state.orderIngridients.orderNumber
+        (state) => state.modalState.modalData,
     );
 
     return (
         <div className={`${Styles.popup}`}>
             <div className={`${Styles.closeIcon} mt-15 mr-10`}>
                 <CloseIcon onClick={() => {
-                    dispatch({
-                        type: ORDER_MODAL_DISABLED
-                    })
+                    dispatch(setOrderModalDisabled())
                 }} />
             </div>
             <p className="text text_type_digits-large mt-30">{orderNumber}</p>

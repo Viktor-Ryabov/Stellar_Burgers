@@ -5,23 +5,19 @@ import PropTypes from "prop-types";
 import Styles from "./withModal.module.css";
 import { ModalOwerlay } from "../components/ModalOwerlay/ModalOwerlay";
 import { useDispatch, useSelector } from "react-redux";
-import { INGRIDIENTS_MODAL_DISABLED, ORDER_MODAL_DISABLED } from "../utils/constants/constants__modal";
+import { setIngridietnModalDisabledAction } from "../services/actions/action__ingridietnModal";
+import { setOrderModalDisabled } from "../services/actions/action__orderModal";
 
 export const withModal = (WrappedComponent) => (props) => {
     const dispatch = useDispatch();
     const { ingridientsCondition, orderCondition } = useSelector((state) => state.modalState);
-    // console.log(`ingridientsCondition: ${ingridientsCondition}, orderCondition: ${orderCondition}`);
 
     const escFunction = useCallback((event) => {
         if (event.key === "Escape") {
             if(ingridientsCondition) {
-                dispatch({
-                    type: INGRIDIENTS_MODAL_DISABLED
-                })
+                dispatch(setIngridietnModalDisabledAction())
             } else if (orderCondition) {
-                dispatch({
-                    type: ORDER_MODAL_DISABLED
-                })
+                dispatch(setOrderModalDisabled())
             }
         }
     }, []);

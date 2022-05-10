@@ -5,6 +5,10 @@ import {
     INITIAL_DATA_REQUEST_FAILED,
     SET_INITIAL_DATA_TO_INGRIDIENTS,
 } from "../../utils/constants/constants.js";
+import { initialDataRequest,
+    initialDataRequestSuccess,
+    setInitialDataIngridients,
+    initialDataRequestFailed } from "../actions/action__initialIngridientsAction.js";
 import { checkResponse } from "./api__checkResponse.js";
 
 
@@ -14,34 +18,21 @@ export const getApiResponse = () => {
 
 export const getIngridientsRequest = () => {
     return function (dispatch) {
-        dispatch({
-            type: INITIAL_DATA_REQUEST,
-        });
+        dispatch(initialDataRequest());
         getApiResponse()
             .then((response) => {
                 if (response && response.success) {
-                    dispatch({
-                        type: INITIAL_DATA_REQUEST_SUCCESS,
-                        data: response.data,
-                    });
-                    
-                    dispatch({
-                        type: SET_INITIAL_DATA_TO_INGRIDIENTS,
-                        data: response.data,
-                    });
+                    dispatch(initialDataRequestSuccess(response.data));
+                    dispatch(setInitialDataIngridients(response.data));
 
                 } else {
                     console.log(`ошибка в 'экшене': ${response}`)
-                    dispatch({
-                        type: INITIAL_DATA_REQUEST_FAILED,
-                    });
+                    dispatch(initialDataRequestFailed());
                 }
             })
             .catch((err) => {
                 console.log(`ошибка в кэтче: ${err}`);
-                dispatch({
-                    type: INITIAL_DATA_REQUEST_FAILED,
-                });
+                dispatch(initialDataRequestFailed());
             });
     };
 };
