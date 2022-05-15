@@ -15,6 +15,7 @@ const SET_INITIAL_DATA_TO_INGRIDIENTS = "SET_INITIAL_DATA_TO_INGRIDIENTS";
 
 const ItemTypes={
     INGRIDIENT: "ingridient",
+    CONSTRUCTOR_INGRIDIENT: "constructorIngridient",
 }
 
 const ADD_TO_CONSTRUCTOR = "ADD_TO_CONSTRUCTOR";
