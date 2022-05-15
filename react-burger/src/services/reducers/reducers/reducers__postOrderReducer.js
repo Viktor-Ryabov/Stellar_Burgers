@@ -1,9 +1,9 @@
-import { initialState } from "../../utils/initialState";
+import { initialState } from "../../../utils/initialState";
 import {
     POST_ORDER_REQUEST,
     POST_ORDER_REQUEST_SUCCESS,
     POST_ORDER_REQUEST_FAILED,
-} from "../../utils/constants/constants.js";
+} from "../../../utils/constants/constants.js";
 
 export default function postOrderReducer(
     state = initialState.orderIngridients,

@@ -5,7 +5,6 @@ export const setIngridietnModalAcitveAction = (ingridient) => ({
     data: { ...ingridient },
 });
 
-export const setIngridietnModalDisabledAction = (ingridient) => ({
+export const setIngridietnModalDisabledAction = () => ({
     type: INGRIDIENTS_MODAL_DISABLED,
-    data: { ...ingridient },
 });

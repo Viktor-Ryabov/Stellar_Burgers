@@ -1,9 +1,9 @@
-import { initialState } from "../../utils/initialState.js";
+import { initialState } from "../../../utils/initialState.js";
 import {
     INITIAL_DATA_REQUEST,
     INITIAL_DATA_REQUEST_SUCCESS,
     INITIAL_DATA_REQUEST_FAILED,
-} from "../../utils/constants/constants.js";
+} from "../../../utils/constants/constants.js";
 
 export default function initialDataReducer(
     state = initialState.initialIngridients,

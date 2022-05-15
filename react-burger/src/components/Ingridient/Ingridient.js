@@ -9,49 +9,55 @@ import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
 import { ItemTypes } from "../../utils/constants/constants";
 import { useDrag } from "react-dnd";
-import {setIngridietnModalAcitveAction} from "../../services/actions/action__ingridietnModal";
+import { setIngridietnModalAcitveAction } from "../../services/actions/action__ingridietnModal";
 
-
-const Ingridient = ( { ...ingridient } ) => {
-
+const Ingridient = ({ ...ingridient }) => {
     let counterBuns;
     let counterNotBuns;
 
     const countsBuns = useSelector((state) => state.orderIngridients.buns);
-    const countsNotBuns = useSelector((state) => state.orderIngridients.notBuns);
+    const countsNotBuns = useSelector(
+        (state) => state.orderIngridients.notBuns
+    );
 
     const calculateCounterNotBuns = () => {
-        if(countsNotBuns.length !==0){
-            (counterNotBuns = countsNotBuns.filter(item => item._id === ingridient._id).length);
+        if (countsNotBuns.length !== 0) {
+            counterNotBuns = countsNotBuns.filter(
+                (item) => item._id === ingridient._id
+            ).length;
         }
-    }
+    };
     const calculateCounterBuns = () => {
-        if(countsBuns.length !==0){
-            return counterBuns = countsBuns.filter(item => item._id === ingridient._id).length;
+        if (countsBuns.length !== 0) {
+            return (counterBuns = countsBuns.filter(
+                (item) => item._id === ingridient._id
+            ).length);
         }
-    }
+    };
     calculateCounterNotBuns();
     calculateCounterBuns();
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: ItemTypes.INGRIDIENT,
         item: ingridient,
-        collect: monitor => ({
+        collect: (monitor) => ({
             isDragging: monitor.isDragging(),
         }),
     }));
 
     const dispatch = useDispatch();
 
-
-
     return (
         <article
             ref={drag}
             draggable={true}
-            className={ isDragging ? `${Styles.ingridient_dragging} mb-8` : `${Styles.ingridient} mb-8`}
+            className={
+                isDragging
+                    ? `${Styles.ingridient_dragging} mb-8`
+                    : `${Styles.ingridient} mb-8`
+            }
             onClick={() => {
-                dispatch( setIngridietnModalAcitveAction(ingridient) );
+                dispatch(setIngridietnModalAcitveAction(ingridient));
             }}
         >
             <img
@@ -73,18 +79,25 @@ const Ingridient = ( { ...ingridient } ) => {
             >
                 {ingridient.name}
             </h5>
-            
-            <div className={Styles.ingridient_quantity} >
-                <Counter count={ (counterBuns || counterNotBuns) && ingridient.type === "bun" ? counterBuns : counterNotBuns }/>
+
+            <div className={Styles.ingridient_quantity}>
+                <Counter
+                    count={
+                        (counterBuns || counterNotBuns) &&
+                        ingridient.type === "bun"
+                            ? counterBuns
+                            : counterNotBuns
+                    }
+                />
             </div>
         </article>
     );
 };
 
-Ingridient.propTypes = {
-    setIngridientData: PropTypes.func,
-    setActive: PropTypes.func,
-    props: PropTypes.arrayOf(ingridientTypicalType),
-};
+// Ingridient.propTypes = {
+//     setIngridientData: PropTypes.func,
+//     setActive: PropTypes.func,
+//     props: PropTypes.arrayOf(ingridientTypicalType),
+// };
 
 export default Ingridient;

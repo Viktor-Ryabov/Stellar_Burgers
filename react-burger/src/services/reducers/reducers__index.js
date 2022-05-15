@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import initialDataReducer from "./reducers__initialData.js";
-import postOrderReducer from "./reducers__orderData.js";
-import { burgerMenuReducer } from "./reducers__burgerMenu.js";
-import modalReducer from "./reducers__modal.js";
-import { constructorReducer } from "./reducers__constructor.js";
-import orderNumberReducer from "./reducers__orderData.js"
+import initialDataReducer from "./reducers/reducers__initialDataReducer.js";
+import postOrderReducer from "./reducers/reducers__postOrderReducer.js";
+import { burgerMenuReducer } from "./reducers/reducers__burgerMenuReducer.js";
+import modalReducer from "./reducers/reducers__modalReducer.js";
+import orderNumberReducer from "./reducers/reducers__orderNumberReducer.js";
+import { constructorReducer } from "./reducers/reducers__constructorReducer.js";
 
 export const rootReducer = combineReducers({
     initialData: initialDataReducer,

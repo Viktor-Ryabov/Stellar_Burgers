@@ -10,11 +10,11 @@ export const OrderDetails = (props) => {
     console.log(props)
     const dispatch = useDispatch();
     const orderNumber = useSelector(
-        (state) => state.modalState.modalData,
+        (state) => state.orderNumber.number,
     );
 
     return (
-        <div className={`${Styles.popup}`}>
+        <div className={`${Styles.popup}`} onClick={(e) => e.stopPropagation()}>
             <div className={`${Styles.closeIcon} mt-15 mr-10`}>
                 <CloseIcon onClick={() => {
                     dispatch(setOrderModalDisabled())
@@ -37,9 +37,3 @@ export const OrderDetails = (props) => {
         </div>
     );
 };
-
-PropTypes.exact({
-    active: PropTypes.bool.isRequired,
-    orderNumber: PropTypes.number.isRequired,
-    setActive: PropTypes.func.isRequired,
-});

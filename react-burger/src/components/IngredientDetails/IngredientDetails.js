@@ -1,9 +1,8 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Styles from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useDispatch } from "react-redux";
-import { INGRIDIENTS_MODAL_DISABLED } from "../../utils/constants/constants__modal.js";
+import { setIngridietnModalDisabledAction } from "../../services/actions/action__ingridietnModal";
 
 export const IngredientDetails = (props) => {
     const dispatch = useDispatch();
@@ -11,7 +10,6 @@ export const IngredientDetails = (props) => {
     return (
         <div
             className={`${Styles.popup} p-10`}
-            onClick={(e) => e.stopPropagation()}
         >
             <div className={Styles.modalHeader}>
                 <p className={"text text_type_main-large"}>
@@ -19,9 +17,7 @@ export const IngredientDetails = (props) => {
                 </p>
                 <div className={Styles.closeIcon}>
                     <CloseIcon onClick={() => {
-                        dispatch({
-                            type: INGRIDIENTS_MODAL_DISABLED
-                        })
+                        dispatch(setIngridietnModalDisabledAction())
                     }} />
                 </div>
             </div>
