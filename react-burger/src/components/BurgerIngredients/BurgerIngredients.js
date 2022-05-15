@@ -91,7 +91,7 @@ const BurgerIngredients = () => {
                     {ingridientsMenu.map((ingridient, index) => (
                         <Ingridient
                             {...ingridient}
-                            key={index}
+                            key={ingridient._id}
                         />
                     ))}
                 </section>
@@ -101,9 +101,9 @@ const BurgerIngredients = () => {
     );
 };
 
-// BurgerIngredients.propTypes = {
-//     optionalObject: PropTypes.object,
-//     objectWithSape: PropTypes.arrayOf(ingridientTypicalType),
-// };
+BurgerIngredients.propTypes = {
+    optionalObject: PropTypes.object,
+    objectWithSape: PropTypes.arrayOf(ingridientTypicalType),
+};
 
 export default BurgerIngredients;

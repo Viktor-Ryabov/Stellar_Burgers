@@ -94,10 +94,10 @@ const Ingridient = ({ ...ingridient }) => {
     );
 };
 
-// Ingridient.propTypes = {
-//     setIngridientData: PropTypes.func,
-//     setActive: PropTypes.func,
-//     props: PropTypes.arrayOf(ingridientTypicalType),
-// };
+Ingridient.propTypes = {
+    setIngridientData: PropTypes.func,
+    setActive: PropTypes.func,
+    props: PropTypes.arrayOf(ingridientTypicalType),
+};
 
 export default Ingridient;

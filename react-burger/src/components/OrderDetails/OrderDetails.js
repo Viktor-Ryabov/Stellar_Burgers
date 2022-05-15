@@ -7,7 +7,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { setOrderModalDisabled } from "../../services/actions/action__orderModal";
 
 export const OrderDetails = (props) => {
-    console.log(props)
     const dispatch = useDispatch();
     const orderNumber = useSelector(
         (state) => state.orderNumber.number,

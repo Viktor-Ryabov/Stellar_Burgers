@@ -9,7 +9,6 @@ import { setIngridietnModalDisabledAction } from "../services/actions/action__in
 import { setOrderModalDisabled } from "../services/actions/action__orderModal";
 
 export const withModal = (WrappedComponent) => (props) => {
-    console.log(props)
     const dispatch = useDispatch();
     const { ingridientsCondition, orderCondition } = useSelector((state) => state.modalState);
 
