@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import { useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import Styles from "./withModal.module.css";
-import { ModalOwerlay } from "../components/ModalOwerlay/ModalOwerlay";
+import { ModalOwerlay } from "../../components/ModalOwerlay/ModalOwerlay";
 import { useDispatch, useSelector } from "react-redux";
-import { setIngridietnModalDisabledAction } from "../services/actions/action-ingridietnModal";
-import { setOrderModalDisabled } from "../services/actions/action-orderModal";
+import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
+import { setOrderModalDisabled } from "../../services/actions/action-orderModal";
 
 export const withModal = (WrappedComponent) => (props) => {
+    console.log(props)
     const dispatch = useDispatch();
     const { ingridientsCondition, orderCondition } = useSelector((state) => state.modalState);
 

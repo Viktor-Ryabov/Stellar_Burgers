@@ -1,5 +1,5 @@
 import { initialState } from "../../utils/initialState";
-import { SET_ORDER_DATA } from "../../utils/constants/constants-orderRequest";
+import { SET_ORDER_DATA } from "../constants/constants-orderRequest";
 
 export default function orderNumberReducer(
     state = initialState.orderNumber,

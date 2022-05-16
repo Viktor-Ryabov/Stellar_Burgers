@@ -1,7 +1,7 @@
 import {
     baseUrl,
     POST_ORDER_REQUEST_FAILED,
-} from "../../utils/constants/constants.js";
+} from "../constants/constants.js";
 import { checkResponse } from "./api-checkResponse.js";
 import postOrderRequestSucsess from "../actions/action-postOrderRequestSucsess.js";
 import postOrderRequestFailed from "../actions/action-postOrderRequestFailed.js";

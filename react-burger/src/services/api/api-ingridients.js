@@ -4,7 +4,7 @@ import {
     INITIAL_DATA_REQUEST_SUCCESS,
     INITIAL_DATA_REQUEST_FAILED,
     SET_INITIAL_DATA_TO_INGRIDIENTS,
-} from "../../utils/constants/constants.js";
+} from "../constants/constants.js";
 import { initialDataRequest,
     initialDataRequestSuccess,
     setInitialDataIngridients,

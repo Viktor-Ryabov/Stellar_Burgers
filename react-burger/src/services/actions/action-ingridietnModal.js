@@ -1,4 +1,4 @@
-import { INGRIDIENTS_MODAL_ACTIVE, INGRIDIENTS_MODAL_DISABLED } from "../../utils/constants/constants-modal";
+import { INGRIDIENTS_MODAL_ACTIVE, INGRIDIENTS_MODAL_DISABLED } from "../constants/constants-modal";
 
 export const setIngridietnModalAcitveAction = (ingridient) => ({
     type: INGRIDIENTS_MODAL_ACTIVE,

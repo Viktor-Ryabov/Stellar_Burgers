@@ -7,12 +7,12 @@ import {
     CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
-import { withModal } from "../../hocs/withModal";
+import { withModal } from "../../hocs/withModal/withModal";
 import { ingridientTypicalType } from "../../utils/types";
 import { getOrderRequest } from "../../services/api/api-order.js";
 import IngridientsSection from "./BurgerConstructor-IngridientsSection.js";
 import EmptyElement from "./EmptyElement/EmptyElement.js";
-import { ItemTypes } from "../../utils/constants/constants";
+import { ItemTypes } from "../../services/constants/constants";
 import addToConstructor from "../../services/actions/action-addToConstructor";
 import { useDrop } from "react-dnd";
 import { setOrderModalAcitve } from "../../services/actions/action-orderModal";

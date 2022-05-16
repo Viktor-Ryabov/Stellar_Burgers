@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
 import { ingridientTypicalType } from "../../utils/types";
 import renderConstructorIngridients from "../../services/actions/action-renderConstructorIngridients";
-import { ItemTypes } from "../../utils/constants/constants";
+import { ItemTypes } from "../../services/constants/constants";
 import { useDrag, useDrop } from "react-dnd";
 import { ConstructorIngridient } from "../ConstructorIngridient/ConstructorIngridient";
 import replaceIngridient from "../../services/actions/action-replaceIngridient";

@@ -7,7 +7,7 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
-import { ItemTypes } from "../../utils/constants/constants";
+import { ItemTypes } from "../../services/constants/constants";
 import { useDrag } from "react-dnd";
 import { setIngridietnModalAcitveAction } from "../../services/actions/action-ingridietnModal";
 
