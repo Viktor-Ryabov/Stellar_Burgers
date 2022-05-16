@@ -2,7 +2,7 @@ import Styles from "./ConstructorIngridient.module.css";
 import { useRef } from "react";
 import { ConstructorElement } from "@ya.praktikum/react-developer-burger-ui-components";
 import { DragIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import deleteIngridientFromConstructor from "../../services/actions/action__deleteIngridientFromConstructor";
+import deleteIngridientFromConstructor from "../../services/actions/action-deleteIngridientFromConstructor";
 import { useDispatch } from "react-redux";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "../../utils/constants/constants";

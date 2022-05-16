@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Styles from "./IngredientDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useDispatch } from "react-redux";
-import { setIngridietnModalDisabledAction } from "../../services/actions/action__ingridietnModal";
+import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
 
 export const IngredientDetails = (props) => {
     const dispatch = useDispatch();

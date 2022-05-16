@@ -9,7 +9,7 @@ import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
 import { ItemTypes } from "../../utils/constants/constants";
 import { useDrag } from "react-dnd";
-import { setIngridietnModalAcitveAction } from "../../services/actions/action__ingridietnModal";
+import { setIngridietnModalAcitveAction } from "../../services/actions/action-ingridietnModal";
 
 const Ingridient = ({ ...ingridient }) => {
     let counterBuns;

@@ -1,7 +1,7 @@
 import {
     ORDER_MODAL_ACTIVE,
     ORDER_MODAL_DISABLED,
-} from "../../utils/constants/constants__modal.js";
+} from "../../utils/constants/constants-modal.js";
 
 export const setOrderModalAcitve = (number) => ({
     type: ORDER_MODAL_ACTIVE,

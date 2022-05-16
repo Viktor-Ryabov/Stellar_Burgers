@@ -8,8 +8,8 @@ import {
 import { initialDataRequest,
     initialDataRequestSuccess,
     setInitialDataIngridients,
-    initialDataRequestFailed } from "../actions/action__initialIngridientsAction.js";
-import { checkResponse } from "./api__checkResponse.js";
+    initialDataRequestFailed } from "../actions/action-initialIngridientsAction.js";
+import { checkResponse } from "./api-checkResponse.js";
 
 
 export const getApiResponse = () => {

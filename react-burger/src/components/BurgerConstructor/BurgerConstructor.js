@@ -9,13 +9,13 @@ import {
 import { OrderDetails } from "../OrderDetails/OrderDetails";
 import { withModal } from "../../hocs/withModal";
 import { ingridientTypicalType } from "../../utils/types";
-import { getOrderRequest } from "../../services/api/api__order.js";
-import IngridientsSection from "./BurgerConstructor__IngridientsSection.js";
+import { getOrderRequest } from "../../services/api/api-order.js";
+import IngridientsSection from "./BurgerConstructor-IngridientsSection.js";
 import EmptyElement from "./EmptyElement/EmptyElement.js";
 import { ItemTypes } from "../../utils/constants/constants";
-import addToConstructor from "../../services/actions/action__addToConstructor";
+import addToConstructor from "../../services/actions/action-addToConstructor";
 import { useDrop } from "react-dnd";
-import { setOrderModalAcitve } from "../../services/actions/action__orderModal";
+import { setOrderModalAcitve } from "../../services/actions/action-orderModal";
 
 const WithModalOrder = withModal(OrderDetails);
 

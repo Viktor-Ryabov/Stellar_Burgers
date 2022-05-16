@@ -4,11 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import Styles from "./BurgerConstructor.module.css";
 import { ingridientTypicalType } from "../../utils/types";
-import renderConstructorIngridients from "../../services/actions/actions__renderConstructorIngridients";
+import renderConstructorIngridients from "../../services/actions/action-renderConstructorIngridients";
 import { ItemTypes } from "../../utils/constants/constants";
 import { useDrag, useDrop } from "react-dnd";
 import { ConstructorIngridient } from "../ConstructorIngridient/ConstructorIngridient";
-import replaceIngridient from "../../services/actions/action__replaceIngridient";
+import replaceIngridient from "../../services/actions/action-replaceIngridient";
 
 
 const IngridientsSection = () => {

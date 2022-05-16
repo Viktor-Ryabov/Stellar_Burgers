@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 import Styles from "./withModal.module.css";
 import { ModalOwerlay } from "../components/ModalOwerlay/ModalOwerlay";
 import { useDispatch, useSelector } from "react-redux";
-import { setIngridietnModalDisabledAction } from "../services/actions/action__ingridietnModal";
-import { setOrderModalDisabled } from "../services/actions/action__orderModal";
+import { setIngridietnModalDisabledAction } from "../services/actions/action-ingridietnModal";
+import { setOrderModalDisabled } from "../services/actions/action-orderModal";
 
 export const withModal = (WrappedComponent) => (props) => {
     const dispatch = useDispatch();

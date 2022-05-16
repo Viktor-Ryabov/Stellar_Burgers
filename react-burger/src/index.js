@@ -3,7 +3,7 @@ import "./index.css";
 import App from "./components/App/App";
 import { Provider } from "react-redux";
 import { legacy_createStore as createStore, applyMiddleware } from "redux";
-import { rootReducer } from "./services/reducers/reducers__index.js";
+import { rootReducer } from "./services/reducers/reducers-index.js";
 import thunk from "redux-thunk";
 import { compose } from "redux";
 

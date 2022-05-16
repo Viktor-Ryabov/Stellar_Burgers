@@ -4,7 +4,7 @@ import {
     RENDER_INGRIDIENTS,
 } from "../../../utils/constants/constants";
 import { initialState } from "../../../utils/initialState.js";
-import { REPLACE } from "../../actions/action__replaceIngridient.js";
+import { REPLACE } from "../../actions/action-replaceIngridient.js";
 
 export const constructorReducer = (
     state = initialState.orderIngridients,

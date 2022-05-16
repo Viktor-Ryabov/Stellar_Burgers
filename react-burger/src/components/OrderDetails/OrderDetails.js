@@ -4,7 +4,7 @@ import Styles from "./OrderDetails.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import Done from "../../img/done.svg"
 import { useSelector, useDispatch } from "react-redux";
-import { setOrderModalDisabled } from "../../services/actions/action__orderModal";
+import { setOrderModalDisabled } from "../../services/actions/action-orderModal";
 
 export const OrderDetails = (props) => {
     const dispatch = useDispatch();

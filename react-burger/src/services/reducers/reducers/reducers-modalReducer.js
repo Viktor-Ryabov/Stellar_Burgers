@@ -3,7 +3,7 @@ import {
     INGRIDIENTS_MODAL_DISABLED,
     ORDER_MODAL_ACTIVE, 
     ORDER_MODAL_DISABLED
-} from "../../../utils/constants/constants__modal.js";
+} from "../../../utils/constants/constants-modal.js";
 import { initialState } from "../../../utils/initialState.js";
 
 export default function modalReducer(state = initialState.modalState, action) {
