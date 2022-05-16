@@ -15,7 +15,7 @@ import EmptyElement from "./EmptyElement/EmptyElement.js";
 import { ItemTypes } from "../../services/constants/constants";
 import addToConstructor from "../../services/actions/action-addToConstructor";
 import { useDrop } from "react-dnd";
-import { setOrderModalAcitve } from "../../services/actions/action-orderModal";
+import { setOrderModalDisabled } from "../../services/actions/action-orderModal";
 
 const WithModalOrder = withModal(OrderDetails);
 
@@ -51,6 +51,9 @@ const BurgerConstructor = () => {
             });
         }
     };
+    const setDisabledModal = () => {
+        dispatch(setOrderModalDisabled());
+    }
 
     if (buns.length !== 0) {
         return (
@@ -58,7 +61,7 @@ const BurgerConstructor = () => {
                 ref={drop}
                 className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}
             >
-                <WithModalOrder active = {orderCondition} />
+                <WithModalOrder active = {orderCondition} setDisabledModal = {setDisabledModal}/>
 
                 <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                     <ConstructorElement
@@ -91,12 +94,9 @@ const BurgerConstructor = () => {
                     <Button
                         type="primary"
                         size="large"
-                        onClick={(e) => {
-                            e.stopPropagation();
+                        onClick={() => {
                             formatOrderData();
-                            dispatch(
-                                getOrderRequest(dispatch, orderIngridients)
-                            );
+                            getOrderRequest(dispatch, orderIngridients)
                         }}
                     >
                         Оформить заказ

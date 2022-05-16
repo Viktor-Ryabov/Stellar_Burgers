@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
 
 export const IngredientDetails = (props) => {
+    // console.log(props)
     const dispatch = useDispatch();
 
     return (
@@ -69,7 +70,18 @@ export const IngredientDetails = (props) => {
     );
 };
 
-PropTypes.exact({
+IngredientDetails.propTypes = PropTypes.shape({
     active: PropTypes.bool.isRequired,
-    setActive: PropTypes.func.isRequired,
-});
+    calories: PropTypes.number.isRequired,
+    carbohydrates: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    image: PropTypes.link,
+    image_large: PropTypes.link,
+    image_mobile: PropTypes.link,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    proteins: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    __v: PropTypes.number.isRequired,
+    _id: PropTypes.string,
+}).isRequired;

@@ -6,8 +6,11 @@ import deleteIngridientFromConstructor from "../../services/actions/action-delet
 import { useDispatch } from "react-redux";
 import { useDrag, useDrop } from "react-dnd";
 import { ItemTypes } from "../../services/constants/constants";
+import PropTypes from "prop-types";
+import { ingridientTypicalType } from "../../utils/types";
 
 export const ConstructorIngridient = ({ id, index, moveCard, ingridient }) => {
+    // console.log({ id, index, moveCard, ingridient });
     const dispatch = useDispatch();
     const ref = useRef(null);
 
@@ -72,4 +75,11 @@ export const ConstructorIngridient = ({ id, index, moveCard, ingridient }) => {
             />
         </div>
     );
+};
+
+ConstructorIngridient.propTypes = {
+    id: PropTypes.string.isRequired,
+    index: PropTypes.number.isRequired,
+    moveCard: PropTypes.func.isRequired,
+    ingridient: ingridientTypicalType,
 };

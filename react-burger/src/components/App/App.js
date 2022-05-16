@@ -23,7 +23,7 @@ const App = () => {
     } else if (!requestStatusOk) {
         return (
             <section className={`${Styles.appLoading} text_type_digits-large`}>
-                ...ГРУЗИМ
+                ...Loading
             </section>
         );
     } else {

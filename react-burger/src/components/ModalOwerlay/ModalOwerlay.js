@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Styles from "../ModalOwerlay/ModalOwerlay.module.css";
 import { useDispatch, useSelector} from "react-redux";
 import { INGRIDIENTS_MODAL_DISABLED, ORDER_MODAL_DISABLED } from "../../services/constants/constants-modal.js";
@@ -26,8 +25,3 @@ export const ModalOwerlay = () => {
         ></div>
     );
 };
-
-PropTypes.exact({
-    active: PropTypes.bool,
-    setActive: PropTypes.func.isRequired,
-});

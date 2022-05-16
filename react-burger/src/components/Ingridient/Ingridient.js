@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Styles from "../Ingridient/Ingridient.module.css";
 import {
@@ -11,7 +10,8 @@ import { ItemTypes } from "../../services/constants/constants";
 import { useDrag } from "react-dnd";
 import { setIngridietnModalAcitveAction } from "../../services/actions/action-ingridietnModal";
 
-const Ingridient = ({ ...ingridient }) => {
+const Ingridient = (ingridient) => {
+    // console.log(ingridient)
     let counterBuns;
     let counterNotBuns;
 
@@ -95,9 +95,7 @@ const Ingridient = ({ ...ingridient }) => {
 };
 
 Ingridient.propTypes = {
-    setIngridientData: PropTypes.func,
-    setActive: PropTypes.func,
-    props: PropTypes.arrayOf(ingridientTypicalType),
+    ingridient: PropTypes.objectOf(ingridientTypicalType),
 };
 
 export default Ingridient;
