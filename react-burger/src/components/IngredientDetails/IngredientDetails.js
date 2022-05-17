@@ -1,22 +1,14 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Styles from "./IngredientDetails.module.css";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 export const IngredientDetails = (props) => {
-    // console.log(props);
+
     return (
-        <div
-            className={`${Styles.popup} p-10`}
-            onClick={(e) => e.stopPropagation()}
-        >
+        <>
             <div className={Styles.modalHeader}>
                 <p className={"text text_type_main-large"}>
                     Детали ингридиента
                 </p>
-                <div className={Styles.closeIcon}>
-                    <CloseIcon onClick={() => props.setActive(false)} />
-                </div>
             </div>
 
             <div className={`${Styles.ingridient} mr-25 ml-25 `}>
@@ -62,11 +54,22 @@ export const IngredientDetails = (props) => {
                     </div>
                 </ul>
             </div>
-        </div>
+        </>
     );
 };
 
-PropTypes.exact({
+IngredientDetails.propTypes = PropTypes.shape({
     active: PropTypes.bool.isRequired,
-    setActive: PropTypes.func.isRequired,
-});
+    calories: PropTypes.number.isRequired,
+    carbohydrates: PropTypes.number.isRequired,
+    fat: PropTypes.number.isRequired,
+    image: PropTypes.link,
+    image_large: PropTypes.link,
+    image_mobile: PropTypes.link,
+    name: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    proteins: PropTypes.number.isRequired,
+    type: PropTypes.string.isRequired,
+    __v: PropTypes.number.isRequired,
+    _id: PropTypes.string,
+}).isRequired;

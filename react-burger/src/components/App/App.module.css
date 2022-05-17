@@ -4,3 +4,13 @@
   display: flex;
   flex-direction: column;
 }
+
+.appLoading{
+  margin: 25% 0 0 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+}

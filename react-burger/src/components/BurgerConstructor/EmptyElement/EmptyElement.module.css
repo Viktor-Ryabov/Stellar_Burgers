@@ -1,0 +1,28 @@
+.EmptyElement_top {
+    border-radius: 88px 88px 40px 40px;
+    border: 4px dashed #2f2f37;
+    padding: 16px 24px;
+    display: inline-block;
+    width: 488px;
+    height: 48px;
+    font-family: 'Jet Brains Mono';
+    font-size: 16px;
+    line-height: 24px;
+    color: #F2F2F3;
+    flex-grow: 1;
+    background-color: #131316;
+}
+.EmptyElement_bottom {
+    border-radius: 40px 40px 88px 88px;
+    border: 4px dashed #2f2f37;
+    padding: 16px 24px;
+    display: inline-block;
+    width: 488px;
+    height: 48px;
+    font-family: 'Jet Brains Mono';
+    font-size: 16px;
+    line-height: 24px;
+    color: #F2F2F3;
+    flex-grow: 1;
+    background-color: #131316;
+}

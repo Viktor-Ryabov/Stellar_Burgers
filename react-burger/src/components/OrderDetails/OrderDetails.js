@@ -1,18 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
 import Styles from "./OrderDetails.module.css";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import Done from "../../img/done.svg"
+import Done from "../../img/done.svg";
+import { useSelector } from "react-redux";
 
-export const OrderDetails = (props) => {
-    console.log(props)
-    // console.log(props.setActive)
+export const OrderDetails = () => {
+    const orderNumber = useSelector((state) => state.orderNumber.number);
+
     return (
-        <div className={`${Styles.popup}`}>
-            <div className={`${Styles.closeIcon} mt-15 mr-10`}>
-                <CloseIcon onClick={() => props.setActive(false)} />
-            </div>
-            <p className="text text_type_digits-large mt-30">{props.orderNumber}</p>
+        <div className={Styles.orderModalContainer}>
+            <p className="text text_type_digits-large mt-30">{orderNumber}</p>
             <p className="text text_type_main-medium mt-8 mb-15">
                 идентификатор заказа
             </p>
@@ -29,9 +24,3 @@ export const OrderDetails = (props) => {
         </div>
     );
 };
-
-PropTypes.exact({
-    active: PropTypes.bool.isRequired,
-    orderNumber: PropTypes.number.isRequired,
-    setActive: PropTypes.func.isRequired,
-});

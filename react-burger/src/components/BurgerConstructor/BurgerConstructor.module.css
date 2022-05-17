@@ -9,6 +9,10 @@
   font-family: "JetBrains Mono";
 }
 
+.hover{
+  border: solid 4px greenyellow;
+}
+
 .owerflowBlock{
   margin: 0;
   padding: 0;
@@ -48,13 +52,6 @@
 
 .totalCostMoneyIcon{
   transform: scale(1.5);
-}
-
-.burgerConstructorItem{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .elementTopBottom{

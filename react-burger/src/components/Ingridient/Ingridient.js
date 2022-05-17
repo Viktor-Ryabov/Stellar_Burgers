@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import Styles from "../Ingridient/Ingridient.module.css";
 import {
@@ -6,50 +5,97 @@ import {
     Counter,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ingridientTypicalType } from "../../utils/types";
+import { useDispatch, useSelector } from "react-redux";
+import { ItemTypes } from "../../services/constants/constants";
+import { useDrag } from "react-dnd";
+import { setIngridietnModalAcitveAction } from "../../services/actions/action-ingridietnModal";
 
+const Ingridient = (ingridient) => {
+    // console.log(ingridient)
+    let counterBuns;
+    let counterNotBuns;
 
-const Ingridient = ({ setIngridientData, setActive, ...props }) => {
-    // console.log(props)
+    const countsBuns = useSelector((state) => state.orderIngridients.buns);
+    const countsNotBuns = useSelector(
+        (state) => state.orderIngridients.notBuns
+    );
+
+    const calculateCounterNotBuns = () => {
+        if (countsNotBuns.length !== 0) {
+            counterNotBuns = countsNotBuns.filter(
+                (item) => item._id === ingridient._id
+            ).length;
+        }
+    };
+    const calculateCounterBuns = () => {
+        if (countsBuns.length !== 0) {
+            return (counterBuns = countsBuns.filter(
+                (item) => item._id === ingridient._id
+            ).length);
+        }
+    };
+    calculateCounterNotBuns();
+    calculateCounterBuns();
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: ItemTypes.INGRIDIENT,
+        item: ingridient,
+        collect: (monitor) => ({
+            isDragging: monitor.isDragging(),
+        }),
+    }));
+
+    const dispatch = useDispatch();
+
     return (
         <article
-            className={`${Styles.ingridient} mb-8`}
+            ref={drag}
+            draggable={true}
+            className={
+                isDragging
+                    ? `${Styles.ingridient_dragging} mb-8`
+                    : `${Styles.ingridient} mb-8`
+            }
             onClick={() => {
-                // console.log(`ingridient id: ${props._id}`);
-                setIngridientData(props);
-                setActive(true);
+                dispatch(setIngridietnModalAcitveAction(ingridient));
             }}
         >
             <img
+                draggable={false}
                 className={`${Styles.ingridient_image} ml-4 mr-4 mb-1`}
-                src={props.image}
-                alt={props.name}
+                src={ingridient.image}
+                alt={ingridient.name}
             />
 
             <section className={`${Styles.ingridient_price} mb-1 `}>
-                <p className={Styles.ingridient_price_sum}>{props.price.toLocaleString()}</p>
+                <p className={Styles.ingridient_price_sum}>
+                    {ingridient.price.toLocaleString()}
+                </p>
                 <CurrencyIcon />
             </section>
 
             <h5
                 className={`${Styles.ingridient_description} text text_type_main-default`}
             >
-                {props.name}
+                {ingridient.name}
             </h5>
-            <Counter />
+
             <div className={Styles.ingridient_quantity}>
-                <Counter />
-                {/* <p className={Styles.ingridient_quantity_number}></p> */}
+                <Counter
+                    count={
+                        (counterBuns || counterNotBuns) &&
+                        ingridient.type === "bun"
+                            ? counterBuns
+                            : counterNotBuns
+                    }
+                />
             </div>
         </article>
     );
 };
 
-Ingridient.propTypes = {
-    setIngridientData: PropTypes.func,
-    setActive: PropTypes.func,
-    props: PropTypes.arrayOf(
-        ingridientTypicalType,
-    ),
-};
+// Ingridient.propTypes = {
+//     ingridient: PropTypes.objectOf(ingridientTypicalType),
+// };
 
 export default Ingridient;

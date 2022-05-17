@@ -10,6 +10,20 @@
   color: white;
 }
 
+.ingridient_dragging{
+  /* margin: 0; */
+  padding: 0;
+  position: relative;
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 60%;
+  /* cursor: grab; */
+}
+
 .ingridient:hover{
   transform: scale(105%);
   transition: 0.5s;
@@ -79,5 +93,4 @@
   line-height: 24px;
   font-weight: 400;
   color: blue;
-
 }
