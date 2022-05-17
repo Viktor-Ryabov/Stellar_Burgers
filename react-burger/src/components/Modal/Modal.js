@@ -33,12 +33,10 @@ const Modal = ({ ...props }) => {
             <div className={Styles.modalContainer}>
                 <div className={Styles.closeIcon}>
                     <CloseIcon
-
                         onClick={() => {
                             dispatch(setIngridietnModalDisabledAction());
                         }}
                     />
-                    
                 </div>
                 <>{props.children}</>
             </div>
