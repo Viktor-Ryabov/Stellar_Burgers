@@ -3,7 +3,7 @@ import Styles from "./App.module.css";
 import Header from "../Header/Header";
 import MainSection from "../MainSection/MainSection";
 import "@ya.praktikum/react-developer-burger-ui-components";
-import { getIngridientsRequest } from "../../services/api/api__ingridients.js";
+import { getIngridientsRequest } from "../../services/api/api-ingridients.js";
 import { useDispatch, useSelector } from "react-redux";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
@@ -23,7 +23,7 @@ const App = () => {
     } else if (!requestStatusOk) {
         return (
             <section className={`${Styles.appLoading} text_type_digits-large`}>
-                ...ГРУЗИМ
+                ...Loading
             </section>
         );
     } else {

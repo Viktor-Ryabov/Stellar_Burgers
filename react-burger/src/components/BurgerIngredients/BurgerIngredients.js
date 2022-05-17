@@ -1,26 +1,25 @@
-import React from "react";
 import Styles from "./BurgerIngredients.module.css";
-import PropTypes from "prop-types";
-import Ingridient from "../Ingridient/Ingridient";
+import { useState, useEffect } from "react";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
-import { withModal } from "../../hocs/withModal";
+import { withModal } from "../../hocs/withModal/withModal";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
-import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
-import { SET_BUNS, SET_SAUCES, SET_FILLINGS } from "../../utils/constants/constants.js";
+import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
+import { InView, useInView } from "react-intersection-observer";
+import IngredientsCategory from "../IngredientsCategory/IngredientsCategory";
 
 const WithModalIngridient = withModal(IngredientDetails);
 
 const BurgerIngredients = () => {
-
     const dispatch = useDispatch();
-    const { ingridientsCondition, modalData } = useSelector((state) => state.modalState)
+    const { ingridientsCondition, modalData } = useSelector(
+        (state) => state.modalState
+    );
 
     const list = useSelector((state) => state.initialData.ingridients);
-    
-    const { bunsMenu, saucesMenu, fillingsMenu, ingridientsMenu, sectionName } = useSelector(
-        (state) => state.burgerMenu
-    );
+
+    const { bunsMenu, saucesMenu, fillingsMenu, ingridientsMenu, sectionName } =
+        useSelector((state) => state.burgerMenu);
 
     const Buns = [];
     const Sauces = [];
@@ -36,75 +35,107 @@ const BurgerIngredients = () => {
         }
     });
 
+    const setDisabledModal = () => {
+        dispatch(setIngridietnModalDisabledAction());
+    };
+
+    const [currentTab, setCurrentTab] = useState("buns");
+
+    const [bunsRef, inViewBuns] = useInView({ threshold: 0.5 });
+    const [mainsRef, inViewMains] = useInView({ threshold: 0.5 });
+    const [saucesRef, inViewSauces] = useInView({ threshold: 0.5 });
+
+    const onTabClick = (tab) => {
+        console.log(tab);
+        setCurrentTab(tab);
+        const category = document.getElementById(tab);
+        console.log(category);
+        if (category) {
+            category.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
+    useEffect(() => {
+        if (inViewBuns) {
+            setCurrentTab("buns");
+        } else if (inViewMains) {
+            setCurrentTab("mains");
+        } else if (inViewSauces) {
+            setCurrentTab("sauces");
+        }
+    }, [inViewBuns, inViewMains, inViewSauces]);
+
     return (
         <section className={`${Styles.mainLeft} mr-5`}>
             <WithModalIngridient
-                active = {ingridientsCondition}
+                active={ingridientsCondition}
+                setDisabledModal={setDisabledModal}
                 {...modalData}
             />
             <h2 className={`${Styles.title} mt-10 mb-5`}>Соберите бургер</h2>
-            <section className={`${Styles.owerflowBlock} pr-2`}>
 
-                <ul className={Styles.list}>
-                    <li>
-                        <Tab
-                            active={bunsMenu}
-                            onClick={() => {
-                                dispatch({
-                                    type: SET_BUNS,
-                                    data: Buns,
-                                });
-                            }}
-                        >
-                            Булки
-                        </Tab>
-                    </li>
-                    <li>
-                        <Tab
-                            active={saucesMenu}
-                            onClick={() => {
-                                dispatch({
-                                    type: SET_SAUCES,
-                                    data: Sauces,
-                                });
-                            }}
-                        >
-                            Соусы
-                        </Tab>
-                    </li>
-                    <li>
-                        <Tab
-                            active={fillingsMenu}
-                            onClick={() => {
-                                dispatch({
-                                    type: SET_FILLINGS,
-                                    data: Fillings,
-                                });
-                            }}
-                        >
-                            Начинки
-                        </Tab>
-                    </li>
-                </ul>
+            <ul className={Styles.list}>
+                <li>
+                    <Tab
+                        value="buns"
+                        active={currentTab === "buns"}
+                        onClick={() => onTabClick("buns")}
+                    >
+                        Булки
+                    </Tab>
+                </li>
+                <li>
+                    <Tab
+                        value="mains"
+                        active={currentTab === "mains"}
+                        onClick={onTabClick}
+                    >
+                        Начинки
+                    </Tab>
+                </li>
+                <li>
+                    <Tab
+                        value="sauces"
+                        active={currentTab === "sauces"}
+                        onClick={onTabClick}
+                    >
+                        Соусы
+                    </Tab>
+                </li>
+            </ul>
 
-                <h3 className={`${Styles.subtitle} mt-10 mb-6`}>{sectionName}</h3>
-                <section className={`${Styles.ingridient_section}`}>
-                    {ingridientsMenu.map((ingridient, index) => (
-                        <Ingridient
-                            {...ingridient}
-                            key={ingridient._id}
-                        />
-                    ))}
+            <InView>
+                <section className={`${Styles.owerflowBlock} pr-2`}>
+                    <ul className={`${Styles.ingridient_section}`}>
+                        <li id="buns">
+                            <IngredientsCategory
+                                sectionName="Булки"
+                                titleId="buns"
+                                ref={bunsRef}
+                                ingridients={Buns}
+                            />
+                        </li>
+                        <li id="mains">
+                            <IngredientsCategory
+                                sectionName="Начинки"
+                                titleId="mains"
+                                ref={mainsRef}
+                                ingridients={Fillings}
+                            />
+                        </li>
+                        <li id="sauces">
+                            <IngredientsCategory
+                                sectionName="Соусы"
+                                titleId="sauces"
+                                ref={saucesRef}
+                                ingridients={Sauces}
+                            />
+                        </li>
+                    </ul>
                 </section>
-
-            </section>
+            </InView>
         </section>
     );
-};
-
-BurgerIngredients.propTypes = {
-    optionalObject: PropTypes.object,
-    objectWithSape: PropTypes.arrayOf(ingridientTypicalType),
 };
 
 export default BurgerIngredients;

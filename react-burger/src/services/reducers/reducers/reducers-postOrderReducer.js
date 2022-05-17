@@ -3,7 +3,7 @@ import {
     POST_ORDER_REQUEST,
     POST_ORDER_REQUEST_SUCCESS,
     POST_ORDER_REQUEST_FAILED,
-} from "../../../utils/constants/constants.js";
+} from "../../constants/constants.js";
 
 export default function postOrderReducer(
     state = initialState.orderIngridients,
