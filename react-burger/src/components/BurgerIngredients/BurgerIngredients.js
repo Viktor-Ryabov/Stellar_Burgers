@@ -46,9 +46,10 @@ const BurgerIngredients = () => {
     const [saucesRef, inViewSauces] = useInView({ threshold: 0.5 });
 
     const onTabClick = (tab) => {
-        console.log(tab)
+        console.log(tab);
         setCurrentTab(tab);
         const category = document.getElementById(tab);
+        console.log(category);
         if (category) {
             category.scrollIntoView({ behavior: "smooth" });
         }
@@ -57,13 +58,10 @@ const BurgerIngredients = () => {
     useEffect(() => {
         if (inViewBuns) {
             setCurrentTab("buns");
-            console.log("On Buns")
         } else if (inViewMains) {
             setCurrentTab("mains");
-            console.log("On mains")
         } else if (inViewSauces) {
             setCurrentTab("sauces");
-            console.log("On sauces")
         }
     }, [inViewBuns, inViewMains, inViewSauces]);
 
@@ -81,7 +79,7 @@ const BurgerIngredients = () => {
                     <Tab
                         value="buns"
                         active={currentTab === "buns"}
-                        onClick={onTabClick}
+                        onClick={() => onTabClick("buns")}
                     >
                         Булки
                     </Tab>
@@ -104,34 +102,38 @@ const BurgerIngredients = () => {
                         Соусы
                     </Tab>
                 </li>
-
             </ul>
 
             <InView>
                 <section className={`${Styles.owerflowBlock} pr-2`}>
-                    <section className={`${Styles.ingridient_section}`}>
-                        <IngredientsCategory
-                            sectionName="Булки"
-                            titleId="buns"
-                            ref={bunsRef}
-                            ingridients={Buns}
-                        />
-                        <IngredientsCategory
-                            sectionName="Начинки"
-                            titleId="mains"
-                            ref={mainsRef}
-                            ingridients={Fillings}
-                        />
-                        <IngredientsCategory
-                            sectionName="Соусы"
-                            titleId="sauces"
-                            ref={saucesRef}
-                            ingridients={Sauces}
-                        />
-                    </section>
+                    <ul className={`${Styles.ingridient_section}`}>
+                        <li id="buns">
+                            <IngredientsCategory
+                                sectionName="Булки"
+                                titleId="buns"
+                                ref={bunsRef}
+                                ingridients={Buns}
+                            />
+                        </li>
+                        <li id="mains">
+                            <IngredientsCategory
+                                sectionName="Начинки"
+                                titleId="mains"
+                                ref={mainsRef}
+                                ingridients={Fillings}
+                            />
+                        </li>
+                        <li id="sauces">
+                            <IngredientsCategory
+                                sectionName="Соусы"
+                                titleId="sauces"
+                                ref={saucesRef}
+                                ingridients={Sauces}
+                            />
+                        </li>
+                    </ul>
                 </section>
             </InView>
-
         </section>
     );
 };

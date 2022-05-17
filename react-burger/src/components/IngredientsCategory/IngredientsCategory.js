@@ -6,7 +6,7 @@ const IngredientsCategory = forwardRef((props, ref) => {
     const ingridietnArray = props.ingridients;
     return (
         <div className={Styles.ingredientsCategory} ref={ref}>
-            <h3 className={`${Styles.subtitle} mt-10 mb-6`}>
+            <h3 className={`${Styles.subtitle} mt-10 mb-6`} >
                 {props.sectionName}
             </h3>
             <div className={Styles.ingridientsBlock}>
