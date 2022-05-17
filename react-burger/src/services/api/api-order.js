@@ -26,7 +26,6 @@ export const getOrderRequest = (dispatch, orderIngridients) => {
         .then(res => res.json())
         .then((response) => {
             if (response.success === true) {
-                console.log(response.order.number)
                 dispatch( postOrderRequestSucsess(response.order.number) )
                 dispatch( setOrderData(response.order.number) )
                 dispatch( setOrderModalAcitve(response.order.number) )

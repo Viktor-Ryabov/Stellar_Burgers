@@ -1,11 +1,8 @@
-import React from "react";
 import Styles from "./BurgerIngredients.module.css";
-import PropTypes from "prop-types";
 import Ingridient from "../Ingridient/Ingridient";
 import { Tab } from "../../../node_modules/@ya.praktikum/react-developer-burger-ui-components/dist/ui/tab";
 import { withModal } from "../../hocs/withModal/withModal";
 import { IngredientDetails } from "../IngredientDetails/IngredientDetails";
-import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_BUNS, SET_SAUCES, SET_FILLINGS } from "../../services/constants/constants.js";
 import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";

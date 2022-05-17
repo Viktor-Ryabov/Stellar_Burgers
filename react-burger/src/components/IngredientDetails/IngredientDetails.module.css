@@ -1,5 +1,6 @@
 .popup{
   margin: 0;
+  padding: 0;
   width: 719px;
   height: 538px;
   position: absolute;
@@ -15,7 +16,7 @@
 }
 
 .modalHeader{
-  margin: 0;
+  margin: 55px 0 0 40px;
   padding: 0;
   display: flex;
   flex-direction: row;

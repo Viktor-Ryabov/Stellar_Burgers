@@ -1,26 +1,14 @@
 import PropTypes from "prop-types";
 import Styles from "./IngredientDetails.module.css";
-import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { useDispatch } from "react-redux";
-import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
 
 export const IngredientDetails = (props) => {
-    // console.log(props)
-    const dispatch = useDispatch();
 
     return (
-        <div
-            className={`${Styles.popup} p-10`}
-        >
+        <>
             <div className={Styles.modalHeader}>
                 <p className={"text text_type_main-large"}>
                     Детали ингридиента
                 </p>
-                <div className={Styles.closeIcon}>
-                    <CloseIcon onClick={() => {
-                        dispatch(setIngridietnModalDisabledAction())
-                    }} />
-                </div>
             </div>
 
             <div className={`${Styles.ingridient} mr-25 ml-25 `}>
@@ -66,7 +54,7 @@ export const IngredientDetails = (props) => {
                     </div>
                 </ul>
             </div>
-        </div>
+        </>
     );
 };
 
