@@ -94,8 +94,8 @@ const Ingridient = (ingridient) => {
     );
 };
 
-Ingridient.propTypes = {
-    ingridient: PropTypes.objectOf(ingridientTypicalType),
-};
+// Ingridient.propTypes = {
+//     ingridient: PropTypes.objectOf(ingridientTypicalType),
+// };
 
 export default Ingridient;
