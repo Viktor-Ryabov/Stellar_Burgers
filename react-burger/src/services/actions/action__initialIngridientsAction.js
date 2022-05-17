@@ -3,7 +3,7 @@ import {
     INITIAL_DATA_REQUEST_SUCCESS,
     SET_INITIAL_DATA_TO_INGRIDIENTS,
     INITIAL_DATA_REQUEST_FAILED,
- } from "../constants/constants";
+ } from "../../utils/constants/constants";
 
 const initialDataRequest = () => ({
     type: INITIAL_DATA_REQUEST,

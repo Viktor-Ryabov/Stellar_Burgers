@@ -2,9 +2,9 @@ import {
     ADD_TO_CONSTRUCTOR,
     DELETE_FROM_CONSTRUCTOR,
     RENDER_INGRIDIENTS,
-} from "../../constants/constants";
+} from "../../../utils/constants/constants";
 import { initialState } from "../../../utils/initialState.js";
-import { REPLACE } from "../../actions/action-replaceIngridient.js";
+import { REPLACE } from "../../actions/action__replaceIngridient.js";
 
 export const constructorReducer = (
     state = initialState.orderIngridients,

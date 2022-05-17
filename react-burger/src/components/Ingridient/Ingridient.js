@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 import Styles from "../Ingridient/Ingridient.module.css";
 import {
@@ -6,12 +7,11 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { ingridientTypicalType } from "../../utils/types";
 import { useDispatch, useSelector } from "react-redux";
-import { ItemTypes } from "../../services/constants/constants";
+import { ItemTypes } from "../../utils/constants/constants";
 import { useDrag } from "react-dnd";
-import { setIngridietnModalAcitveAction } from "../../services/actions/action-ingridietnModal";
+import { setIngridietnModalAcitveAction } from "../../services/actions/action__ingridietnModal";
 
-const Ingridient = (ingridient) => {
-    // console.log(ingridient)
+const Ingridient = ({ ...ingridient }) => {
     let counterBuns;
     let counterNotBuns;
 
@@ -94,8 +94,10 @@ const Ingridient = (ingridient) => {
     );
 };
 
-// Ingridient.propTypes = {
-//     ingridient: PropTypes.objectOf(ingridientTypicalType),
-// };
+Ingridient.propTypes = {
+    setIngridientData: PropTypes.func,
+    setActive: PropTypes.func,
+    props: PropTypes.arrayOf(ingridientTypicalType),
+};
 
 export default Ingridient;

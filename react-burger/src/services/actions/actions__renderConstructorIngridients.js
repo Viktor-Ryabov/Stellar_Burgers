@@ -1,4 +1,4 @@
-import { RENDER_INGRIDIENTS } from "../constants/constants";
+import { RENDER_INGRIDIENTS } from "../../utils/constants/constants";
 
 const renderConstructorIngridients = () => ({
     type: RENDER_INGRIDIENTS

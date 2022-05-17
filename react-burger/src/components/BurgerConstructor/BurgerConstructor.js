@@ -7,15 +7,15 @@ import {
     CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import { OrderDetails } from "../OrderDetails/OrderDetails";
-import { withModal } from "../../hocs/withModal/withModal";
+import { withModal } from "../../hocs/withModal";
 import { ingridientTypicalType } from "../../utils/types";
-import { getOrderRequest } from "../../services/api/api-order.js";
-import IngridientsSection from "./BurgerConstructor-IngridientsSection.js";
+import { getOrderRequest } from "../../services/api/api__order.js";
+import IngridientsSection from "./BurgerConstructor__IngridientsSection.js";
 import EmptyElement from "./EmptyElement/EmptyElement.js";
-import { ItemTypes } from "../../services/constants/constants";
-import addToConstructor from "../../services/actions/action-addToConstructor";
+import { ItemTypes } from "../../utils/constants/constants";
+import addToConstructor from "../../services/actions/action__addToConstructor";
 import { useDrop } from "react-dnd";
-import { setOrderModalDisabled } from "../../services/actions/action-orderModal";
+import { setOrderModalAcitve } from "../../services/actions/action__orderModal";
 
 const WithModalOrder = withModal(OrderDetails);
 
@@ -51,9 +51,6 @@ const BurgerConstructor = () => {
             });
         }
     };
-    const setDisabledModal = () => {
-        dispatch(setOrderModalDisabled());
-    }
 
     if (buns.length !== 0) {
         return (
@@ -61,7 +58,7 @@ const BurgerConstructor = () => {
                 ref={drop}
                 className={`${Styles.burgerIngredients} ml-5 pt-25 pl-4`}
             >
-                <WithModalOrder active = {orderCondition} setDisabledModal = {setDisabledModal}/>
+                <WithModalOrder active = {orderCondition} />
 
                 <div className={`${Styles.elementTopBottom} mb-4 ml-3`}>
                     <ConstructorElement
@@ -94,9 +91,12 @@ const BurgerConstructor = () => {
                     <Button
                         type="primary"
                         size="large"
-                        onClick={() => {
+                        onClick={(e) => {
+                            e.stopPropagation();
                             formatOrderData();
-                            getOrderRequest(dispatch, orderIngridients)
+                            dispatch(
+                                getOrderRequest(dispatch, orderIngridients)
+                            );
                         }}
                     >
                         Оформить заказ

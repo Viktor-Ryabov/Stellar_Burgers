@@ -1,5 +1,5 @@
 import { initialState } from "../../../utils/initialState.js";
-import { SET_BUNS, SET_SAUCES, SET_FILLINGS, SET_INITIAL_DATA_TO_INGRIDIENTS } from "../../constants/constants.js";
+import { SET_BUNS, SET_SAUCES, SET_FILLINGS, SET_INITIAL_DATA_TO_INGRIDIENTS } from "../../../utils/constants/constants.js";
 
 export const burgerMenuReducer = (state = initialState.burgerMenu, action) => {
     switch (action.type) {

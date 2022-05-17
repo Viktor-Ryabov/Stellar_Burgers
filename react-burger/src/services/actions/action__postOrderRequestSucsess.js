@@ -1,4 +1,4 @@
-import { POST_ORDER_REQUEST_SUCCESS } from "../constants/constants"
+import { POST_ORDER_REQUEST_SUCCESS } from "../../utils/constants/constants"
 
 const postOrderRequestSucsess = (data) => ({
     type: POST_ORDER_REQUEST_SUCCESS,

@@ -1,12 +1,24 @@
+import React from "react";
+import PropTypes from "prop-types";
 import Styles from "./OrderDetails.module.css";
-import Done from "../../img/done.svg";
-import { useSelector } from "react-redux";
+import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
+import Done from "../../img/done.svg"
+import { useSelector, useDispatch } from "react-redux";
+import { setOrderModalDisabled } from "../../services/actions/action__orderModal";
 
-export const OrderDetails = () => {
-    const orderNumber = useSelector((state) => state.orderNumber.number);
+export const OrderDetails = (props) => {
+    const dispatch = useDispatch();
+    const orderNumber = useSelector(
+        (state) => state.orderNumber.number,
+    );
 
     return (
-        <div className={Styles.orderModalContainer}>
+        <div className={`${Styles.popup}`} onClick={(e) => e.stopPropagation()}>
+            <div className={`${Styles.closeIcon} mt-15 mr-10`}>
+                <CloseIcon onClick={() => {
+                    dispatch(setOrderModalDisabled())
+                }} />
+            </div>
             <p className="text text_type_digits-large mt-30">{orderNumber}</p>
             <p className="text text_type_main-medium mt-8 mb-15">
                 идентификатор заказа

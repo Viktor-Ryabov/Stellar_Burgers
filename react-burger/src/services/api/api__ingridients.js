@@ -4,12 +4,12 @@ import {
     INITIAL_DATA_REQUEST_SUCCESS,
     INITIAL_DATA_REQUEST_FAILED,
     SET_INITIAL_DATA_TO_INGRIDIENTS,
-} from "../constants/constants.js";
+} from "../../utils/constants/constants.js";
 import { initialDataRequest,
     initialDataRequestSuccess,
     setInitialDataIngridients,
-    initialDataRequestFailed } from "../actions/action-initialIngridientsAction.js";
-import { checkResponse } from "./api-checkResponse.js";
+    initialDataRequestFailed } from "../actions/action__initialIngridientsAction.js";
+import { checkResponse } from "./api__checkResponse.js";
 
 
 export const getApiResponse = () => {
