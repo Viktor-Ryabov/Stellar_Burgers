@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
 
 const Modal = ({ ...props }) => {
-    // console.log(props);
+    console.log(props);
     const dispatch = useDispatch();
 
     const escFunction = useCallback((event) => {
@@ -33,12 +33,10 @@ const Modal = ({ ...props }) => {
             <div className={Styles.modalContainer}>
                 <div className={Styles.closeIcon}>
                     <CloseIcon
-
                         onClick={() => {
                             dispatch(setIngridietnModalDisabledAction());
                         }}
                     />
-                    
                 </div>
                 <>{props.children}</>
             </div>

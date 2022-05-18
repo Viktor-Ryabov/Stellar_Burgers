@@ -46,10 +46,8 @@ const BurgerIngredients = () => {
     const [saucesRef, inViewSauces] = useInView({ threshold: 0.5 });
 
     const onTabClick = (tab) => {
-        console.log(tab);
         setCurrentTab(tab);
         const category = document.getElementById(tab);
-        console.log(category);
         if (category) {
             category.scrollIntoView({ behavior: "smooth" });
         }
