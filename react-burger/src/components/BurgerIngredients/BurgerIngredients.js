@@ -68,7 +68,7 @@ const BurgerIngredients = () => {
             <WithModalIngridient
                 active={ingridientsCondition}
                 setDisabledModal={setDisabledModal}
-                {...modalData}
+                ingridient={modalData}
             />
             <h2 className={`${Styles.title} mt-10 mb-5`}>Соберите бургер</h2>
 

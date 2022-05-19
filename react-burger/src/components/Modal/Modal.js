@@ -4,10 +4,10 @@ import ReactDOM from "react-dom";
 import Styles from "./Modal.module.css";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import { useDispatch } from "react-redux";
-import { setIngridietnModalDisabledAction } from "../../services/actions/action-ingridietnModal";
+import PropTypes from "prop-types";
 
 const Modal = ({ ...props }) => {
-    console.log(props);
+    // console.log(props);
     const dispatch = useDispatch();
 
     const escFunction = useCallback((event) => {
@@ -34,7 +34,7 @@ const Modal = ({ ...props }) => {
                 <div className={Styles.closeIcon}>
                     <CloseIcon
                         onClick={() => {
-                            dispatch(setIngridietnModalDisabledAction());
+                            props.setDisabledModal();
                         }}
                     />
                 </div>
@@ -45,6 +45,11 @@ const Modal = ({ ...props }) => {
         </section>,
         document.querySelector("#react-modals")
     );
+};
+
+Modal.propTypes = {
+    active: PropTypes.bool.isRequired,
+    setDisabledModal: PropTypes.func,
 };
 
 export default Modal;

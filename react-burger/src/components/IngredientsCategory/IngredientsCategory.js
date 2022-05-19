@@ -12,8 +12,8 @@ const IngredientsCategory = forwardRef(({ ...props }, ref) => {
                 {props.sectionName}
             </h3>
             <div className={Styles.ingridientsBlock}>
-                {ingridietnArray.map((ingridient, index) => (
-                    <Ingridient {...ingridient} key={ingridient._id} />
+                {ingridietnArray.map((ingridient) => (
+                    <Ingridient props={ingridient} key={ingridient._id} />
                 ))}
             </div>
         </div>

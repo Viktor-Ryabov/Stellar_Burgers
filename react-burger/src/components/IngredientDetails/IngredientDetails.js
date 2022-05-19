@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
+import { ingridientTypicalType } from "../../utils/types";
 import Styles from "./IngredientDetails.module.css";
 
-export const IngredientDetails = (props) => {
+export const IngredientDetails = ({active, setDisabledModal, ingridient}) => {
+    console.log({active, setDisabledModal, ingridient});
 
     return (
         <>
@@ -14,10 +16,10 @@ export const IngredientDetails = (props) => {
             <div className={`${Styles.ingridient} mr-25 ml-25 `}>
                 <img
                     className={`${Styles.modalImage} mb-4`}
-                    src={props.image}
-                    alt={props.name}
+                    src={ingridient.image}
+                    alt={ingridient.name}
                 />
-                <p className="text text_type_main-medium mb-8">{props.name}</p>
+                <p className="text text_type_main-medium mb-8">{ingridient.name}</p>
 
                 <ul className={`${Styles.valueList} `}>
                     <div className={`${Styles.valueElement} mr-5`}>
@@ -25,7 +27,7 @@ export const IngredientDetails = (props) => {
                             Калории,калл
                         </p>
                         <p className="text text_type_digits-default text_color_inactive">
-                            {props.calories}
+                            {ingridient.calories}
                         </p>
                     </div>
                     <div className={`${Styles.valueElement} mr-5`}>
@@ -33,7 +35,7 @@ export const IngredientDetails = (props) => {
                             Протеины,калл
                         </p>
                         <p className="text text_type_digits-default text_color_inactive">
-                            {props.proteins}
+                            {ingridient.proteins}
                         </p>
                     </div>
                     <div className={`${Styles.valueElement} mr-5`}>
@@ -41,7 +43,7 @@ export const IngredientDetails = (props) => {
                             Жиры,калл
                         </p>
                         <p className="text text_type_digits-default text_color_inactive">
-                            {props.fat}
+                            {ingridient.fat}
                         </p>
                     </div>
                     <div className={`${Styles.valueElement}`}>
@@ -49,7 +51,7 @@ export const IngredientDetails = (props) => {
                             Углеводы,калл
                         </p>
                         <p className="text text_type_digits-default text_color_inactive">
-                            {props.carbohydrates}
+                            {ingridient.carbohydrates}
                         </p>
                     </div>
                 </ul>
@@ -60,16 +62,6 @@ export const IngredientDetails = (props) => {
 
 IngredientDetails.propTypes = PropTypes.shape({
     active: PropTypes.bool.isRequired,
-    calories: PropTypes.number.isRequired,
-    carbohydrates: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    image: PropTypes.link,
-    image_large: PropTypes.link,
-    image_mobile: PropTypes.link,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    proteins: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    __v: PropTypes.number.isRequired,
-    _id: PropTypes.string,
+    setDisabledModal: PropTypes.func.isRequired,
+    ingridient: ingridientTypicalType,
 }).isRequired;
