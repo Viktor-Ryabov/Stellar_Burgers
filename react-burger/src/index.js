@@ -7,7 +7,6 @@ import store from "./services/store/store.js"
 ReactDOM.render(
     <Provider store={store}>
         <App />
-        <div id="react-modals"></div>
     </Provider>,
     document.getElementById("root")
 );
