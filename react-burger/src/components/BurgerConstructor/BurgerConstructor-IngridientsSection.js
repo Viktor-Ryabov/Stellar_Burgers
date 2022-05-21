@@ -41,8 +41,4 @@ const IngridientsSection = () => {
     }
 };
 
-IngridientsSection.propTypes = {
-    objectWithSape: PropTypes.arrayOf(ingridientTypicalType),
-};
-
 export default IngridientsSection;

@@ -46,10 +46,8 @@ const BurgerIngredients = () => {
     const [saucesRef, inViewSauces] = useInView({ threshold: 0.5 });
 
     const onTabClick = (tab) => {
-        console.log(tab);
         setCurrentTab(tab);
         const category = document.getElementById(tab);
-        console.log(category);
         if (category) {
             category.scrollIntoView({ behavior: "smooth" });
         }
@@ -70,7 +68,7 @@ const BurgerIngredients = () => {
             <WithModalIngridient
                 active={ingridientsCondition}
                 setDisabledModal={setDisabledModal}
-                {...modalData}
+                ingridient={modalData}
             />
             <h2 className={`${Styles.title} mt-10 mb-5`}>Соберите бургер</h2>
 
