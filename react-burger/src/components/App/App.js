@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import Styles from "./App.module.css";
-import Header from "../Header/Header";
-import MainSection from "../MainSection/MainSection";
 import "@ya.praktikum/react-developer-burger-ui-components";
 import { getIngridientsRequest } from "../../services/api/api-ingridients.js";
 import { useDispatch, useSelector } from "react-redux";
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
+import { BrowserRouter as Router, Route, Switch, useRouteMatch } from "react-router-dom";
+import Header from "../Header/Header";
+import Loging from "../../pages/Loging/Loging";
+import Register from "../../pages/Register";
+import Main from "../../pages/Main.js";
+import NotFound404 from "../../pages/NotFound404/NotFound404";
 
 const App = () => {
     const { requestStatusOk, requestError } = useSelector(
@@ -17,6 +19,8 @@ const App = () => {
     useEffect(() => {
         dispatch(getIngridientsRequest());
     }, []);
+
+
 
     if (requestError) {
         return <div>Ошибка: {requestError}</div>;
@@ -29,10 +33,28 @@ const App = () => {
     } else {
         return (
             <section className={Styles.app}>
-                <DndProvider backend={HTML5Backend}>
+                <Router>
                     <Header />
-                    <MainSection />
-                </DndProvider>
+
+                    <Switch>
+
+                        <Route path="/loging" exact={true}>
+                            <Loging />
+                        </Route>
+
+                        <Route path="/register" exact={true}>
+                            <Register />
+                        </Route>
+
+                        <Route path="/" exact={true}>
+                            <Main />
+                        </Route>
+
+                        <Route>
+                            <NotFound404 />
+                        </Route>
+                    </Switch>
+                </Router>
             </section>
         );
     }

@@ -1,62 +1,66 @@
-.header{
-  margin: 0 auto;
-  padding: 0;
-  background-color: #1C1C21;
-  width: 100%;  
-
+.header {
+    margin: 0 auto;
+    padding: 0;
+    background-color: #1c1c21;
+    width: 100%;
 }
 
-.contentWidth{
-  max-width: 1300px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: space-between;
-  justify-items: stretch;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
+.contentWidth {
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    justify-items: stretch;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
 }
 
-.buttonList{
-  margin: 0;
-  padding: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  list-style: none;
-  list-style-type: none;
+.buttonList {
+    margin: 0;
+    padding: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    list-style-type: none;
 }
 
-.navigationButton{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  height: 56px;
-  background-color:#1C1C21;
-  border: none;
-  font-family: Jet Brains Mono;
+.navigationButton {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-decoration: none;
+    height: 56px;
+    background-color: #1c1c21;
+    border: none;
+    font-family: Jet Brains Mono;
+    color: #8585AD
 }
 
-.navigationButton:hover{
-  cursor: pointer;
-  opacity: 0.8;
+.navigationButtonActive{
+    color: white;
 }
 
-.navigationIcon{
-  margin: 0;
-  padding: 0;
+.navigationButton:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
 
-.navigationText{
-  font-size: 16px;
-  line-height: 24px;
-  color: white;
+.navigationIcon {
+    margin: 0;
+    padding: 0;
+}
+
+.navigationText {
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .profile {
-  justify-self: flex-end;
+    justify-self: flex-end;
 }
 
-.logo{
-  justify-self: center;
+.logo {
+    justify-self: center;
 }

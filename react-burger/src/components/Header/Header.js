@@ -1,4 +1,4 @@
-import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import Styles from "../Header/Header.module.css";
 import {
     Logo,
@@ -13,40 +13,57 @@ const Header = () => {
             <nav>
                 <section className={`${Styles.contentWidth} pb-4 pt-4`}>
                     <ul className={`${Styles.buttonList}`}>
-                        <li
-                            className={`${Styles.navigationButton} pl-5 mr-2 pr-5`}
-                        >
-                            <BurgerIcon />
-                            <p
-                                className={`${Styles.navigationText} ml-2 text text_type_main-default`}
+                        <li>
+                            <Link
+                                className={`${Styles.navigationButton} pl-5 mr-2 pr-5`}
+                                to="/"
                             >
-                                Конструктор
-                            </p>
+                                <BurgerIcon />
+                                <p
+                                    className={`${Styles.navigationText} ml-2 text text_type_main-default`}
+                                >
+                                    Конструктор
+                                </p>
+                            </Link>
                         </li>
-                        <li className={`${Styles.navigationButton} pl-5 pr-5`}>
-                            <ListIcon className={`${Styles.navigationIcon}`} />
-                            <p
-                                className={`${Styles.navigationText} ml-2 text text_type_main-default`}
+
+                        <li>
+                            <Link
+                                to="/"
+                                className={`${Styles.navigationButton} pl-5 pr-5`}
                             >
-                                Лента заказов
-                            </p>
+                                <ListIcon
+                                    className={`${Styles.navigationIcon}`}
+                                />
+                                <p
+                                    className={`${Styles.navigationText} ml-2 text text_type_main-default`}
+                                >
+                                    Лента заказов
+                                </p>
+                            </Link>
                         </li>
                     </ul>
+
                     <div className={Styles.logo}>
                         <Logo />
                     </div>
-                    <button
-                        className={`${Styles.navigationButton} pl-5 pr-5 ${Styles.profile} text text_type_main-default`}
-                    >
-                        <ProfileIcon
-                            className={`${Styles.navigationIcon} mr-2`}
-                        />
-                        <p
-                            className={`${Styles.navigationText} ml-2 text text_type_main-default`}
+
+                    <li className={`${Styles.navigationButton} pl-5 pr-5 ${Styles.profile}`}>
+                        <NavLink
+                            to="/loging"
+                            className={`${Styles.navigationButton} pl-5 pr-5 ${Styles.profile} text text_type_main-default`}
+                            activeClassName={`${Styles.navigationButton} pl-5 pr-5 ${Styles.profile} text text_type_main-default ${Styles.navigationButtonActive}`}
                         >
-                            Личный кабинет
-                        </p>
-                    </button>
+                            <ProfileIcon
+                                className={`${Styles.navigationIcon} mr-2`}
+                            />
+                            <p
+                                className={`${Styles.navigationText} ml-2 text text_type_main-default`}
+                            >
+                                Личный кабинет
+                            </p>
+                        </NavLink>
+                    </li>
                 </section>
             </nav>
         </header>
