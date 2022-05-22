@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch, useRouteMatch } from "react-router-dom";
 import Header from "../Header/Header";
 import Loging from "../../pages/Loging/Loging";
-import Register from "../../pages/Register";
+import Register from "../../pages/Register/Register";
 import Main from "../../pages/Main.js";
 import NotFound404 from "../../pages/NotFound404/NotFound404";
 
@@ -42,7 +42,7 @@ const App = () => {
                             <Loging />
                         </Route>
 
-                        <Route path="/register" exact={true}>
+                        <Route path="/loging/register" exact={true}>
                             <Register />
                         </Route>
 

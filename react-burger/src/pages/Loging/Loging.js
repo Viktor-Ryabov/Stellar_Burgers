@@ -1,11 +1,10 @@
 import {
     PasswordInput,
     Button,
-    Icon,
     EmailInput,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 import logingStyles from "./loging.module.css";
-import { NavLink, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Loging = () => {
     return (
@@ -25,7 +24,7 @@ const Loging = () => {
             <article className={`${logingStyles.question} mt-20 mb-4`}>
                 <p className={logingStyles.text}>
                     Вы новый пользователь?
-                    <Link className={`${logingStyles.link} ml-2`}>
+                    <Link to="/loging/register" className={`${logingStyles.link} ml-2`}>
                         Зарегистрироваться
                     </Link>
                 </p>
