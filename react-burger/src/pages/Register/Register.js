@@ -10,7 +10,7 @@ import { NavLink, Link } from "react-router-dom";
 const Register = () => {
     return (
         <section className={registerStyles.section}>
-            <h2 className={`${registerStyles.title} mb-6`}>Вход</h2>
+            <h2 className={`${registerStyles.title} mb-6`}>Регистрация</h2>
             <ul className={`${registerStyles.inputDataFields}`}>
                 <li className={`${registerStyles.input} mb-6`}>
                     <Input placeholder={"Имя"} />
@@ -30,7 +30,7 @@ const Register = () => {
                     Уже зарегистрировались?
                     <Link
                         to="/loging"
-                        className={`${registerStyles.link} ml-2`}
+                        className={`${registerStyles.link} ml-2 text_color_inactive`}
                     >
                         Войти
                     </Link>

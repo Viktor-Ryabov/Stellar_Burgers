@@ -9,6 +9,8 @@ import Loging from "../../pages/Loging/Loging";
 import Register from "../../pages/Register/Register";
 import Main from "../../pages/Main.js";
 import NotFound404 from "../../pages/NotFound404/NotFound404";
+import ForgotPassword from "../../pages/ForgotPassword/ForgotPassword";
+import ResetPassword from "../../pages/ResetPassword/ResetPassword";
 
 const App = () => {
     const { requestStatusOk, requestError } = useSelector(
@@ -44,6 +46,13 @@ const App = () => {
 
                         <Route path="/loging/register" exact={true}>
                             <Register />
+                        </Route>
+
+                        <Route path="/forgot-password" exact={true}>
+                            <ForgotPassword />
+                        </Route>
+                        <Route path="/forgot-password/reset-password" exact={true}>
+                            <ResetPassword />
                         </Route>
 
                         <Route path="/" exact={true}>

@@ -24,7 +24,7 @@ const Loging = () => {
             <article className={`${logingStyles.question} mt-20 mb-4`}>
                 <p className={logingStyles.text}>
                     Вы новый пользователь?
-                    <Link to="/loging/register" className={`${logingStyles.link} ml-2`}>
+                    <Link to="/loging/register" className={`${logingStyles.link} ml-2 text_color_inactive`}>
                         Зарегистрироваться
                     </Link>
                 </p>
@@ -32,7 +32,7 @@ const Loging = () => {
             <article className={`${logingStyles.question}`}>
                 <p className={logingStyles.text}>
                     Забыли пароль?
-                    <Link className={`${logingStyles.link} ml-2`}>
+                    <Link to="/forgot-password" className={`${logingStyles.link} ml-2 text_color_inactive`}>
                         Восстановить пароль
                     </Link>
                 </p>
